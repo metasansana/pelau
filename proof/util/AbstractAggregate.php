@@ -21,9 +21,29 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     protected $items = array();
 
+   /**
+    * Constructs a new instance of this class optionally setting its internal values from an array.
+    * @param array $items
+    */
     public function __construct(array $items=NULL)
     {
-        $this->items = $items;
+        $this->copyArray($items);
+    }
+
+    /**
+     *  Copies the members of an array into this class. If any of the indexes are non-compatible,
+     *  an exception will be thrown.
+     * @param array $items
+     * @throws proof\util\InvalidIndexException
+     */
+    protected function copyArray(array $items)
+    {
+
+        foreach($items as $key=>&$value)
+        {
+            $this->set($key, $value);
+        }
+
     }
 
     /**
