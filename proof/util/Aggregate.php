@@ -8,7 +8,9 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util;
  *
- * The root interface for the Collection and List structures.
+ * Interface for classes that act as aggregate holders of objects and/or primitives.
+ * The Aggregate heirachy is used to differentiate between associatively collected items
+ * and listed items. ($items['a'] vs $items[0]).
  *
  *
  *
