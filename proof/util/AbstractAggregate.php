@@ -1,5 +1,8 @@
 <?php
+
 namespace proof\util;
+
+
 /**
  * timestamp Jul 18, 2012 1:14:28 PM
  *
@@ -19,32 +22,25 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      * @var array $items
      * @access protected
      */
-    protected $items = array();
+    protected $items = array ();
 
-   /**
-    * Constructs a new instance of this class optionally setting its internal values from an array.
-    * @param array $items
-    */
-    public function __construct(array $items=NULL)
+    /**
+     * Constructs a new instance of this class optionally setting its internal values from an array.
+     * @param array $items
+     */
+    public function __construct(array $items = NULL)
     {
         $this->copyArray($items);
+
     }
 
     /**
-     *  Copies the members of an array into this class. If any of the indexes are non-compatible,
-     *  an exception will be thrown.
-     * @param array $items
-     * @throws proof\util\InvalidIndexException
+     *  Copies the members of an array into this class.
+     *  @param array $items
+     *
      */
-    protected function copyArray(array $items)
-    {
-
-        foreach($items as $key=>&$value)
-        {
-            $this->set($key, $value);
-        }
-
-    }
+    abstract protected function copyArray(array $items);
+    
 
     /**
      * Clears the internally aggregated items
@@ -53,7 +49,7 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
     public function clear()
     {
 
-        $this->items = array();
+        $this->items = array ();
         return $this;
 
     }
@@ -83,12 +79,12 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     public function itemAt($index)
     {
-        if(!($this->indexAt($index)))
+        if (!($this->indexAt($index)))
             return FALSE;
 
         return isset($this->items[$index]);
-    }
 
+    }
 
     /**
      * Returns an item stored in the current Aggregate
@@ -132,8 +128,8 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
     public function isEmpty()
     {
         return empty($this->items);
-    }
 
+    }
 
     /**
      * Returns the number of items in this aggregate.
@@ -143,6 +139,7 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
     {
 
         return count($this->items);
+
     }
 
     /**
@@ -155,30 +152,4 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
         return $this->items;
 
     }
-
-    public function getIterator()
-    {
-
-    }
-
-    public function offsetExists($offset)
-    {
-        return $this->indexAt($offset);
-    }
-
-    public function offsetGet($offset)
-    {
-        return $this->get($offset);
-    }
-
-    public function offsetSet($offset, $value)
-    {
-
-    }
-
-    public function offsetUnset($offset)
-    {
-
-    }
-
 }
