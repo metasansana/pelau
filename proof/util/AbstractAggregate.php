@@ -6,7 +6,8 @@ namespace proof\util;
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\uti;
+ * @package proof\util;
+ *
  *
  *
  */
@@ -152,7 +153,7 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
-        
+
     }
 
     public function offsetUnset($offset)
