@@ -1,8 +1,5 @@
 <?php
-
 namespace proof\util;
-
-
 /**
  * timestamp Jul 18, 2012 1:14:28 PM
  *
@@ -40,7 +37,35 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      *
      */
     abstract protected function copyArray(array $items);
-    
+
+    /**
+     * Ensures that the specified index is correct for this Aggregate
+     */
+    abstract protected function checkIndex($index);
+
+    /**
+     * Sets an existing index to $item
+     * @param int $index
+     * @param mixed $item
+     * @return \proof\util\AbstractAggregate
+     *
+     */
+    public function set($index, $item)
+    {
+
+            $this->checkIndex($index);
+
+            if($this->indexAt($index))
+            {
+                $this->items[$index] = $item;
+            }
+            else
+            {
+                throw new IndexNotFoundException;
+            }
+
+            return $this;
+        }
 
     /**
      * Clears the internally aggregated items
@@ -61,6 +86,8 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     public function indexAt($index)
     {
+        $this->checkIndex($index);
+
         if (@array_key_exists($index, $this->items))
         {
             return TRUE;
@@ -79,6 +106,8 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     public function itemAt($index)
     {
+        $this->checkIndex($index);
+
         if (!($this->indexAt($index)))
             return FALSE;
 
@@ -94,6 +123,8 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     public function get($index)
     {
+
+        $this->checkIndex($index);
 
         if ($this->indexAt($index))
         {
@@ -115,6 +146,8 @@ abstract class AbstractAggregate implements Aggregate, \ArrayAccess
      */
     public function remove($index)
     {
+
+        $this->checkIndex($index);
 
         $flag = $this->indexAt($index);
 

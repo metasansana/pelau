@@ -13,6 +13,14 @@ namespace proof\util;
 abstract class AbstractListing extends AbstractAggregate implements Listing
 {
 
+    protected function checkIndex($index)
+    {
+
+        if(!is_integer($index))
+            throw new InvalidIndexException;
+
+    }
+
     /**
      * Adds an item to this Listing
      * @param int $item
@@ -26,34 +34,10 @@ abstract class AbstractListing extends AbstractAggregate implements Listing
 
     }
 
-    /**
-     * Sets an existing index to $item
-     * @param int $index
-     * @param mixed $item
-     * @return \proof\util\AbstractAggregate
-     *
-     */
-    public function set($index, $item)
-    {
-
-            if($this->indexAt($index))
-            {
-                $this->items[$index] = $item;
-            }
-            else
-            {
-                throw new IndexNotFoundException;
-            }
-
-            return $this;
-        }
-
-
     public function getIterator()
     {
 
         return new ListIterator($this);
 
     }
-
 }
