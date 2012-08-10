@@ -80,7 +80,6 @@ abstract class AbstractAggregate implements Aggregate
      */
     public function indexAt($index)
     {
-        $this->checkIndex($index);
 
         if (@array_key_exists($index, $this->items))
         {
@@ -101,7 +100,6 @@ abstract class AbstractAggregate implements Aggregate
      */
     public function itemAt($index)
     {
-        $this->checkIndex($index);
 
         if (!($this->indexAt($index)))
             return FALSE;
@@ -178,7 +176,7 @@ abstract class AbstractAggregate implements Aggregate
     public function toArray()
     {
 
-        return $this->items;
+        return new \ArrayObject($this->items);
 
     }
 }
