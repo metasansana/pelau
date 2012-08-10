@@ -33,13 +33,6 @@ abstract class AbstractAggregate implements Aggregate
     }
 
     /**
-     *  Copies the members of an array into this class.
-     *  @param array $items
-     *
-     */
-    abstract protected function copyArray(array $items);
-
-    /**
      * Ensures that the specified index is correct for this Aggregate
      */
     abstract protected function checkIndex($index);
