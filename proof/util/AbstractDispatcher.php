@@ -17,21 +17,21 @@ abstract class AbstractDispatcher implements Dispatcher
 
     /**
      * List of subscribers
-     * @var proof\util\ArrayList $subscribers
+     * @var proof\util\Vector $subscribers
      * @access protected
      */
     protected $subscribers;
 
     public function __construct()
     {
-        $this->subscribers = new ArrayList;
+        $this->subscribers = new Vector;
     }
 
 
     /**
      *  Clears and returns the subscribers of this class.
      * @todo clearing the list seems to return null, see unit test
-     * @return proof\util\ArrayList   The previous list of subscribers.
+     * @return proof\util\Vector   The previous list of subscribers.
      */
     public function detachListener()
     {
@@ -46,7 +46,7 @@ abstract class AbstractDispatcher implements Dispatcher
 
     /**
      *  Returns the subscribers of this class
-     * @return proof\util\ArrayList
+     * @return proof\util\Vector
      */
     public function getSubscribers()
     {
