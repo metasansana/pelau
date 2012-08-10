@@ -50,10 +50,11 @@ class AbstractDispatcherTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    /***
+    /*     * *
      * @covers proof\util\AbstractDispatcher::getListeners
      * @todo Implement testGetListeners().
      */
+
     public function testGetListeners()
     {
 

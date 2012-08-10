@@ -10,9 +10,16 @@ spl_autoload_register(function ($class) {
 
             $class = str_replace("\\", '/', $class) . ".php";
 
-            require_once $class;
+            $result = (include_once $class);
 
-            print "Done!\n";
+            if($result)
+            {
+                print "Found $class!\n";
+            }
+            else
+            {
+                print "..\n";
+            }
 
         });
 ?>
