@@ -3,7 +3,7 @@
 namespace proof\util;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/util/AbstractCollection.php';
+require_once dirname(__FILE__) . '/../../../proof/util/AbstractCollection.php';
 
 /**
  * Test class for AbstractCollection.
@@ -23,7 +23,7 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass(__NAMESPACE__."\AbstractCollection");
+        $this->object = $this->getMockForAbstractClass(__NAMESPACE__ . "\AbstractCollection");
 
     }
 
@@ -54,7 +54,7 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     public function testGetIterator()
     {
 
-        $array = array("car"=>"none", "house"=>"none", "bills"=>"plenty");
+        $array = array ("car" => "none", "house" => "none", "bills" => "plenty");
 
         $this->object->add("car", "none");
         $this->object->add("house", "none");
@@ -67,7 +67,4 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
         }
 
     }
-
 }
-
-?>

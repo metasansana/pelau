@@ -24,8 +24,7 @@ class AbstractAggregateTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = $this->getMockForAbstractClass
-                (__NAMESPACE__."\\AbstractAggregate", array(array('one'=>1, 1)));
-
+                (__NAMESPACE__ . "\\AbstractAggregate", array (array ('one' => 1, 1)));
 
     }
 
@@ -60,7 +59,7 @@ class AbstractAggregateTest extends \PHPUnit_Framework_TestCase
     {
         $this->object->clear();
 
-        $this->assertEmpty($this->object->toArray());
+        $this->assertTrue($this->object->isEmpty());
 
     }
 
@@ -119,7 +118,6 @@ class AbstractAggregateTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->remove(0));
         $this->assertFalse($this->object->remove(3));
 
-
     }
 
     /**
@@ -131,7 +129,7 @@ class AbstractAggregateTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($this->object->isEmpty());
 
-        $stub = $this->getMockForAbstractClass(__NAMESPACE__."\\AbstractAggregate");
+        $stub = $this->getMockForAbstractClass(__NAMESPACE__ . "\\AbstractAggregate");
 
         $this->assertTrue($stub->isEmpty());
 
@@ -151,8 +149,6 @@ class AbstractAggregateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->object->size());
 
     }
-
-
 
 }
 
