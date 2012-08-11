@@ -11,15 +11,17 @@ namespace proof\util;
  *
  *
  */
+use proof\php\ArrayObject;
+
 abstract class AbstractAggregate implements Aggregate
 {
 
     /**
      * The items that are part of this Aggregate.
-     * @var array $items
+     * @var proof\php\ArrayObject $items
      * @access protected
      */
-    protected $items = array ();
+    protected $items;
 
     /**
      * Constructs a new instance of this class optionally setting its internal values from an array.
@@ -28,7 +30,7 @@ abstract class AbstractAggregate implements Aggregate
     public function __construct(array $items = NULL)
     {
 
-        $this->items = $items;
+        $this->items = new ArrayObject($items);
 
     }
 
@@ -68,7 +70,7 @@ abstract class AbstractAggregate implements Aggregate
     public function clear()
     {
 
-        $this->items = array ();
+        $this->items = new ArrayObject;
         return $this;
 
     }
@@ -81,15 +83,7 @@ abstract class AbstractAggregate implements Aggregate
     public function indexAt($index)
     {
 
-        if (@array_key_exists($index, $this->items))
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-
-        }
+        return $this->items->offsetExists($index);
 
     }
 
@@ -154,7 +148,10 @@ abstract class AbstractAggregate implements Aggregate
     public function isEmpty()
     {
 
-        return empty($this->items);
+        if($this->size() > 0)
+            return FALSE;
+
+        return TRUE;
 
     }
 
@@ -176,7 +173,7 @@ abstract class AbstractAggregate implements Aggregate
     public function toArray()
     {
 
-        return new \ArrayObject($this->items);
+        return new $this->items;
 
     }
 }
