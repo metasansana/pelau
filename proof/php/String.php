@@ -12,7 +12,7 @@ namespace proof\php;
  * @todo Incomplete class
  *
  */
-class String extends Type
+final class String extends Type
 {
 
     public function __construct($value)

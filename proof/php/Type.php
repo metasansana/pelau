@@ -10,7 +10,7 @@ namespace proof\php;
  * @copyright 2012 Lasana Murray
  * @package proof\types
  *
- * Class for creating a specific structure or primitive.
+ * The Type class is the parent class of all classes that wrap the primitive types of php.
  *
  *
  */
