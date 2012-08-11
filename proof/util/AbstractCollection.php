@@ -11,6 +11,7 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util
  *
+ *  Abstract implementor of the Collection interface for making implementation easier in other clases.
  *
  */
 abstract class AbstractCollection extends AbstractAggregate implements Collection
@@ -41,19 +42,6 @@ abstract class AbstractCollection extends AbstractAggregate implements Collectio
         $this->checkIndex($index);
 
         $this->items[$index] = $item;
-
-        return $this;
-
-    }
-
-    /**
-     * Copies the contents of one collection into this one. Conflicting local keys are overwritten.
-     * @param Collection $c
-     * @return \proof\util\AbstractCollection
-     */
-    public function copy(Collection $c)
-    {
-        array_merge($this->items, $c->toArray());
 
         return $this;
 

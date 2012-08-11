@@ -20,9 +20,6 @@ interface Collection extends Aggregate
      */
     public function add($index, $item);
 
-    /**
-     *Copies the contents of another collection into this one.
-     */
-    public function copy(Collection $c);
+
 
 }
