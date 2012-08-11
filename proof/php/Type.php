@@ -14,7 +14,7 @@ namespace proof\php;
  *
  *
  */
-class Type
+class Type extends Object
 {
 
     /**
