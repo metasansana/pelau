@@ -15,7 +15,7 @@ namespace proof\webapp;
  */
 use proof\util\Map,
     proof\util\ImportList,
-    \proof\util\Vector;
+    \proof\util\ArrayList;
 
 abstract class WebPage implements Page
 {
@@ -88,7 +88,7 @@ abstract class WebPage implements Page
     public function getTemplates()
     {
 
-        $list = new Vector($this->templates->toArray());
+        $list = new ArrayList($this->templates->toArray());
 
         return $list;
 

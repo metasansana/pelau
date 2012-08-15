@@ -13,7 +13,7 @@ namespace proof\sql;
  *  Prepared statement class.
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 use proof\util\Map;
 
 class PreparedStatement extends Statement implements Pushable, Fetchable
@@ -58,7 +58,7 @@ class PreparedStatement extends Statement implements Pushable, Fetchable
 
     }
 
-    public function setPlaceHolderParams(Vector $params)
+    public function setPlaceHolderParams(ArrayList $params)
     {
         $this->params = $params->toArray();
 

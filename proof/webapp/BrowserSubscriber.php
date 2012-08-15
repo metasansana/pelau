@@ -15,13 +15,13 @@ namespace proof\webapp;
  *
  */
 use proof\util\Map;
-use proof\util\Vector;
+use proof\util\ArrayList;
 
 interface BrowserSubscriber
 {
 
-    public function onGet(Browser $browser, Vector $path, Map $args);
+    public function onGet(Browser $browser, ArrayList $path, Map $args);
 
-    public function onPost(Browser $browser, Vector $path, Map $args);
+    public function onPost(Browser $browser, ArrayList $path, Map $args);
 
 }

@@ -12,9 +12,9 @@ namespace proof\sql;
  *
  */
 use proof\util\Map;
-use proof\util\Vector;
+use proof\util\ArrayList;
 
-class FetchList extends Vector implements SQLFetchHandler
+class FetchList extends ArrayList implements SQLFetchHandler
 {
 
     final public function __construct()

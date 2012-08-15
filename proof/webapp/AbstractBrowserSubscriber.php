@@ -11,19 +11,19 @@ namespace proof\webapp;
  *  Empty implementation of the BrowserSubscriber interface.
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 use proof\util\Map;
 
 class AbstractBrowserSubscriber implements BrowserSubscriber
 {
 
 
-    public function onGet(Browser $browser, Vector $path, Map $args)
+    public function onGet(Browser $browser, ArrayList $path, Map $args)
     {
 
     }
 
-    public function onPost(Browser $browser, Vector $path, Map $post)
+    public function onPost(Browser $browser, ArrayList $path, Map $post)
     {
 
     }

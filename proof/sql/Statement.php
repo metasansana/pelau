@@ -15,7 +15,7 @@ namespace proof\sql;
  *  sql statement which can be INSERT,DELETE, SELECT, UPDATE or vendor specific commands.
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 
 abstract class Statement
 {
@@ -54,7 +54,7 @@ abstract class Statement
         $this->provider = $provider;
         $this->pdo = $provider->getPDO();
         $this->stmt = $stmt;
-        $this->handlers = new Vector;
+        $this->handlers = new ArrayList;
 
     }
 

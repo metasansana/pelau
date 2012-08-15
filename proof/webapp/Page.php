@@ -11,7 +11,7 @@ namespace proof\webapp;
  *  Interface for page classes.
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 use proof\util\Map;
 
 class Page
@@ -31,7 +31,7 @@ class Page
     private $content;
 
 
-    public function __construct(Vector $templates, Map $content)
+    public function __construct(ArrayList $templates, Map $content)
     {
         $this->templates = $templates;
         $this->content = $content;

@@ -13,7 +13,7 @@ namespace proof\webapp;
  *  Class that stores multiple browser subsciber objects.
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 use proof\util\Map;
 
 class CompositeBrowserSubscriber implements BrowserSubscriber
@@ -21,7 +21,7 @@ class CompositeBrowserSubscriber implements BrowserSubscriber
 
     /**
      * List of subscribers
-     * @var proof\util\Vector $subscribers
+     * @var proof\util\ArrayList $subscribers
      * @access private
      */
     private $subscribers;
@@ -29,7 +29,7 @@ class CompositeBrowserSubscriber implements BrowserSubscriber
     public function __construct()
     {
 
-        $this->subscribers = new Vector;
+        $this->subscribers = new ArrayList;
 
     }
 
@@ -45,7 +45,7 @@ class CompositeBrowserSubscriber implements BrowserSubscriber
 
     }
 
-    public function onGet(Browser $browser, Vector $path, Map $args)
+    public function onGet(Browser $browser, ArrayList $path, Map $args)
     {
 
         foreach ($this->subscribers as $s)
@@ -56,7 +56,7 @@ class CompositeBrowserSubscriber implements BrowserSubscriber
 
     }
 
-    public function onPost(Browser $browser, Vector $path, Map $post)
+    public function onPost(Browser $browser, ArrayList $path, Map $post)
     {
 
         foreach ($this->subscribers as $s)

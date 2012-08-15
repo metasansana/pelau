@@ -14,7 +14,7 @@ namespace proof\http;
  * @todo incomplete class
  *
  */
-use proof\util\Vector;
+use proof\util\ArrayList;
 use proof\util\Map;
 
 class HttpRequest
@@ -53,7 +53,7 @@ class HttpRequest
 
     /**
      * Returns the an ArrayList of the current url's path.
-     * @return \proof\util\Vector
+     * @return \proof\util\ArrayList
      */
     public function getCleanPath()
     {
@@ -67,7 +67,7 @@ class HttpRequest
         if (empty($params[0]))
             $params = array ();
 
-        return new Vector($params);
+        return new ArrayList($params);
 
     }
 
