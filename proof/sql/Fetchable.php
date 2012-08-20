@@ -14,6 +14,9 @@ namespace proof\sql;
 interface Fetchable
 {
 
-    public function fetch(SQLFetchHandler $h);
+    /**
+     * @return proof\util\ArrayList An ArrayList of Maps each representing a row in the database.
+     */
+    public function fetch(FetchHandler $h);
 
 }

@@ -10,13 +10,16 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  Prepared statement class.
+ * Class representing a prepared statement. Prepared statements perform two trips to the server in order to
+ * execute a statement or query. This class wraps the the result of a \PDO::prepare() call so to provide
+ * cleaner operations.
+ *
  *
  */
-use proof\util\ArrayList;
 use proof\util\Map;
+use proof\util\ArrayList;
 
-class PreparedStatement extends Statement implements Pushable, Fetchable
+class PreparedStatement extends Statement
 {
 
     /**
@@ -28,81 +31,90 @@ class PreparedStatement extends Statement implements Pushable, Fetchable
     private $params;
 
     /**
-     *  Internally prepared PDOStatement object.
+     *  A preprared statement issued by PDO::prepare()
      * @var \PDOStatement $pstmt
      * @access private
      */
     private $pstmt;
 
-    public function __construct(PDOProvider $provider)
+    /**
+     *  Constructs a new PreparedStatement object
+     * @param \PDOStatement $pstmt    A PDOStatement object created from PDO::prepare()
+     */
+    public function __construct(\PDOStatement $pstmt)
     {
-        parent::__construct($provider);
+
+        $this->pstmt = $pstmt;
 
     }
 
+    /**
+     *  Sets the parameters for statement as named params.
+     * @param array $params
+     * @return \proof\sql\PreparedStatement
+     */
     public function setNamedParams(Map $params)
     {
 
-        $new_params = array ();
+        $named = array();
 
         foreach ($params as $name => &$value)
         {
 
-            $new_name = ":$name";
-            $new_params[$new_name] = $value;
+            $edited = ":$name";
+
+            $named[$edited] = $value;
+
+
         }
 
-        $this->params = $new_params;
+        $this->params = $named;
 
         return $this;
 
     }
 
+    /**
+     * Sets the params for the statement as a linear list of values.
+     * @param array $params
+     * @return \proof\sql\PreparedStatement
+     */
     public function setPlaceHolderParams(ArrayList $params)
     {
+
         $this->params = $params->toArray();
+        return $this;
 
     }
 
-    public function prepare($stmt)
+    public function fetch(FetchHandler $h)
     {
-
-        $this->pstmt = $this->pdo->prepare($stmt);
-
-        if ($this->pstmt)
-            return TRUE;
-
-        $this->raiseFailureFlag($this->pdo->errorInfo());
-
-        return FALSE;
-
-    }
-
-    public function fetch(SQLFetchHandler $h)
-    {
-
-        $flag  = TRUE;
 
         if ($this->pstmt->execute($this->params))
         {
 
-            while ($flag)
+            $count = -1;    //Looping will still execute the block when the first null row is pulled. Omit that from count.
+
+            $row = true;
+
+            do
             {
 
-                $flag = $this->pstmt->fetch();
+                $row = $this->pstmt->fetch();
 
-                if($flag)
-                $h->onFetch(new Map($flag));
+                if ($row)
+                    $h->onFetch(new Map($row));
 
+                $count++;
             }
+            while ($row);
 
-            return TRUE;
-
+            return $count;
         }
         else
         {
 
-            $this->raiseFailureFlag($this->pstmt->errorInfo());
+            $this->changeState(new SQLState($this->pstmt->errorInfo()));
             return FALSE;
         }
 
@@ -114,12 +126,11 @@ class PreparedStatement extends Statement implements Pushable, Fetchable
         if ($this->pstmt->execute($this->params))
         {
             return $this->pstmt->rowCount();
-
         }
         else
         {
 
-            $this->raiseFailureFlag($this->pstmt->errorInfo());
+            $this->changeState(new SQLState($this->pstmt->errorInfo()));
 
             return FALSE;
         }

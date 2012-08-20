@@ -14,7 +14,7 @@ namespace proof\sql;
 use proof\util\Map;
 use proof\util\ArrayList;
 
-class FetchList extends ArrayList implements SQLFetchHandler
+class FetchList extends ArrayList implements FetchHandler
 {
 
     final public function __construct()

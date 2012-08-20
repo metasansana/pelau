@@ -14,6 +14,9 @@ namespace proof\sql;
 interface Pushable
 {
 
+    /**
+     * @return int    The number of rows affected by the push.
+     */
     public function push();
 
 }

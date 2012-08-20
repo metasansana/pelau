@@ -14,7 +14,7 @@ namespace proof\sql;
  */
 use proof\util\Map;
 
-interface SQLFetchHandler
+interface FetchHandler
 {
 
     public function onFetch(Map $row);

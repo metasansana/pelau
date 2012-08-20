@@ -3,7 +3,7 @@
 namespace proof\sql;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/sql/Statement.php';
+require_once dirname(__FILE__) . '/../../../proof/sql/Statement.php';
 
 /**
  * Test class for Statement.
@@ -23,8 +23,7 @@ class StatementTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass(__NAMESPACE__ . '\\Statement',
-                array ($this->getMock('proof\sql\PDOProvider'), 'SQL'));
+        $this->object = $this->getMockForAbstractClass(__NAMESPACE__ . '\\Statement');
 
     }
 
@@ -38,25 +37,13 @@ class StatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\Statement::addStausHandler
-     * @todo Implement testAddStausHandler().
+     * @covers proof\sql\Statement::attachStateHandler     .
      */
-    public function testAddStatusListener()
+    public function testAttachStateListener()
     {
-        $stub = $this->getMock('proof\sql\SQLStatusListener');
+        $stub = $this->getMock('proof\sql\SQLStateListener');
 
-        $this->assertInstanceOf(get_class($this->object), $this->object->addStatusListener($stub));
-
-    }
-
-    /**
-     * @covers proof\sql\Statement::setStatement
-     * @todo Implement testSetStatement().
-     */
-    public function testSetCommand()
-    {
-
-        $this->assertInstanceOf(get_class($this->object), $this->object->setCommand('blag'));
+        $this->assertInstanceOf(get_class($this->object), $this->object->attachStateListener($stub));
 
     }
 

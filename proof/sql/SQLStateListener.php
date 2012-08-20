@@ -13,10 +13,10 @@ namespace proof\sql;
  *
  *
  */
-interface SQLStatusListener
+interface SQLStateListener
 {
 
-    public function onChange(PDOProvider $provider, SQLStatus $status);
+    public function onChange(SQLState $state);
 
 
 }
