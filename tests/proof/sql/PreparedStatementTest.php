@@ -90,36 +90,7 @@ MSG;
     public function testFetch()
     {
 
-        $namestmt = new PreparedStatement
-        (
-                $this->pdo->prepare('Insert into driver (plate, timestamp) VALUES(:plate,:timestamp)')
-        );
-
-        $namestmt->setNamedParams(new Map( array ("plate" => "pbx44", "timestamp"=>12345633)));
-
-        $namestmt->attachStateListener(new StateHandler);
-
-
-        $placestmt = new PreparedStatement($this->pdo->prepare('Insert into driver (plate, timestamp) VALUES(?,?)'));
-
-        $placestmt->setPlaceHolderParams(new ArrayList("pbx55", 12345633));
-
-        $placestmt->attachStateListener(new StateHandler);
-
-        $this->assertEquals(1, $placestmt->push());
-
-        $this->assertEquals(1, $namestmt->push());
-
-    }
-
-    /**
-     * @covers proof\sql\PreparedStatement::push
-     * @todo Implement testPush().
-     */
-    public function testPush()
-    {
-
-        $namestmt = new PreparedStatement($this->pdo->prepare('Insert into driver (plate, timestamp) VALUES(?,?)'));
+        $namestmt = new PreparedStatement($this->pdo->prepare('Select * from driver where plate=:plate'));
 
         $namestmt->setNamedParams(new Map( array ("plate" => "pck123")));
 
@@ -134,6 +105,46 @@ MSG;
         $this->assertEquals(1, $placestmt->fetch($this->getMock("proof\sql\FetchHandler")));
 
         $this->assertEquals(1, $namestmt->fetch($this->getMock("proof\sql\FetchHandler")));
+
+
+
+    }
+
+    /**
+     * @covers proof\sql\PreparedStatement::push
+     * @todo Implement testPush().
+     */
+    public function testPush()
+    {
+
+
+
+        $namestmt = new PreparedStatement
+        (
+                $this->pdo->prepare('Insert into driver (plate, timestamp) VALUES(:plate,:timestamp)')
+        );
+
+        $namestmt->setNamedParams(new Map( array ("plate" => "pbx44", "timestamp"=>12345)));
+
+        $namestmt->attachStateListener(new StateHandler);
+
+
+
+        $placestmt = new PreparedStatement($this->pdo->prepare('Insert into driver (plate, timestamp) VALUES(?,?)'));
+
+        $placestmt->setPlaceHolderParams(new ArrayList(array("pbx55", 12345)));
+
+        $placestmt->attachStateListener(new StateHandler);
+
+
+        $this->assertEquals(1, $placestmt->push());
+
+        $this->assertEquals(1, $namestmt->push());
+
+        $cleanstmt = new PreparedStatement($this->pdo->prepare('DELETE from driver where timestamp=12345'));
+
+        $this->assertEquals(2, $cleanstmt->push());
+
 
     }
 
