@@ -14,10 +14,4 @@ namespace proof\util;
 class Map extends AbstractCollection
 {
 
-    public function getIterator()
-    {
-        return new \ArrayIterator($this);
-    }
-
-
 }
