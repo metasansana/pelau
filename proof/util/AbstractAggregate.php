@@ -11,14 +11,13 @@ namespace proof\util;
  *
  *
  */
-use proof\php\ArrayObject;
 
 abstract class AbstractAggregate implements Aggregate
 {
 
     /**
      * The items that are part of this Aggregate.
-     * @var proof\php\ArrayObject $items
+     * @var array $items
      * @access protected
      */
     protected $items;
@@ -30,7 +29,7 @@ abstract class AbstractAggregate implements Aggregate
     public function __construct(array $items = NULL)
     {
 
-        $this->items = new ArrayObject($items);
+        $this->items = $items;
 
     }
 
@@ -70,7 +69,7 @@ abstract class AbstractAggregate implements Aggregate
     public function clear()
     {
 
-        $this->items = new ArrayObject;
+        $this->items = array();
         return $this;
 
     }
@@ -173,7 +172,7 @@ abstract class AbstractAggregate implements Aggregate
     public function toArray()
     {
 
-        return new $this->items;
+        return $this->items;
 
     }
 }
