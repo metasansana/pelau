@@ -17,7 +17,7 @@ namespace proof\util;
  *
  *
  */
-interface Aggregate
+interface Aggregate extends \IteratorAggregate
 {
 
     /**
