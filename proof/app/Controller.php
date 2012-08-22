@@ -14,9 +14,8 @@ namespace proof\app;
  * <p>Extend this class and implement the required onPost() and onGet() methods with logic for your applications.</p>
  *
  */
-use proof\php\Object;
 
-abstract class Controller extends Object implements GetListener, PostListener
+abstract class Controller extends proof\php\Object implements GetListener, PostListener
 {
 
     /**
