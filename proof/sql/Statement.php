@@ -3,58 +3,108 @@
 namespace proof\sql;
 
 /**
- * timestamp Aug 4, 2012 8:35:08 AM
+ * timestamp Aug 4, 2012 9:00:02 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  Parent class of sql Statement classes. The Statement family only represents a generic
- *  sql statement which can be INSERT,DELETE, SELECT, UPDATE or vendor specific commands.
+ *  FastStatement represents an SQL statement that will be executed in one trip, that is, without preperation.
+ *  <b>The contents of FastStatements should be properly escaped to defened against SQL injection attacks.</b>
  *
  */
 use proof\php\String;
+use proof\util\Map;
 
-abstract class Statement implements Fetchable, Pushable
+class Statement extends SQL
 {
 
     /**
-     * Object listening for state changes.
-     * @var proof\sql\SQLStateListener
-     * @access protected.
+     * An sql statement string
+     * @var proof\php\String
      */
-    protected $listener;
+    private $stmt;
 
-   /**
-     * Alerts the SQLStateListener (if any) of a change in SQL state.
-     * @param \proof\sql\SQLState $state
-     * @return boolean
+    /**
+     * A PDO object that represents a link to an active database.
+     * @var \PDO $link
      */
-    protected function changeState(SQLState $state)
+    private $link;
+
+    /**
+     * Constructs a new FastStatement.
+     * @param String $stmt    A String representation of the statement.
+     * @param \PDO $link      Optional PDO object to be used to execute the statement.
+     */
+    public function __construct(String $stmt, \PDO $link=NULL)
     {
 
-        if ($this->listener)
+        $this->stmt = $stmt;
+        $this->link = $link;
+
+    }
+
+    private function _query()
+    {
+
+        $result = $this->link->query($this->stmt);
+
+        if (!$result)
+            $this->changeState($this->link->errorInfo());
+
+        return $result;
+
+    }
+
+    public function setLink(\PDO $link)
+    {
+        $this->link = $link;
+    }
+
+    public function fetch(FetchHandler $h)
+    {
+
+        $result = $this->_query();
+
+        $count = 0;
+
+        if ($result)
         {
-            $this->listener->onChange($state);
-            return true;
+            foreach ($result as $row)
+            {
+
+                $h->onFetch(new Map($row));
+                $count++;
+
+            }
+
+            return $count;
         }
         else
         {
-            return false;
+
+            $this->changeState($this->link->errorInfo());
+
+            return FALSE;
         }
 
     }
 
-    /**
-     * Attaches an SQLStateListener
-     * @param \proof\sql\SQLStateListener $l
-     * @return \proof\sql\Statement
-     */
-    public function attachStateListener(SQLStateListener $l)
+    public function push()
     {
-        $this->listener = $l;
-        return $this;
+
+        $result = $this->_query();
+
+        if ($result)
+        {
+            return $result->rowCount();
+        }
+        else
+        {
+            $this->changeState($this->link->errorInfo());
+            return FALSE;
+        }
 
     }
 

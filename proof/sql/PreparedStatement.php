@@ -19,7 +19,7 @@ namespace proof\sql;
 use proof\util\Map;
 use proof\util\ArrayList;
 
-class PreparedStatement extends Statement
+class PreparedStatement extends SQL
 {
 
     /**
