@@ -3,7 +3,7 @@
 namespace proof\sql;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/sql/FastStatement.php';
+require_once dirname(__FILE__) . '/../../../proof/sql/FastStatement.php';
 
 /**
  * Test class for FastStatement.
@@ -24,8 +24,7 @@ class FastStatementTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = $this->getMock
-                (__NAMESPACE__ . '\\FastStatement',
-                array ('SQL', $this->getMock('proof\sql\PDOProvider')));
+                (__NAMESPACE__ . '\\FastStatement', array ('SQL', $this->getMock('proof\sql\PDOProvider')));
 
     }
 

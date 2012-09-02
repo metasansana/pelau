@@ -1,0 +1,13 @@
+Todo example
+=====
+Copyright: Lasana Murray
+License: Pending
+
+##A small web application for testing the main features of PROOF.
+
+The todo example is a web application for a simple todo list.
+
+####Please note
+The files in this folder are for a small web application that is used to test the main features of PROOF.
+The code in this folder is not meant to be production quality and should not be used for any practical
+purpose.
