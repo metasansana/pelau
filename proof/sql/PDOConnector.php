@@ -15,6 +15,8 @@ namespace proof\sql;
  *  on failure.
  *
  */
+use proof\php\String;
+
 interface PDOConnector
 {
 

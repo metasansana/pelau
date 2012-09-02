@@ -18,6 +18,9 @@ namespace proof\sql;
  *
  *
  */
+
+use proof\php\String;
+
 final class BasePDOConnector implements PDOConnector
 {
 
