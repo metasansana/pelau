@@ -26,5 +26,27 @@ interface PDOConnector
      */
     public function connect(ConnectorErrorHandler $e = NULL);
 
+    /**
+     * Attempts to generate a new PreparedStatement class.
+     * @param proof\php\String $sql
+     */
+    public function prepare(String $sql);
+
+    /**
+     * Attempts to generate a new Statement class.
+     * @param proof\php\String $sql
+     */
+    public function create(String $sql);
+
+    /**
+     * Tests whether the connector is connected or not.
+     */
+    public function isConnected();
+
+    /**
+     * Terminates any existing connection.
+     */
+    public function disconnect();
+
 
 }
