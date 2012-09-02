@@ -12,12 +12,12 @@ namespace proof\sql;
  *
  *  FastStatement represents an SQL statement that will be executed in one trip, that is, without preperation.
  *  <b>The contents of FastStatements should be properly escaped to defened against SQL injection attacks.</b>
- *
+ *SQLInstruction
  */
 use proof\php\String;
 use proof\util\Map;
 
-class Statement extends SQL
+class Statement extends SQLCommand
 {
 
     /**
@@ -37,7 +37,7 @@ class Statement extends SQL
      * @param String $stmt    A String representation of the statement.
      * @param \PDO $link      Optional PDO object to be used to execute the statement.
      */
-    public function __construct(String $stmt, \PDO $link=NULL)
+    public function __construct(String $stmt, \PDO $link)
     {
 
         $this->stmt = $stmt;
@@ -57,9 +57,9 @@ class Statement extends SQL
 
     }
 
-    public function setLink(\PDO $link)
+    public function escape(String $sql)
     {
-        $this->link = $link;
+        return $this->link->quote("$sql");
     }
 
     public function fetch(FetchHandler $h)
