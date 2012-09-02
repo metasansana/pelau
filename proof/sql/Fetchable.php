@@ -15,8 +15,11 @@ interface Fetchable
 {
 
     /**
-     * @return proof\util\ArrayList An ArrayList of Maps each representing a row in the database.
+     *
+     * @param \proof\sql\FetchHandler $h    An object capable of receiving rows fetched from the database.
+     * @param \proof\sql\SQLStateListener $l    If given, this object will be notifed on sql state changes.
+     *
      */
-    public function fetch(FetchHandler $h);
+    public function fetch(FetchHandler $h, SQLStateListener $l = NULL);
 
 }
