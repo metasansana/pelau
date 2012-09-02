@@ -84,13 +84,18 @@ final class BasePDOConnector implements PDOConnector
         {
 
             $this->pdo = new \PDO($this->dsn, $this->usr, $this->passwd);
+
+            return TRUE;
         }
         catch (\PDOException $exc)
         {
             if ($e)
                 $e->onError($ex);
-            return null;
+
+            return FALSE;
+
         }
+
 
     }
 
