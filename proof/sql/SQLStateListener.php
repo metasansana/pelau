@@ -8,15 +8,17 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- * Interface for listening on changes in the sql state.
+ * Interface for objects that handle changes in SQL state.
  *
+ * A change in state usually implies some sort of error, this interface provides a way to be notified
+ * about such errors and deal with them without having to repeat too much code.
  *
  *
  */
-interface SQLStateListener
+interface SQLStateHandler
 {
 
-    public function onChange(SQLState $state);
+    public function onStateChange(SQLState $state);
 
 
 }
