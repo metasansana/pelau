@@ -1,5 +1,4 @@
 <?php
-
 namespace proof\sql;
 
 /**
@@ -21,13 +20,13 @@ namespace proof\sql;
  */
 use proof\util\Map;
 
-class PreparedStatement implements SQLCommand
+class PreparedStatement extends AbstractSQLCommand
 {
 
     /**
      *
      * Arguments that will replace the placeholders of the prepared statement
-     * @var proof\util\Map $params
+     * @var array $params
      * @access private
      */
     private $params;
@@ -47,6 +46,7 @@ class PreparedStatement implements SQLCommand
     {
 
         $this->pstmt = $pstmt;
+        
 
     }
 
@@ -58,9 +58,8 @@ class PreparedStatement implements SQLCommand
     public function addParameter($value)
     {
 
-        $key = (string)($this->params->size() + 1);
 
-        $this->params->add($key, $value);
+        $this->params[] =  $value;
 
         return $this;
 
@@ -68,8 +67,8 @@ class PreparedStatement implements SQLCommand
 
     /**
      *
-     * @param type $name
-     * @param type $value
+     * @param string $name
+     * @param mixed $value
      * @return \proof\sql\PreparedStatement
      */
     public function addNamedParameter($name, $value)
@@ -77,7 +76,7 @@ class PreparedStatement implements SQLCommand
 
         $name = ":$name";
 
-        $this->params->add($name, $value);
+        $this->params[$name] =  $value;
 
         return $this;
 
@@ -85,10 +84,10 @@ class PreparedStatement implements SQLCommand
 
 
 
-    public function fetch(FetchHandler $h, SQLStateHandler $l = NULL)
+    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL)
     {
 
-        if ($this->pstmt->execute($this->params->toArray()))
+        if ($this->pstmt->execute($this->params))
         {
 
             $count = -1;    //Looping will still execute the block when the first null row is pulled. Omit that from count.
@@ -101,7 +100,7 @@ class PreparedStatement implements SQLCommand
                 $row = $this->pstmt->fetch();
 
                 if ($row)
-                    $h->onFetch(new Map($row));
+                    $fhandler->onFetch(new Map($row));
 
                 $count++;
             }
@@ -112,14 +111,14 @@ class PreparedStatement implements SQLCommand
         else
         {
 
-            $l->onStateChange(new SQLState($this->pstmt->errorInfo()));
+            $this->changeState($this->pstmt->errorInfo(), $shandler);
 
             return FALSE;
         }
 
     }
 
-    public function push(SQLStateHandler $l = NULL)
+    public function push(SQLStateHandler $shandler = NULL)
     {
 
         if ($this->pstmt->execute($this->params))
@@ -129,9 +128,9 @@ class PreparedStatement implements SQLCommand
         else
         {
 
-            $this->changeState(new SQLState($this->pstmt->errorInfo()));
+            $this->changeState($this->pstmt->errorInfo(), $shandler);
 
-            return FALSE;
+            return NULL;
         }
 
     }
