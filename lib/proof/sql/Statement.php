@@ -62,7 +62,7 @@ class Statement implements SQLCommand
         return $this->link->quote("$sql");
     }
 
-    public function fetch(FetchHandler $h)
+    public function fetch(FetchHandler $h, SQLStateHandler $h = NULL)
     {
 
         $result = $this->_query();
@@ -91,7 +91,7 @@ class Statement implements SQLCommand
 
     }
 
-    public function push()
+    public function push(SQLStateHandler $h = NULL)
     {
 
         $result = $this->_query();
