@@ -6,7 +6,9 @@
 
 spl_autoload_register(function ($class) {
 
-            print "Searching for the $class class.. \n";
+            $path = get_include_path();
+            
+            print "Searching for the $class class.. in $path.\n";
 
             $class = str_replace("\\", '/', $class) . ".php";
 

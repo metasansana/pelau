@@ -1,6 +1,6 @@
 <?php
 
-use proof\sql\BasePDOConnector;
+use proof\sql\BasePDOConnection;
 use examples\includes\ExamplePDOConnector;
 use examples\includes\MockConnectorErrorHandler;
 
@@ -9,7 +9,7 @@ use examples\includes\MockConnectorErrorHandler;
  *
  */
 
-$con = new ExamplePDOConnector(new BasePDOConnector(DSN, USR, PASSWD));
+$con = new ExamplePDOConnector(new BasePDOConnection(DSN, USR, PASSWD));
 
 $con->connect(new MockConnectorErrorHandler);
 

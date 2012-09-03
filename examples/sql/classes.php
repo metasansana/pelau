@@ -6,7 +6,7 @@ namespace tests;
  */
 
 
-class TestConnectorErrorHandler implements ConnectorErrorHandler
+class TestConnectorErrorHandler implements ConnectionErrorHandler
 {
 
     /**
