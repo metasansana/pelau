@@ -10,22 +10,24 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- * Class representing a prepared statement. Prepared statements perform two trips to the server in order to
- * execute a statement or query. This class wraps the the result of a \PDO::prepare() call so to provide
- * cleaner operations.
+ *
+ * Class representing a prepared statement.
+ *
+ * <i>Note: Avoid directly creating new instances of this class, use the PDOConnection::prepare() method instead.
+ *
+ *
  *
  *
  */
 use proof\util\Map;
-use proof\util\ArrayList;
 
-class PreparedStatement extends SQLCommand
+class PreparedStatement implements SQLCommand
 {
 
     /**
-     * The arguments that the prepared statement is to be outfitted with.
-     * This array must have the same number of elements as the place holders in the statement.
-     * @var array $params
+     *
+     * Arguments that will replace the placeholders of the prepared statement
+     * @var proof\util\Map $params
      * @access private
      */
     private $params;
@@ -48,49 +50,45 @@ class PreparedStatement extends SQLCommand
 
     }
 
-    /**
-     *  Sets the parameters for statement as named params.
-     * @param array $params
+     /**
+     *
+     * @param mixed $params
      * @return \proof\sql\PreparedStatement
      */
-    public function setNamedParams(Map $params)
+    public function addParameter($value)
     {
 
-        $named = array();
+        $key = (string)($this->params->size() + 1);
 
-        foreach ($params as $name => &$value)
-        {
-
-            $edited = ":$name";
-
-            $named[$edited] = $value;
-
-
-        }
-
-        $this->params = $named;
+        $this->params->add($key, $value);
 
         return $this;
 
     }
 
     /**
-     * Sets the params for the statement as a linear list of values.
-     * @param array $params
+     *
+     * @param type $name
+     * @param type $value
      * @return \proof\sql\PreparedStatement
      */
-    public function setPlaceHolderParams(ArrayList $params)
+    public function addNamedParameter($name, $value)
     {
 
-        $this->params = $params->toArray();
+        $name = ":$name";
+
+        $this->params->add($name, $value);
+
         return $this;
 
     }
 
-    public function fetch(FetchHandler $h)
+
+
+    public function fetch(FetchHandler $h, SQLStateHandler $l = NULL)
     {
 
-        if ($this->pstmt->execute($this->params))
+        if ($this->pstmt->execute($this->params->toArray()))
         {
 
             $count = -1;    //Looping will still execute the block when the first null row is pulled. Omit that from count.
@@ -114,13 +112,14 @@ class PreparedStatement extends SQLCommand
         else
         {
 
-            $this->changeState(new SQLState($this->pstmt->errorInfo()));
+            $l->onStateChange(new SQLState($this->pstmt->errorInfo()));
+
             return FALSE;
         }
 
     }
 
-    public function push()
+    public function push(SQLStateHandler $l = NULL)
     {
 
         if ($this->pstmt->execute($this->params))
