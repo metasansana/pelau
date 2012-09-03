@@ -15,7 +15,7 @@ class ConnectionHelper
 {
 
 
-    public static function getBaseConnection($dsn, $username, $passwd)
+    public static function getBaseConnection($dsn = "proof", $username =  "proof-user", $passwd = "test")
     {
         $con = new \proof\sql\BasePDOConnection($dsn, $username, $passwd);
 
