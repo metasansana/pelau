@@ -17,9 +17,9 @@ interface Fetchable
     /**
      *
      * @param \proof\sql\FetchHandler $h    An object capable of receiving rows fetched from the database.
-     * @param \proof\sql\SQLStateListener $l    If given, this object will be notifed on sql state changes.
+     * @param \proof\sql\SQLStateHandler $l    If given, this object will be notifed on sql state changes.
      *
      */
-    public function fetch(FetchHandler $h, SQLStateListener $l = NULL);
+    public function fetch(FetchHandler $h, SQLStateHandler $l = NULL);
 
 }
