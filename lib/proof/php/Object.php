@@ -16,6 +16,11 @@ class Object
 {
 
 
+    public function getClassName()
+    {
+        return get_class();
+    }
+
     public function __toString()
     {
         return get_class();
