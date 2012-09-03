@@ -83,7 +83,7 @@ final class BasePDOConnection implements PDOConnection
         try
         {
 
-            $this->pdo = new \PDO($this->dsn, $this->usr, $this->passwd);
+            $this->con = new \PDO($this->dsn, $this->usr, $this->passwd);
 
             return TRUE;
         }
