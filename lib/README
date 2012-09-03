@@ -1,0 +1,2 @@
+Place the proof folder into the root of your php include path. You will then be able to
+use proof classes as normal.
