@@ -132,7 +132,7 @@ final class BasePDOConnection implements PDOConnection
 
         $this->checkConnection();
 
-        return new PreparedStatement($this->con->prepare($sql));
+        return new PreparedStatement($this->con->prepare((string)$sql));
 
     }
 
