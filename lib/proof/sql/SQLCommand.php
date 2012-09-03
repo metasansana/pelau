@@ -16,7 +16,25 @@ namespace proof\sql;
  *   when a class wants to implement those features.</p>
  *
  */
-interface SQLCommand extends Fetchable, Pushable
+interface SQLCommand
 {
+
+    /**
+     *
+     * @param \proof\sql\FetchHandler $fhandler    An object capable of receiving rows fetched from the database.
+     * @param \proof\sql\SQLStateHandler $shandler    If given, this object will be notifed on sql state changes.
+     *
+     */
+    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL);
+
+    /**
+     * Push a statement to the database.
+     * @param \proof\sql\SQLStateHandler $shandler    If given, this object will be notifed on sql state changes.
+     * @return int The number of rows affected by the push.
+     */
+    public function push(SQLStateHandler $shandler = NULL);
+
+
+
 
 }
