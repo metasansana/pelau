@@ -20,7 +20,7 @@ class ConnectionHelper
         $con = new \proof\sql\BasePDOConnection($dsn, $username, $passwd);
 
         if(!$con->connect())
-            throw new Exception("Unable to connect to the database!");
+            throw new \Exception("Unable to connect to the database!");
 
         return $con;
     }
