@@ -17,7 +17,7 @@ namespace proof\sql;
 use proof\php\String;
 use proof\util\Map;
 
-class Statement implements SQLCommand
+class Statement extends AbstractSQLCommand
 {
 
     /**
@@ -62,7 +62,7 @@ class Statement implements SQLCommand
         return $this->link->quote("$sql");
     }
 
-    public function fetch(FetchHandler $h, SQLStateHandler $h = NULL)
+    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL)
     {
 
         $result = $this->_query();
@@ -74,7 +74,7 @@ class Statement implements SQLCommand
             foreach ($result as $row)
             {
 
-                $h->onFetch(new Map($row));
+                $fhandler->onFetch(new Map($row));
                 $count++;
 
             }
@@ -84,9 +84,8 @@ class Statement implements SQLCommand
         else
         {
 
-            $this->changeState($this->link->errorInfo());
 
-            return FALSE;
+            return $result;
         }
 
     }
@@ -102,8 +101,8 @@ class Statement implements SQLCommand
         }
         else
         {
-            $this->changeState($this->link->errorInfo());
-            return FALSE;
+
+            return $result;
         }
 
     }
