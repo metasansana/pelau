@@ -17,7 +17,7 @@ namespace proof\sql;
 use proof\php\String;
 use proof\util\Map;
 
-class Statement extends SQLCommand
+class Statement implements SQLCommand
 {
 
     /**
