@@ -13,15 +13,46 @@ namespace proof\util;
  *
  */
 use proof\php\Object;
+use proof\php\String;
 
 class Event extends Object
 {
 
     /**
      * The source object of this event
-     * @var proof\php\Object $src
+     * @var proof\php\Object $source
      * @access protected
      */
-    private $src;
+    protected $source;
+
+    /**
+     * Constructs a new Event object.
+     * @param Object $source
+     */
+    public function __construct(Object $source)
+    {
+
+        $this->source = $source;
+
+
+    }
+
+    /**
+     * Returns the object that is the source of this event.
+     * @return proof\php\Object
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+
+    public function getMessage()
+    {
+        $type = $this->getClassName();
+        return new String("An event of type: $type has occured.");
+    }
+
+
 
 }
