@@ -1,5 +1,5 @@
 <?php
-namespace proof\web;
+namespace proof\app\web;
 /**
  * timestamp Sep 8, 2012 2:54:41 PM
  *
@@ -14,7 +14,7 @@ namespace proof\web;
 class AbstractWebListener implements WebListener
 {
 
-    
+
     public function onGet(\proof\net\http\GetEvent $e)
     {
 
