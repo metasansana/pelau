@@ -18,12 +18,12 @@ class Object
 
     public function getClassName()
     {
-        return get_class();
+        return get_class($this);
     }
 
     public function __toString()
     {
-        return get_class();
+        return $this->getClassName();
     }
 
 }
