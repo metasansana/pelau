@@ -11,10 +11,10 @@ namespace proof\net\http;
  *  Abstarct implementor of the HttpListener class.
  *
  */
-class AbstractHttpListener implements HttpListener
+abstract class AbstractHttpListener implements HttpListener
 {
 
-    
+
     public function onGet(GetEvent $e)
     {
 
@@ -26,6 +26,11 @@ class AbstractHttpListener implements HttpListener
     }
 
     public function onPost(PostEvent $e)
+    {
+
+    }
+
+    public function onPut(PutEvent $e)
     {
 
     }

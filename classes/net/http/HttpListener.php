@@ -11,7 +11,7 @@ namespace proof\net\http;
  *  Interface for listening to HTTP events (GET, POST and HEAD are supported).
  *
  */
-interface HttpListener extends GetListener, PostListener, HeadListener
+interface HttpListener extends GetListener, PostListener, HeadListener, PutListener
 {
 
 }
