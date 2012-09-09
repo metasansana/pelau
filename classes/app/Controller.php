@@ -11,7 +11,7 @@ namespace proof\app;
  *  Interface for classes that take control of the web application upon client request.
  *
  */
-interface WebController
+interface Controller
 {
 
     /**
