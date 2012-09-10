@@ -11,7 +11,9 @@ namespace proof\app;
  *  Interface for classes that take control of the web application upon client request.
  *
  */
-interface Controller
+use proof\util\EventHandler;
+
+interface Controller  extends EventHandler
 {
 
     /**
