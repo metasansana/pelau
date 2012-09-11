@@ -38,6 +38,7 @@ class StandardEventBus implements EventBus
     public function put(Event $e)
     {
 
+        //@todo once an event is handled we should stop broadcasting.
         foreach ($this->handlers as $h)
             $h->onEvent($e);
 
