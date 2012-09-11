@@ -18,7 +18,7 @@ interface Window
 
     public function addTemplate(String $template);
 
-    public function addComponent(Component $c);
+    public function addComponent(WComponent $c);
 
     public function flushTemplates();
 
