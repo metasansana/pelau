@@ -16,9 +16,9 @@ use proof\php\String;
 interface Window
 {
 
-    public function addTemplate(String $template);
+    public function add(Component $c);
 
-    public function addComponent(WComponent $c);
+    public function addTemplate(String $template);
 
     public function flushTemplates();
 
