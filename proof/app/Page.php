@@ -13,6 +13,7 @@ namespace proof\app;
  */
 use proof\util\Map;
 use proof\util\ArrayList;
+use proof\php\String;
 
 class Page implements Window
 {
