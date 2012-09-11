@@ -14,7 +14,7 @@ namespace proof\php;
  *
  *
  */
-class Type extends Object
+class Type extends Object implements Stringable
 {
 
     /**
