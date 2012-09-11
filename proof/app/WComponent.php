@@ -8,7 +8,7 @@ namespace proof\app;
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
- * The Component interface is for classes that store html text.
+ * The WComponent interface is for classes that store html text.
  *
  *
  */
