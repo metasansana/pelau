@@ -14,6 +14,9 @@ namespace proof\php;
 interface Stringable
 {
 
+    /**
+     * Returns a string representation of this object.
+     */
     public function __toString();
 
 }
