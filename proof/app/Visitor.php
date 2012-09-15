@@ -16,6 +16,12 @@ use proof\php\String;
 use proof\util\ArrayList;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpListener;
+use proof\util\Event;
+use proof\net\http\GetEvent;
+use proof\net\http\PostEvent;
+use proof\net\http\HeadEvent;
+use proof\net\http\PutEvent;
+
 
 
 
@@ -94,16 +100,6 @@ final class Visitor extends Object
     {
 
         return $this->request;
-
-    }
-
-    /**
-     * Returns the user agent string (if any).
-     * @return String
-     */
-    public function getUserAgentString()
-    {
-        return new String($_SERVER['HTTP_USER_AGENT']);
 
     }
 
