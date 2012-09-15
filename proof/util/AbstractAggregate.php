@@ -82,7 +82,7 @@ abstract class AbstractAggregate implements Aggregate
     public function indexAt($index)
     {
 
-        return $this->items->offsetExists($index);
+        return array_key_exists($index, $this->items);
 
     }
 
