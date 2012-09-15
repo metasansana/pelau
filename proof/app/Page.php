@@ -14,8 +14,9 @@ namespace proof\app;
 use proof\util\Map;
 use proof\util\ArrayList;
 use proof\php\String;
+use proof\php\Stringable;
 
-class Page implements Window
+class Page
 {
 
     /**
@@ -38,11 +39,6 @@ class Page implements Window
         $this->templates = new ArrayList;
 
     }
-    public function add(Component $c)
-    {
-        $this->components->add($c->getName(), $c->getContent());
-        return $this;
-    }
 
     public function addTemplate(String $template)
     {
@@ -50,24 +46,16 @@ class Page implements Window
         return $this;
     }
 
-    public function flushComponents()
+    public function clear()
     {
-
-        $comps = $this->components;
-        $this->components->clear();
-        return $comps;
-
-    }
-
-    public function flushTemplates()
-    {
-
-        $temps = $this->templates;
         $this->templates->clear();
-        return $temps;
-
+        $this->components->clear();
     }
 
+    public function put($name, Stringable $item)
+    {
+        $this->components->add($name, (string)$item);
+    }
 
     public function render()
     {
