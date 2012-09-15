@@ -15,7 +15,8 @@ interface Stringable
 {
 
     /**
-     * Returns a string representation of this object.
+     * Returns a string provided by this object.
+     * @return proof\util\String    A string provided by this object.
      */
     public function __toString();
 
