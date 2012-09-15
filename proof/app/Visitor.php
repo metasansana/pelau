@@ -12,7 +12,7 @@ namespace proof\app;
  *
  */
 use proof\php\Object;
-use prof\php\String;
+use proof\php\String;
 use proof\util\ArrayList;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpListener;
