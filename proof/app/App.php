@@ -26,6 +26,13 @@ abstract class App implements Controller
     protected $agent;
 
     /**
+     * Window for the app.
+     * @var proof\app\Window
+     * @access protected
+     */
+    protected $w;
+
+    /**
      * Internal stack
      * @var proof\util\Stack
      * @access protected
@@ -35,13 +42,13 @@ abstract class App implements Controller
 
 
 
-    public function __construct(UserAgent $agent, Window $w, EventBus $bus)
+
+    public function __construct(UserAgent $agent, Window $w)
     {
 
          $this->stack = new Stack();
          $this->agent = $agent;
          $this->w = $w;
-         $this->bus = $bus;
 
     }
 
@@ -67,7 +74,7 @@ abstract class App implements Controller
     public function main()
     {
 
-        $this->bus->addHandler($this);
+        
 
         $this->init();
 

@@ -8,12 +8,11 @@ namespace proof\app;
  * @copyright 2012 Lasana Murray
  * @package proof\web
  *
- *  Interface for classes that take control of the web application upon client request.
+ *  Interface for controlling classes.
  *
  */
-use proof\util\EventHandler;
 
-interface Controller  extends EventHandler
+interface Controller
 {
 
     /**

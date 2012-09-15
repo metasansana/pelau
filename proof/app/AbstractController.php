@@ -1,41 +1,30 @@
 <?php
 namespace proof\app;
 /**
- * timestamp Sep 9, 2012 9:52:08 PM
+ * timestamp Sep 11, 2012 4:28:19 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
+ *  Abstract implementor of the Controller interface.
  *
  */
-
-
 abstract class AbstractController implements Controller
 {
 
     /**
-     * Internal EventBus of the application.
-     * @var proof\app\EventBus
-     * @access protected
-     */
-    protected $bus;
-
-    /**
-     * Internal Window.
+     * The view for this controller.
      * @var proof\app\Window
      * @access protected
      */
     protected $w;
 
-
-    public function __construct(Window $w, EventBus $bus)
+    public function __construct(Window $w)
     {
 
         $this->w = $w;
-        $this->bus = $bus;
-
 
     }
 

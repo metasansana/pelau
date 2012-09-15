@@ -1,22 +1,23 @@
 <?php
 namespace proof\app;
 /**
- * timestamp Sep 10, 2012 4:49:16 AM
+ * timestamp Sep 11, 2012 5:08:45 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
- * The Component interface is for classes that output.
- *
+ *  Interface for objects that make up the ui output.
  *
  */
-interface Component
+use proof\php\Stringable;
+
+interface Component extends Stringable
 {
 
-    public function getName();
+public function getName();
 
-    public function getContent();
+public function getContent();
 
 }
