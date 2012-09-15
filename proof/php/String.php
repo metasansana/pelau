@@ -1,8 +1,5 @@
 <?php
-
 namespace proof\php;
-
-
 /**
  * timestamp Jul 23, 2012 5:06:46 AM
  *
@@ -132,6 +129,18 @@ final class String extends Type
     {
 
         return new String(substr($this->value, $start, $end));
+
+    }
+
+    /**
+     * Splits this string around a common marker.
+     * @param proof\php\String $marker    The marker that will be used for spliting.
+     * @return array    An array consiting of the split up string.
+     */
+    public function split(String $marker)
+    {
+
+        return $array = explode((string)$marker, $this->value);
 
     }
 
