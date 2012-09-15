@@ -119,16 +119,18 @@ final class Visitor extends Object
     public function visit()
     {
 
-         if ($this->request->getMethod() === HttpRequest::GET)
+        $meth = $this->request->getProperty(HttpRequest::METHOD);
+
+         if ($meth=== HttpRequest::GET)
             $this->_doGet();
 
-        if ($this->request->getMethod() === HttpRequest::POST)
+        if ($meth=== HttpRequest::POST)
             $this->_doPost();
 
-        if ($this->request->getMethod() === HttpRequest::HEAD)
+        if ($meth=== HttpRequest::HEAD)
             $this->_doHead();
 
-        if ($this->request->getMethod() === HttpRequest::PUT)
+        if ($meth=== HttpRequest::PUT)
             $this->_doPut();
 
     }
