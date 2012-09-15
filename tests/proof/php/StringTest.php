@@ -89,7 +89,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     {
 
         $text = "Keshorn took gold in the javelin throw.";
-        $this->assertEquals($text, (string)$this->object->append(new String($text)));
+        $this->assertEquals($text, (string) $this->object->append(new String($text)));
 
     }
 
@@ -101,7 +101,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     {
 
         $text = "Keshorn took gold in the javelin throw.";
-        $this->assertEquals($text, (string)$this->object->prepend(new String($text)));
+        $this->assertEquals($text, (string) $this->object->prepend(new String($text)));
 
     }
 
@@ -114,14 +114,11 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
         $string = new String("I went to secret.");
 
-        $this->assertEquals("I went to work.", (string)$string->replace(new String("secret"), new String("work")));
+        $this->assertEquals("I went to work.", (string) $string->replace(new String("secret"), new String("work")));
 
         $string = new String("AAA");
 
-        $this->assertEquals("CCC", (string)$string->replace(new String("A"), new String("C"), 3));
-
-
-
+        $this->assertEquals("CCC", (string) $string->replace(new String("A"), new String("C"), 3));
 
     }
 
@@ -134,12 +131,12 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
         $string = new String("123456789");
 
-        $this->assertEquals("987654321", (string)$string->reverse());
+        $this->assertEquals("987654321", (string) $string->reverse());
 
     }
 
     /**
-     * @covers proof\php\String::subString
+     * @covers proof\php\String::cut
      *
      */
     public function testCut()
@@ -148,11 +145,27 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
         $string = new String("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-        $this->assertEquals("HIJKLM", (string)$string->cut(7,6));
+        $this->assertEquals("HIJKLM", (string) $string->cut(7, 6));
 
     }
 
+    /**
+     * @covers proof\php\String::split
+     *
+     */
+    public function testSplit()
+    {
 
+        $text = new String("ABC|123|A2C");
+
+        $array = $text->split(new String("|"));
+
+        $this->assertEquals("ABC", $array[0]);
+        $this->assertEquals("123", $array[1]);
+        $this->assertEquals("A2C", $array[2]);
+
+
+    }
 
 }
 

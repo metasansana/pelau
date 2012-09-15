@@ -8,8 +8,6 @@ spl_autoload_register(function ($class) {
 
             $path = get_include_path();
 
-            $class = str_replace("proof\\", NULL, $class);
-
             print "Searching for the $class class.. in $path.\n";
 
             $class = str_replace("\\", '/', $class) . ".php";
@@ -22,7 +20,7 @@ spl_autoload_register(function ($class) {
             }
             else
             {
-                print "..\n";
+                print "Could not find $class.php!\n";
             }
 
         });
