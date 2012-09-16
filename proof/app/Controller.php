@@ -12,7 +12,9 @@ namespace proof\app;
  *  Parent class of classes that take control of an application's workflow.
  *
  */
-abstract class Controller
+use proof\net\http\AbstractHttpListener;
+
+abstract class Controller extends AbstractHttpListener
 {
 
     /**
