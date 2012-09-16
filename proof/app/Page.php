@@ -40,7 +40,7 @@ class Page
 
     }
 
-    public function addTemplate(String $template)
+    public function addTemplate(Stringable $template)
     {
         $this->templates->add((string)$template);
         return $this;
