@@ -68,4 +68,12 @@ class Page
         }
 
     }
+
+    public function render($name)
+    {
+        if($this->components->indexAt($name))
+            return (string)$this->components->get ($name);
+
+        return NULL;
+    }
 }
