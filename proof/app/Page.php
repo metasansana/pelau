@@ -57,7 +57,7 @@ class Page
         $this->components->add($name, (string)$item);
     }
 
-    public function render()
+    public function show()
     {
 
        $page  = $this->components->toArray();
