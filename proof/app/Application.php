@@ -11,7 +11,7 @@ namespace proof\app;
  *  Class representing an application
  *
  */
-class Application
+abstract class Application
 {
 
     /**
