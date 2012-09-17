@@ -45,10 +45,14 @@ class Configuration implements \IteratorAggregate
     public function get($option)
     {
         if ($this->config->indexAt($option))
-            return $this->config->get($option);
+        {
+            $option = $this->config->get($option);
+            if (is_array($option))
+                return new Map($option);    //@todo In future, this may a nested Map class.
+
+            return $option;
+        }
 
     }
-
-    
 
 }
