@@ -41,6 +41,8 @@ class Application
 
     }
 
+    abstract public function run();
+
     public function getConfiguration()
     {
         return $this->config;
