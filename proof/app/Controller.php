@@ -25,13 +25,21 @@ abstract class Controller extends AbstractHttpListener
     protected $page;
 
     /**
+     * Reference to the running Application object.
+     * @var proof\app\Application    An Application object.
+     * @access protected
+     */
+    protected $app;
+
+    /**
      * Constructs a new Controller object.
      * @param \proof\app\Page $page
      */
-    public function __construct(Page $page)
+    public function __construct(Page $page, Application $app)
     {
 
         $this->page = $page;
+        $this->app = $app;
 
     }
 
