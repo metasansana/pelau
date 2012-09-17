@@ -1,8 +1,5 @@
 <?php
-
 namespace proof\app;
-
-
 /**
  * timestamp Sep 16, 2012 10:04:47 PM
  *
@@ -44,15 +41,23 @@ class Application
 
     }
 
-    
     public function getConfiguration()
     {
         return $this->config;
+
     }
 
     public function getUI()
     {
         return $this->ui;
+
+    }
+
+    static public function kill($status)
+    {
+
+        exit($status);
+
     }
 
 }
