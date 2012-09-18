@@ -15,10 +15,10 @@ class PostEvent extends HttpEvent
 {
 
 
-    protected function _params()
+    protected function params()
     {
 
-        return new Map($_POST);
+        return $_POST;
 
     }
 }
