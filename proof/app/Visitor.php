@@ -40,7 +40,7 @@ final class Visitor extends Object
         $this->listeners = new ArrayList;
     }
 
-     private function _fire(Event $e)
+     private function _fire(HttpEvent $e)
     {
 
         foreach ($this->listeners as $l)
