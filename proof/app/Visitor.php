@@ -12,7 +12,6 @@ namespace proof\app;
  *
  */
 use proof\php\Object;
-use proof\php\String;
 use proof\util\ArrayList;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpListener;
@@ -21,9 +20,6 @@ use proof\net\http\GetEvent;
 use proof\net\http\PostEvent;
 use proof\net\http\HeadEvent;
 use proof\net\http\PutEvent;
-
-
-
 
 final class Visitor extends Object
 {
@@ -35,12 +31,6 @@ final class Visitor extends Object
      */
     private $listeners;
 
-    /**
-     * The http request associated with this visitor.
-     * @var proof\net\http\HttpRequest $request
-     * @access private
-     */
-    private $request;
 
     /**
      * Constructs a new Visitor object.
@@ -48,7 +38,6 @@ final class Visitor extends Object
     public function __construct()
     {
         $this->listeners = new ArrayList;
-        $this->request = new HttpRequest;
     }
 
      private function _fire(Event $e)
@@ -71,36 +60,24 @@ final class Visitor extends Object
 
     }
 
-    private function _doGet()
+    private function _doGet(HttpRequest $request)
     {
-        $this->_fire(new GetEvent($this));
+        $this->_fire(new GetEvent($request, $this));
     }
 
-    private function _doPost()
+    private function _doPost(HttpRequest $request)
     {
-        $this->_fire(new PostEvent($this));
+        $this->_fire(new PostEvent($request, $this));
     }
 
-    private function _doHead()
+    private function _doHead(HttpRequest $request)
     {
-        $this->_fire(new HeadEvent($this));
+        $this->_fire(new HeadEvent($request, $this));
     }
 
-    private function _doPut()
+    private function _doPut(HttpRequest $request)
     {
-        $this->_fire(new PutEvent($this));
-    }
-
-
-    /**
-     * Returns the HttpRequest associated with this object.
-     * @return proof\net\http\HttpRequest    The HttpRequest associated with this object.
-     */
-    public function getRequest()
-    {
-
-        return $this->request;
-
+        $this->_fire(new PutEvent($request, $this));
     }
 
     /**
@@ -116,22 +93,27 @@ final class Visitor extends Object
         return $this;
     }
 
+    /**
+     * Simulates the visitor submitting http requests.
+     */
     public function visit()
     {
 
-        $meth = $this->request->getProperty(HttpRequest::METHOD);
+        $request = new HttpRequest;
+
+        $meth = $request->getProperty(HttpRequest::METHOD);
 
          if ($meth=== HttpRequest::GET)
-            $this->_doGet();
+            $this->_doGet($request);
 
         if ($meth=== HttpRequest::POST)
-            $this->_doPost();
+            $this->_doPost($request);
 
         if ($meth=== HttpRequest::HEAD)
-            $this->_doHead();
+            $this->_doHead($request);
 
         if ($meth=== HttpRequest::PUT)
-            $this->_doPut();
+            $this->_doPut($request);
 
     }
 
