@@ -14,10 +14,11 @@ namespace proof\net\http;
 class PostEvent extends HttpEvent
 {
 
-    /**
-     *
-     * @var
-     * @access
-     */
 
+    protected function _params()
+    {
+
+        return new Map($_POST);
+
+    }
 }

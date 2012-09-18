@@ -11,13 +11,16 @@ namespace proof\net\http;
  *  Event representing a GET request.
  *
  */
+use proof\php\Map;
+
 class GetEvent extends HttpEvent
 {
 
-    /**
-     *
-     * @var
-     * @access
-     */
+    protected function _params()
+    {
+
+        return new Map($_GET);
+
+    }
 
 }
