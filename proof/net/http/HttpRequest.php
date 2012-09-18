@@ -8,7 +8,7 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- *  Class containing information about the current http request.
+ *  Class representing an HTTP request made by a user of a web application.
  *
  */
 final class HttpRequest
@@ -26,7 +26,7 @@ final class HttpRequest
     const HEAD = "HEAD" ;
     const PUT = "PUT";
 
-  
+
     public function getProperty($property)
     {
 
