@@ -134,10 +134,10 @@ final class String extends Type
 
     /**
      * Splits this string around a common marker.
-     * @param proof\php\String $marker    The marker that will be used for spliting.
+     * @param mixed $marker    The marker that will be used for spliting.
      * @return array    An array consiting of the split up string.
      */
-    public function split(String $marker)
+    public function split($marker)
     {
 
         return $array = explode((string)$marker, $this->value);
