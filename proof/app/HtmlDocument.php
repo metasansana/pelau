@@ -11,11 +11,12 @@ namespace proof\app;
  *  Abstract implementor of the Window interface.
  *
  */
+use proof\php\Object;
 use proof\util\Map;
 use proof\util\ArrayList;
 use proof\php\Stringable;
 
-class HtmlDocument
+class HtmlDocument extends Object
 {
 
     /**
