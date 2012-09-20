@@ -53,8 +53,11 @@ class Url extends Object implements Stringable
     public function getCleanPath()
     {
 
+        $array = $this->getPath()->split('/');
 
-        return new ArrayList($this->getPath()->split('/'));
+        array_shift($array);
+        
+        return new ArrayList($array);
 
     }
 
