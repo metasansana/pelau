@@ -15,7 +15,6 @@ use proof\php\Object;
 use proof\util\ArrayList;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpListener;
-use proof\util\Event;
 use proof\net\http\GetEvent;
 use proof\net\http\PostEvent;
 use proof\net\http\HeadEvent;
