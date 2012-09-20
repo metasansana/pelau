@@ -18,14 +18,70 @@ namespace proof\net\http;
  *
  */
 use proof\util\Event;
+use proof\util\Map;
+use proof\net\Url;
+use proof\php\String;
 
-class HttpEvent extends Event
+abstract class HttpEvent extends Event
 {
 
     /**
-     *
-     * @var
-     * @access
+     * The HttpRequest associated with this event.
+     * @var proof\net\http\Request
+     * @access protected
      */
+    protected $request;
+
+    /**
+     * The parameters associated with the request.
+     * @var proof\util\Map
+     * @access protected
+     */
+    protected $params;
+
+    /**
+     * Constructs a new HttpEvent type object.
+     * @param \proof\net\http\HttpRequest $request
+     * @param Object $source
+     */
+    public function __construct(HttpRequest $request, Object $source)
+    {
+
+        $this->request = $request;
+
+        parent::__construct($source);
+
+    }
+
+    /**
+     * Returns the parameters for this event.
+     */
+    abstract protected function params();
+
+    /**
+     * Returns the parameters associated with this HttpEvent (NULL if non exists).
+     * @return proof\util\Map|NULL
+     */
+    public function getParameters()
+    {
+
+        return new Map($this->params());
+
+    }
+
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    public function getUrl()
+    {
+        return new Url(new String($this->request->getProperty(HttpRequest::URI)));
+    }
+
+
+
+
+
 
 }
