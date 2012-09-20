@@ -23,17 +23,17 @@ abstract class Application
 
     /**
      * The ui for the application.
-     * @var proof\app\Page
+     * @var proof\app\HtmlDocument
      * @access protected
      */
     protected $ui;
 
     /**
      * Constructs a new application object.
-     * @param \proof\app\Page $ui    The ui for the application.
+     * @param \proof\app\HtmlDocument $ui    The ui for the application.
      * @param \proof\app\Configuration $config = NULL    Optional configs
      */
-    public function __construct(Page $ui, Configuration $config = NULL)
+    public function __construct(HtmlDocument $ui, Configuration $config = NULL)
     {
 
         $this->ui = $ui;

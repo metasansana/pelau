@@ -19,7 +19,7 @@ abstract class Controller extends AbstractHttpListener
 
     /**
      * The Page object this controller will use for output.
-     * @var proof\app\Page $page A Page object.
+     * @var proof\app\HtmlDocument $page A Page object.
      * @access protected
      */
     protected $page;
@@ -33,9 +33,9 @@ abstract class Controller extends AbstractHttpListener
 
     /**
      * Constructs a new Controller object.
-     * @param \proof\app\Page $page
+     * @param \proof\app\HtmlDocument $page
      */
-    public function __construct(Page $page, Application $app)
+    public function __construct(HtmlDocument $page, Application $app)
     {
 
         $this->page = $page;
