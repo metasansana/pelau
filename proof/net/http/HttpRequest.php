@@ -11,7 +11,7 @@ namespace proof\net\http;
  *  Class representing an HTTP request made by a user of a web application.
  *
  */
-final class HttpRequest
+class HttpRequest
 {
 
     const  URI = "REQUEST_URI";
