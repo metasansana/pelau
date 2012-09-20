@@ -21,9 +21,4 @@ class Object
         return get_class($this);
     }
 
-    public function __toString()
-    {
-        return $this->getClassName();
-    }
-
 }
