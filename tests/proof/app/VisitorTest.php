@@ -44,7 +44,6 @@ class VisitorTest extends \PHPUnit_Framework_TestCase
 
     }
 
-
     /**
      * @covers proof\app\Visitor::visit
      */
