@@ -44,7 +44,7 @@ class AbstractDocument extends Object implements Document
     }
 
 
-    public function addTemplates(String $filepath)
+    public function addTemplate(String $filepath)
     {
 
         $this->templates->add((string)$filepath);

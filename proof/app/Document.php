@@ -22,7 +22,7 @@ interface Document
      * @param String $filepath
      * //@todo this method will accept a File class in future.
      */
-    public function addTemplates(String $filepath);
+    public function addTemplate(String $filepath);
 
     /**
      * Removes all the items and templates from the document.
