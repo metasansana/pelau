@@ -1,8 +1,5 @@
 <?php
-
 namespace proof\net\http;
-
-
 /**
  * timestamp Sep 20, 2012 5:29:07 AM
  *
@@ -11,61 +8,44 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http;
  *
- *  Class representing a PHP session.
+ *  Class for using HttpSessions.
+ * <p>This class is designed to be used with a HttpSessionManager implementor in a bridge like pattern.
+ * HttpSession only implements methods for putting and retrieving values, the rest is left to the internal manager.</p>
  *
  */
-class HttpSession
+use proof\php\Stringable;
+
+class HttpSession implements HttpSessionController
 {
 
     /**
-     * Default name for session cookies.
+     * The manager of this session.
+     * @var proof\net\http    $manager
+     * @access private
      */
+    private $manager;
 
-    const DEFAULT_NAME = 'PrefZZ';
 
-    public function __construct($name = NULL)
+    public function __construct(HttpSessionManager $manager)
     {
 
-        session_name(Session::DEFAULT_NAME);
+        $this->manager = $manager;
 
-        session_start();
 
     }
 
-    public function regenerate($reset = FALSE)
+    public function start($name=NULL)
     {
 
-        session_regenerate_id($reset);
+        $this->manager->start($name);
 
+    }
+
+    public function put($key, Stringable $item)
+    {
+
+         $_SESSION[$key] = (string)$item;
         return $this;
-
-    }
-
-    /**
-     * Destroys the current session.
-     * @return \callow\http\session\Session
-     */
-    public function destroy()
-    {
-
-
-// $params = session_get_cookie_params();
-//
-// $params['http_only'] = &$params['httponly'];
-//
-// $params['name'] = session_name();
-//
-// $params['value'] = '';
-//
-// $params['expiration'] = time() - 130000;
-//
-// $cw = new CookieWriter($params);
-//
-// $cw->send();
-
-        session_destroy();
-
-        $_SESSION = array ();
 
         return $this;
 
@@ -73,16 +53,52 @@ class HttpSession
 
     public function get($key)
     {
-        if (array_key_exists($key, $_SESSION))
-            return $_SESSION[$key];
 
+     if(array_key_exists($key, $_SESSION))
+                return $_SESSION[$key];
     }
 
-    public function put($key, $value)
+    public function delete($key)
     {
-        $_SESSION[$key] = $value;
+
+        unset($_SESSION[$key]);
+
+        return $this;
+    }
+
+    public function regenerate()
+    {
+
+        $this->manager->regenerate();
+
         return $this;
 
     }
+
+    public function destroy()
+    {
+
+        $this->manager->destroy();
+
+        return $this;
+
+    }
+
+    public function isActive()
+    {
+
+        return $this->manager->isActive();
+
+    }
+
+    /**
+     * Returns the internal HttpSessionManager
+     * @return proof\net\http\HttpSessionManager    A reference to the internal manager.
+     */
+    public function getManager()
+    {
+        return $this->manager;
+    }
+
 
 }
