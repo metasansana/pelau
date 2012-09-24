@@ -20,9 +20,10 @@ use proof\net\http\PostEvent;
 use proof\net\http\HeadEvent;
 use proof\net\http\PutEvent;
 use proof\net\http\HttpEvent;
+use proof\net\http\HttpSource;
 use proof\php\String;
 
-final class Visitor extends Object
+final class Visitor extends Object implements HttpSource
 {
 
     /**
@@ -106,11 +107,16 @@ final class Visitor extends Object
      * Returns the ip address of the visitor.
      * @return String
      */
-    public function getIPAddress()
+    public function getRemoteAddress()
     {
         //@todo in future this should return an IPAddress object.
         return new String($this->request->getProperty(HttpRequest::IPREMOTE));
 
+    }
+
+    public function getUrl()
+    {
+        return new Url(new String($this->request->getProperty(HttpRequest::URI)));
     }
 
     /**
@@ -135,5 +141,6 @@ final class Visitor extends Object
             $this->_doPut();
 
     }
+
 
 }
