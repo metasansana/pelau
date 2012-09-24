@@ -76,12 +76,6 @@ abstract class HttpEvent extends Event
         return $this->request;
     }
 
-    public function getUrl()
-    {
-        return new Url(new String($this->request->getProperty(HttpRequest::URI)));
-    }
-
-
 
 
 
