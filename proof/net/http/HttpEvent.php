@@ -20,8 +20,7 @@ namespace proof\net\http;
 use proof\php\Object;
 use proof\util\Event;
 use proof\util\Map;
-use proof\net\Url;
-use proof\php\String;
+
 
 
 abstract class HttpEvent extends Event
