@@ -14,8 +14,14 @@ namespace proof\net\http;
 interface HttpSource
 {
 
-    public function getUrl();
+    /**
+     * Returns the requested url.
+     */
+    public function getURL();
 
+    /**
+     * Returns the remote address of this source.
+     */
     public function getRemoteAddress();
 
 }
