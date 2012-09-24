@@ -22,6 +22,7 @@ use proof\net\http\PutEvent;
 use proof\net\http\HttpEvent;
 use proof\net\http\HttpSource;
 use proof\php\String;
+use proof\net\URL;
 
 final class Visitor extends Object implements HttpSource
 {
@@ -114,9 +115,9 @@ final class Visitor extends Object implements HttpSource
 
     }
 
-    public function getUrl()
+    public function getURL()
     {
-        return new Url(new String($this->request->getProperty(HttpRequest::URI)));
+        return new URL(new String($this->request->getProperty(HttpRequest::URI)));
     }
 
     /**
