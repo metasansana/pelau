@@ -50,7 +50,7 @@ class URL extends Object implements Stringable
 
     }
 
-    public function getSplitPath()
+    public function getPathClean()
     {
 
         $array = $this->getPath()->split('/');
