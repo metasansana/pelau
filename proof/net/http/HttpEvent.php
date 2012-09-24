@@ -44,14 +44,14 @@ abstract class HttpEvent extends Event
     /**
      * Constructs a new HttpEvent type object.
      * @param \proof\net\http\HttpRequest $request
-     * @param Object $source
+     * @param Object $src
      */
-    public function __construct(HttpRequest $request, Object $source)
+    public function __construct(HttpRequest $request, HttpSource $src)
     {
 
         $this->request = $request;
 
-        parent::__construct($source);
+        parent::__construct($src);
 
     }
 
