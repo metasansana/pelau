@@ -22,21 +22,13 @@ abstract class Application
     protected $config;
 
     /**
-     * The ui for the application.
-     * @var proof\app\HtmlDocument
-     * @access protected
-     */
-    protected $ui;
-
-    /**
      * Constructs a new application object.
      * @param \proof\app\HtmlDocument $ui    The ui for the application.
      * @param \proof\app\Configuration $config = NULL    Optional configs
      */
-    public function __construct(HtmlDocument $ui, Configuration $config = NULL)
+    public function __construct(Configuration $config)
     {
 
-        $this->ui = $ui;
         $this->config = $config;
 
     }
@@ -48,18 +40,4 @@ abstract class Application
         return $this->config;
 
     }
-
-    public function getUI()
-    {
-        return $this->ui;
-
-    }
-
-    static public function kill($status)
-    {
-
-        exit($status);
-
-    }
-
 }
