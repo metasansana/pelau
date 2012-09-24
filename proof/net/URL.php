@@ -89,7 +89,7 @@ class URL extends Object implements Stringable
     public function __toString()
     {
 
-        return $this->url;
+        return (string)$this->url;
 
     }
 
