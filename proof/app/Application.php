@@ -8,36 +8,26 @@ namespace proof\app;
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
- *  Class representing an application
+ *  Class representing a PHP application.
  *
  */
-abstract class Application
+interface Application
 {
 
     /**
-     * Configuration object
-     * @var proof\app\Configuration
-     * @access protected
+     * Starts the application.
      */
-    protected $config;
+    public function run();
 
     /**
-     * Constructs a new application object.
-     * @param \proof\app\HtmlDocument $ui    The ui for the application.
-     * @param \proof\app\Configuration $config = NULL    Optional configs
+     * Stops the application and optional exists with a status code.
+     * @param int $code
      */
-    public function __construct(Configuration $config)
-    {
+    public function shutdown($code=0);
 
-        $this->config = $config;
+    /**
+     * Returns the configuration for the application.
+     */
+    public function getConfiguration();
 
-    }
-
-    abstract public function run();
-
-    public function getConfiguration()
-    {
-        return $this->config;
-
-    }
 }
