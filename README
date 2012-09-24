@@ -1,6 +1,8 @@
 PROOF
 =====
 
-###PHP Related Object Oriented Framework
+###PHP Related Object Oriented Framework (Working title)
 
-PROOF is a library of php classes for building small database driven web applications.
+This is a small PHP library of classes created by Lasana Murray (dev@trinistorm.org) during development of
+various PHP applications. This library is completely object oriented (except for the proof.php script that does class loading etc).
+
