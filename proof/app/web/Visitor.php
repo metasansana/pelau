@@ -20,6 +20,7 @@ use proof\net\http\PostEvent;
 use proof\net\http\HeadEvent;
 use proof\net\http\PutEvent;
 use proof\net\http\HttpEvent;
+use proof\php\String;
 
 final class Visitor extends Object
 {
@@ -99,6 +100,17 @@ final class Visitor extends Object
         $this->listeners->add($l);
 
         return $this;
+    }
+
+    /**
+     * Returns the ip address of the visitor.
+     * @return String
+     */
+    public function getIPAddress()
+    {
+        //@todo in future this should return an IPAddress object.
+        return new String($this->request->getProperty(HttpRequest::IPREMOTE));
+
     }
 
     /**
