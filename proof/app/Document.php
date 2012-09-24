@@ -8,7 +8,7 @@ namespace proof\app;
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
- *  Interface for creating a document 'view' such a a web page, xml document etc.
+ * Documents are the 'view' for  text based applications.
  *
  */
 use proof\php\String;
@@ -25,7 +25,7 @@ interface Document
     public function addTemplate(String $filepath);
 
     /**
-     * Removes all the items and templates from the document.
+     * Clears the document of any content.
      */
     public function clear();
 
