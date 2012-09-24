@@ -20,7 +20,7 @@ final class String extends Type
      * <i>Note: This value is cast to a string.</i>
      * @param mixed $string
      */
-    public function __construct($string)
+    public function __construct($string="")
     {
 
         parent::__construct(((string) $string));
