@@ -1,5 +1,5 @@
 <?php
-namespace proof\app;
+namespace proof\app\web;
 /**
  * timestamp Sep 23, 2012 11:23:35 AM
  *
