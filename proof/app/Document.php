@@ -18,6 +18,12 @@ interface Document
 {
 
     /**
+     * Sets the path that templates will be retrieved from.
+     * @param String $path    The path to templates.
+     */
+    public function setDirectory(String $path);
+
+    /**
      * Adds a template to the document to be included upon rendering.
      * @param String $filepath
      * //@todo this method will accept a File class in future.
