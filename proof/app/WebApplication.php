@@ -8,17 +8,17 @@ namespace proof\app;
  * @copyright 2012 Lasana Murray
  * @package proof\app
  *
- *  Parent class for the main class of web applicatons.
+ *  Inteface for the main class of web applicatons.
  *
  */
-abstract class WebApplication extends Application
+use proof\app\DatabaseApplication;
+
+interface WebApplication extends DatabaseApplication
 {
 
-    /**
-     *
-     * @var
-     * @access
-     */
-    protected  $database;
+    public function getSessionManager();
+
+    public function getCookieManager();
+
 
 }
