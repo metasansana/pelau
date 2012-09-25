@@ -35,6 +35,13 @@ class AbstractDocument extends Object implements Document
     protected $keys;
 
     /**
+     * The path to the template directory.
+     * @var proof\php\String    $dir
+     * @access protected
+     */
+    protected $dir = "";
+
+    /**
      * Constructs a new Document.
      */
     public function __construct()
@@ -78,12 +85,19 @@ class AbstractDocument extends Object implements Document
         $page = $this->keys->toArray();
 
         foreach($this->templates as $value)
-            include_once "$value";
+            include_once "{$this->dir}$value";
 
     }
 
     public function write($text)
     {
         echo $text;
+    }
+
+    public function setDirectory(String $path)
+    {
+
+        $this->dir = (string)$path.DIRECTORY_SEPARATOR;
+
     }
 }
