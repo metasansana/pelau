@@ -12,7 +12,7 @@ namespace proof\util;
  *
  *
  */
-class EventBus implements EventBus
+class EventBus implements Broadcaster
 {
 
     /**
