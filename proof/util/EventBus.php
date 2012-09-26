@@ -1,29 +1,47 @@
 <?php
 namespace proof\util;
+
+
 /**
- * timestamp Sep 8, 2012 3:24:55 PM
+ * timestamp Sep 8, 2012 3:12:32 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\util
+ * @package proof/util
  *
- *  Interface for fowarding events.
  *
  */
-interface EventBus
+class EventBus implements EventBus
 {
 
     /**
-     * Adds an EventHandler to the bus.
-     * @param \proof\util\EventHandler $h
+     * List of event handlers subscribed to the bus.
+     * @var proof\util\ArrayList
+     * @access protected
      */
-    public function addHandler(EventHandler $h);
+    protected $handlers;
 
-    /**
-     * Puts up an event to be broadcasted.
-     * @param \proof\util\Event $e
-     */
-    public function put(Event $e);
+    public function __construct()
+    {
+
+        $this->handlers = new ArrayList;
+
+    }
+
+    public function subscribe(EventHandler $h)
+    {
+        $this->handlers->add($h);
+
+    }
+
+    public function broadcast(Event $e)
+    {
+
+        //@todo once an event is handled we should stop broadcasting.
+        foreach ($this->handlers as $h)
+            $h->onEvent($e);
+
+    }
 
 }
