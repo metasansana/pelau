@@ -35,7 +35,7 @@ class EventBus
 
     }
 
-    public function broadcast(Event $e)
+    public function publish(Event $e)
     {
 
         //@todo once an event is handled we should stop broadcasting.
