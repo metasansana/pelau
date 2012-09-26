@@ -15,6 +15,6 @@ namespace proof\util;
 interface Broadcaster
 {
 
-    public function registerEventBus(EventBus $b);
+    public function setEventBus(EventBus $b);
 
 }
