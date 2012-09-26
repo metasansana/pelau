@@ -10,6 +10,8 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof/util
  *
+ *  Class for publishing events within a system.
+ * @todo: In future versions this class may work via a bridge pattern.
  *
  */
 class EventBus
