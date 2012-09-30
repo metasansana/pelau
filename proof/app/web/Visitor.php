@@ -115,6 +115,11 @@ final class Visitor extends Object implements HttpSource
 
     }
 
+    /**
+     * Returns the URL the visitor requested.
+     * @return \proof\net\URL    The url.
+     * @todo: Is this method relevant to this class or is this functional?
+     */
     public function getURL()
     {
         return new URL(new String($this->request->getProperty(HttpRequest::URI)));
