@@ -75,6 +75,17 @@ abstract class HttpEvent extends Event
         return $this->request;
     }
 
+    /**
+     * Returns a single parameter value from the request.
+     * @param mixed $name    The name of the desired parameter.
+     * @return mixed
+     */
+    public function getParameter($name)
+    {
+        if($this->params->indexAt($name))
+            return $this->params->get($name);
+    }
+
 
 
 
