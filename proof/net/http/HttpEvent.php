@@ -75,6 +75,7 @@ abstract class HttpEvent extends Event
         return $this->request;
     }
 
+<<<<<<< HEAD
     /**
      * Returns a single parameter value from the request.
      * @param mixed $name    The name of the desired parameter.
@@ -87,6 +88,8 @@ abstract class HttpEvent extends Event
     }
 
 
+=======
+>>>>>>> c9df16bb5a7e5f1ce1c625147f91e9a7604ed1e9
 
 
 
