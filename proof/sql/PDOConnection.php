@@ -1,54 +1,65 @@
 <?php
+
 namespace proof\sql;
 
+
 /**
- * timestamp Aug 30, 2012 5:03:19 AM
+ * timestamp Aug 30, 2012 5:30:36 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  Interface for connecting to a database via a PDO object.
+ *  Implements the PDOConnector interface to provide a basic PDO connection.
  *
- *  This interface declares a single method that is expected to return a PDO object on successful connection or nothing
- *  on failure.
+ *  <i>Note: This class is a basic connector with no PDO attributes set other than the defaults. Sub class or use a
+ *  subclass of CustomPDOConnector to get your desired functionality.</i>
+ *
  *
  */
+
 use proof\php\String;
 
-interface PDOConnection
+class PDOConnection implements SQLConnection
 {
 
+    /**
+     * Internal PDO object.
+     * @var \PDO $con
+     * @access protected
+     */
+    protected $con = NULL;
 
     /**
-     *  Attempts to connect to a database via a PDO object.
-     * @param \proof\sql\ConnectionErrorHandler $e    If set, onFailure() of this object is called on connection failure.
-     * @return \PDO|NULL A PDO object or null on failure
+     * Constructs a new PDOConnection for wrapping the \PDO class.
+     * @param \PDO $con          A PDO object.
      */
-    public function connect(ConnectionErrorHandler $e = NULL);
+    public function __construct(\PDO $con)
+    {
 
-    /**
-     * Attempts to generate a new PreparedStatement class.
-     * @param proof\php\String $sql
-     */
-    public function prepare(String $sql);
 
-    /**
-     * Attempts to generate a new Statement class.
-     * @param proof\php\String $sql
-     */
-    public function create(String $sql);
+        $this->con = $con;
 
-    /**
-     * Tests whether the connector is connected or not.
-     */
-    public function isConnected();
+    }
 
-    /**
-     * Terminates any existing connection.
-     */
-    public function disconnect();
+    public function create(String $sql)
+    {
 
+        return new Statement($sql, $this->con);
+
+    }
+
+    public function prepare(String $sql)
+    {
+
+        return new PreparedStatement($this->con->prepare((string)$sql));
+
+    }
+
+    public function close()
+    {
+        $this->con = NULL;
+    }
 
 }

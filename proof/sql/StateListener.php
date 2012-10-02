@@ -15,7 +15,7 @@ namespace proof\sql;
  *
  *
  */
-interface SQLStateListener
+interface StateListener
 {
 
     public function onChange(SQLState $state);

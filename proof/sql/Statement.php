@@ -57,11 +57,6 @@ class Statement extends AbstractSQLCommand
 
     }
 
-    public function escape(String $sql)
-    {
-        return $this->link->quote("$sql");
-    }
-
     public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL)
     {
 

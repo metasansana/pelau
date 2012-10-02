@@ -22,10 +22,10 @@ interface SQLCommand
     /**
      *
      * @param \proof\sql\FetchHandler $fhandler    An object capable of receiving rows fetched from the database.
-     * @param \proof\sql\SQLStateHandler $shandler    If given, this object will be notifed on sql state changes.
+     *
      *
      */
-    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL);
+    public function fetch(FetchHandler $fhandler);
 
     /**
      * Push a statement to the database.
@@ -33,6 +33,13 @@ interface SQLCommand
      * @return int The number of rows affected by the push.
      */
     public function push(SQLStateHandler $shandler = NULL);
+
+
+    /**
+     * Adds a listener for sql state change events.
+     * @param \proof\sql\StatementListener $l    The listener
+     */
+    public function addStatementListener(StateListener $l);
 
 
 
