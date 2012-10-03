@@ -8,40 +8,25 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  <p><b>SQL</b> functionality boils down to this : retrival of data and modification of data.
- *  Retrival may be data stored in a user or system table and modification may be the creation of a table,
- *  deletion or editing of one etc.</p>
- *
- *  <p>The SQL interface inherits from two interfaces that represent these actions. This interface is used
- *   when a class wants to implement those features.</p>
+ * Inteface for pushing to and pulling data from an sql endpoint.
  *
  */
 interface SQLCommand
 {
 
     /**
-     *
-     * @param \proof\sql\FetchHandler $fhandler    An object capable of receiving rows fetched from the database.
+     * Pulls data from the database (query).
+     * @param \proof\sql\PullHandler $h    The object that will recieve the data row by row.
      *
      *
      */
-    public function fetch(FetchHandler $fhandler);
+    public function pull(PullHandler $h);
 
     /**
-     * Push a statement to the database.
-     * @param \proof\sql\SQLStateHandler $shandler    If given, this object will be notifed on sql state changes.
+     * Pushes  a command to the database.
      * @return int The number of rows affected by the push.
      */
-    public function push(SQLStateHandler $shandler = NULL);
-
-
-    /**
-     * Adds a listener for sql state change events.
-     * @param \proof\sql\StatementListener $l    The listener
-     */
-    public function addStatementListener(StateListener $l);
-
-
+    public function push();
 
 
 }
