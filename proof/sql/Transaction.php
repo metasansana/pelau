@@ -14,7 +14,7 @@ namespace proof\sql;
  * Interface for using SQL transaction (Auto commit off).
  *
  */
-interface Transaction
+interface Transaction extends SQLSocket
 {
 
     /**
