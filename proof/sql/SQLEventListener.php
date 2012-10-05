@@ -18,7 +18,7 @@ interface SQLEventListener
 
     public function onPush(PushEvent $e);
 
-    public function onFetch(PullEvent $e);
+    public function onFetch(FetchEvent $e);
 
 
 }
