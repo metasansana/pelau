@@ -34,22 +34,25 @@ abstract class AbstractSQLCommand implements SQLCommand
 
     protected function fireStateChange(StateEvent $e)
     {
-        foreach ($this->list as $l)
-            $l->onStateChange($e);
+        if (!$this->list->isEmpty())
+            foreach ($this->list as $l)
+                $l->onStateChange($e);
 
     }
 
     protected function firePushEvent(PushEvent $e)
     {
-        foreach ($this->list as $l)
-            $l->onPush($e);
+        if (!$this->list->isEmpty())
+            foreach ($this->list as $l)
+                $l->onPush($e);
 
     }
 
     protected function fireFetchEvent(FetchEvent $e)
     {
-        foreach ($this->list as $l)
-            $l->onFetch($e);
+        if (!$this->list->isEmpty())
+            foreach ($this->list as $l)
+                $l->onFetch($e);
 
     }
 
@@ -61,4 +64,5 @@ abstract class AbstractSQLCommand implements SQLCommand
         return $this;
 
     }
+
 }
