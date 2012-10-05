@@ -1,49 +1,64 @@
 <?php
+
 namespace proof\sql;
 
 /**
- * timestamp Sep 3, 2012 3:48:11 PM
+ * timestamp Oct 5, 2012 4:20:19 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- * Abstract class for the SQLCommand interface.
+ *  Abstract class for common implementation amongst SQLCommand implementors.
  *
  */
-use proof\php\Object;
 use proof\util\ArrayList;
 
-abstract class SQLCommand extends Object
+abstract class AbstractSQLCommand implements SQLCommand
 {
+
     /**
-     * List of listeners awaiting changes in SQL state.
-     * @var proof\util\ArrayList    $listeners
+     * A list of SQLEventListeners.
+     * @var proof\util\ArrayList    $list
      * @access protected
      */
-    protected $listeners;
+    protected $list;
 
-
-    /**
-     * Constructs a new SQLCommand object.
-     */
     public function __construct()
     {
-        $this->listeners = new ArrayList;
+
+        $this->list = new ArrayList;
+
     }
 
-    abstract public function pull(PullHandler $h);
+    protected function fireStateChange(StateEvent $e)
+    {
+        foreach ($this->list as $l)
+            $l->onStateChange($e);
 
-    abstract public function push();
+    }
 
-    protected function notify(array $info)
+    protected function firePushEvent(PushEvent $e)
+    {
+        foreach ($this->list as $l)
+            $l->onPush($e);
+
+    }
+
+    protected function fireFetchChange(FetchEvent $e)
+    {
+        foreach ($this->list as $l)
+            $l->onFetch($e);
+
+    }
+
+    public function addSQLEventListener(SQLEventListener $l)
     {
 
-        foreach($this->listeners as $l)
-            $l->onChange(new SQLEvent($info, ));
+        $this->list->add($l);
+
+        return $this;
+
     }
-
-
-
 }
