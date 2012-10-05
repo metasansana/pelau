@@ -46,7 +46,7 @@ abstract class AbstractSQLCommand implements SQLCommand
 
     }
 
-    protected function fireFetchChange(FetchEvent $e)
+    protected function fireFetchEvent(FetchEvent $e)
     {
         foreach ($this->list as $l)
             $l->onFetch($e);
