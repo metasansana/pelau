@@ -1,4 +1,5 @@
 <?php
+
 namespace proof\sql;
 
 /**
@@ -9,18 +10,11 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *
- * Class representing a prepared statement.
- *
- * <i>Note: Avoid directly creating new instances of this class, use the PDOConnection::prepare() method instead.
- *
- *
- *
- *
+ * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
 use proof\util\Map;
 
-class PreparedStatement extends AbstractSQLCommand
+class PreparedStatement implements SQLPreparedStatement
 {
 
     /**
@@ -32,106 +26,61 @@ class PreparedStatement extends AbstractSQLCommand
     private $params;
 
     /**
-     *  A preprared statement issued by PDO::prepare()
-     * @var \PDOStatement $pstmt
+     * The wrapped SQLPreparedStatement
+     * @var proof\sql\SQLPreparedStatement $pstmt
      * @access private
      */
     private $pstmt;
 
     /**
      *  Constructs a new PreparedStatement object
-     * @param \PDOStatement $pstmt    A PDOStatement object created from PDO::prepare()
+     * @param \proof\sql\SQLPreparedStatement $pstmt    The SQLPreparedStatement this class wraps.
      */
-    public function __construct(\PDOStatement $pstmt)
+    public function __construct(SQLPreparedStatement $pstmt)
     {
 
         $this->pstmt = $pstmt;
-        
 
     }
 
-     /**
-     *
-     * @param mixed $params
-     * @return \proof\sql\PreparedStatement
-     */
-    public function addParameter($value)
+    public function bind($value)
     {
 
-
-        $this->params[] =  $value;
+        $this->pstmt->bind($value);
 
         return $this;
 
     }
 
-    /**
-     *
-     * @param string $name
-     * @param mixed $value
-     * @return \proof\sql\PreparedStatement
-     */
-    public function addNamedParameter($name, $value)
+    public function bindName($name, $value)
     {
 
-        $name = ":$name";
-
-        $this->params[$name] =  $value;
+        $this->pstmt->bindName($name, $value);
 
         return $this;
 
     }
 
-
-
-    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL)
+    public function addSQLEventListener(SQLEventListener $l)
     {
 
-        if ($this->pstmt->execute($this->params))
-        {
+        $this->pstmt->addSQLEventListener($l);
 
-            $count = -1;    //Looping will still execute the block when the first null row is pulled. Omit that from count.
-
-            $row = true;
-
-            do
-            {
-
-                $row = $this->pstmt->fetch();
-
-                if ($row)
-                    $fhandler->onFetch(new Map($row));
-
-                $count++;
-            }
-            while ($row);
-
-            return $count;
-        }
-        else
-        {
-
-            $this->changeState($this->pstmt->errorInfo(), $shandler);
-
-            return FALSE;
-        }
+        return $this;
 
     }
 
-    public function push(SQLStateHandler $shandler = NULL)
+    public function fetch(RowCache $target)
     {
 
-        if ($this->pstmt->execute($this->params))
-        {
-            return $this->pstmt->rowCount();
-        }
-        else
-        {
+        return $this->pstmt->fetch($target);
 
-            $this->changeState($this->pstmt->errorInfo(), $shandler);
+    }
 
-            return NULL;
-        }
+    public function push()
+    {
+
+        return $this->pstmt->push();
 
     }
 
