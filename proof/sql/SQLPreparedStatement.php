@@ -14,7 +14,7 @@ namespace proof\sql;
  * @todo : In future-> bind($value, $datatype), bindName($name, $value, $datatype)?
  *
  */
-interface SQLPreparedStatement
+interface SQLPreparedStatement extends SQLCommand
 {
 
     /**
