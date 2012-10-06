@@ -1,5 +1,5 @@
 <?php
-namespace proof\sql;
+namespace proof\util;
 /**
  * timestamp Oct 6, 2012 12:10:10 PM
  *
