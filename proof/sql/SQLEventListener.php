@@ -14,11 +14,6 @@ namespace proof\sql;
 interface SQLEventListener
 {
 
-    public function onStateChange(StateEvent $e);
-
-    public function onPush(PushEvent $e);
-
-    public function onFetch(FetchEvent $e);
-
+    public function onChange(StateEvent $e);
 
 }
