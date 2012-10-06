@@ -24,11 +24,6 @@ class Statement implements SQLStatement
      */
     private $stmt;
 
-    /**
-     * A PDO object that represents a link to an active database.
-     * @var \PDO $link
-     */
-    private $link;
 
    /**
     * Constructs a new Statement class.
