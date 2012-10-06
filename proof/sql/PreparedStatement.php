@@ -64,7 +64,7 @@ class PreparedStatement implements SQLPreparedStatement
     public function fetch(TupleSet $set)
     {
 
-        return $this->pstmt->fetch($target);
+        return $this->pstmt->fetch($set);
 
     }
 
