@@ -31,13 +31,20 @@ class PDOPreparedStatement implements SQLCommand
      */
     private $pstmt;
 
+    /**
+     * Helper class for PDOStatements.
+     * @var proof\sql\PDOStatementProxy    $helper
+     * @access private
+     */
+    private $helper;
+
 
     public function __construct(\PDOStatement $pstmt)
     {
 
         $this->pstmt = $pstmt;
+        $this->helper = new PDOStatementProxy;
 
-        parent::__construct();
 
     }
 
@@ -62,41 +69,23 @@ class PDOPreparedStatement implements SQLCommand
 
     }
 
-
-
-    public function fetch(RowCache $cache)
+    public function fetch(TupleSet $set)
     {
+
 
         if ($this->pstmt->execute($this->params))
         {
 
-            $count = -1;
+            return $this->helper->dofetch($this->pstmt, $set);
 
-            $row = true;
-
-            do
-            {
-
-                $row = $this->pstmt->fetch();
-
-                if ($row)
-                    $cache->onFetch(new Map($row));
-
-                $count++;
-            }
-            while ($row);
-
-                $this->fireFetchEvent (new FetchEvent ($this));
-
-
-            return $count;
         }
         else
         {
 
-            $this->fireStateChange(new StateEvent($this->pstmt->errorInfo(), $this));
+            $this->helper->generateException($this->pstmt->errorInfo());
 
         }
+
 
     }
 
@@ -106,16 +95,14 @@ class PDOPreparedStatement implements SQLCommand
         if ($this->pstmt->execute($this->params))
         {
 
-                $this->firePushEvent (new PushEvent ($this));
-
             return $this->pstmt->rowCount();
+
         }
         else
         {
 
-            $this->fireStateChange(new StateEvent($this->pstmt->errorInfo(), $this));
+            $this->helper->generateException($this->pstmt->errorInfo());
 
-            return NULL;
         }
 
     }

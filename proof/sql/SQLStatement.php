@@ -15,11 +15,4 @@ namespace proof\sql;
 interface SQLStatement extends SQLCommand
 {
 
-    /**
-     * Escapes dangerous characters in a string based on the current database charset.
-     * @param mixed $unsafe    The untrusted string.
-     * @return mixed    The sanitized untrusted string.
-     */
-    public function escape($unsafe);
-
 }
