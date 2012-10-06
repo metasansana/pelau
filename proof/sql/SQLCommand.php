@@ -16,11 +16,11 @@ interface SQLCommand
 
     /**
      * Pulls data from the database (query).
-     * @param \proof\sql\PullHandler $h    The object that will recieve the data row by row.
+     * @param \proof\sql\RowCache $target    The object that will recieve the data row by row.
      *
      *
      */
-    public function pull(PullHandler $h);
+    public function fetch(RowCache $target);
 
     /**
      * Pushes  a command to the database.

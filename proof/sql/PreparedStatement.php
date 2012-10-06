@@ -61,15 +61,6 @@ class PreparedStatement implements SQLPreparedStatement
 
     }
 
-    public function addSQLEventListener(SQLEventListener $l)
-    {
-
-        $this->pstmt->addSQLEventListener($l);
-
-        return $this;
-
-    }
-
     public function fetch(RowCache $target)
     {
 
