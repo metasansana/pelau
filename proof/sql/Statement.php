@@ -14,10 +14,8 @@ namespace proof\sql;
  *  <b>The contents of FastStatements should be properly escaped to defened against SQL injection attacks.</b>
  *SQLInstruction
  */
-use proof\php\String;
-use proof\util\Map;
 
-class Statement extends AbstractSQLCommand
+class Statement implements SQLStatement
 {
 
     /**
@@ -32,73 +30,27 @@ class Statement extends AbstractSQLCommand
      */
     private $link;
 
-    /**
-     * Constructs a new FastStatement.
-     * @param String $stmt    A String representation of the statement.
-     * @param \PDO $link      Optional PDO object to be used to execute the statement.
-     */
-    public function __construct(String $stmt, \PDO $link)
+   /**
+    * Constructs a new Statement class.
+    * @param \proof\sql\SQLStatement $stmt    The SQLStatement class this class will wrap around.
+    */
+    public function __construct(SQLStatement $stmt)
     {
 
         $this->stmt = $stmt;
-        $this->link = $link;
+    }
+
+    public function fetch(TupleSet $set)
+    {
+
+        return $this->stmt->fetch($set);
 
     }
 
-    private function _query()
+    public function push()
     {
 
-        $result = $this->link->query($this->stmt);
-
-        if (!$result)
-            $this->changeState($this->link->errorInfo());
-
-        return $result;
-
-    }
-
-    public function fetch(FetchHandler $fhandler, SQLStateHandler $shandler = NULL)
-    {
-
-        $result = $this->_query();
-
-        $count = 0;
-
-        if ($result)
-        {
-            foreach ($result as $row)
-            {
-
-                $fhandler->onFetch(new Map($row));
-                $count++;
-
-            }
-
-            return $count;
-        }
-        else
-        {
-
-
-            return $result;
-        }
-
-    }
-
-    public function push(SQLStateHandler $h = NULL)
-    {
-
-        $result = $this->_query();
-
-        if ($result)
-        {
-            return $result->rowCount();
-        }
-        else
-        {
-
-            return $result;
-        }
+        return $this->stmt->push();
 
     }
 
