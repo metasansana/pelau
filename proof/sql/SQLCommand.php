@@ -16,11 +16,9 @@ interface SQLCommand
 
     /**
      * Pulls data from the database (query).
-     * @param \proof\sql\RowCache $target    The object that will recieve the data row by row.
-     *
-     *
+     * @return    proof\sql\TupleIterator    An iterator that can be used
      */
-    public function fetch(RowCache $target);
+    public function fetch();
 
     /**
      * Pushes  a command to the database.
