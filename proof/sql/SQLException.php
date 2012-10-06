@@ -36,4 +36,13 @@ class SQLException extends \Exception
 
     }
 
+    /**
+     * Returns the state code asscociated with this exception.
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
 }
