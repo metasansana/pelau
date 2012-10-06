@@ -61,7 +61,7 @@ class PreparedStatement implements SQLPreparedStatement
 
     }
 
-    public function fetch(RowCache $target)
+    public function fetch(TupleSet $set)
     {
 
         return $this->pstmt->fetch($target);
