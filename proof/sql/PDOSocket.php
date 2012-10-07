@@ -8,7 +8,7 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  SQLSocket class for PDO.
+ *  <p>SQLSocket class for PDO.</p>
  *
  */
 use proof\php\String;
@@ -35,27 +35,31 @@ class PDOSocket implements SQLSocket, Transactable
     public function create(String $sql)
     {
 
-
+        return new Statement(new PDOStatement($sql, $this->pdo));
 
     }
 
     public function prepare(String $sql)
     {
 
+        return new PreparedStatement(new PDOPreparedStatement($this->pdo->prepare((string)$sql)));
+
     }
 
     public function close()
     {
 
+        $this->pdo = NULL;
+
     }
 
-    public function execute(SQLSocketCommand $cmd)
+    public function start()
     {
 
+        $this->pdo->beginTransaction();
+
+        return new Transaction(new PDOTransaction($this, $this->pdo));
+
     }
 
-    public function startTransaction()
-    {
-
-    }
 }
