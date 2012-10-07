@@ -18,6 +18,6 @@ interface Transactable
      * Initializes a transaction by turning off auto commit mode.
      * @return proof\sql\Transaction    A Transaction object reffering to the current transactio0n.
      */
-    public function startTransaction();
+    public function start();
 
 }
