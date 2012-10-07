@@ -12,7 +12,7 @@ namespace proof\sql;
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
 
-class PDOPreparedStatement implements SQLCommand
+class PDOPreparedStatement implements SQLPreparedStatement
 {
 
     /**
