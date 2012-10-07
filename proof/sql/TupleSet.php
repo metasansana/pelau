@@ -11,13 +11,15 @@ namespace proof\sql;
  *  Interface for classes that receive query results tuple by tuple.
  *
  */
+
+
 interface TupleSet
 {
 
     /**
      * Each call to this method adds a row to the set.
-     * @param \proof\sql\Map $row
+     * @param array $tuple    A row (tuple) fetched from the database.
      */
-    public function addTupple(Map $row);
+    public function addTupple(array $row);
 
 }

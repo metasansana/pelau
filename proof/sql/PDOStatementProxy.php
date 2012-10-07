@@ -31,6 +31,11 @@ class PDOStatementProxy
 
     }
 
+    public function push()
+    {
+
+    }
+
     public function generateException(array $info)
     {
         throw new SQLException($info[0], $info[1], $info[2]);
