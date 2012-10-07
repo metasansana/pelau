@@ -11,6 +11,8 @@ namespace proof\sql;
  *  Class representing transaction mode SQL.
  *
  */
+use proof\php\String;
+
 class Transaction implements SQLTransaction
 {
 
