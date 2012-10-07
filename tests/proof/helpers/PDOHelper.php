@@ -11,7 +11,7 @@ namespace proof\helpers;
  *  <b>Unit testing class, NOT part of the official package!</b>
  *
  */
-class ConnectionHelper
+class PDOHelper
 {
 
 
