@@ -14,7 +14,7 @@ namespace proof\sql;
  */
 use proof\php\String;
 
-interface SQLSocket
+interface PDOSocket
 {
 
     /**
@@ -30,13 +30,6 @@ interface SQLSocket
      * @return proof\sql\PreparedStatement    The PreparedStatement.
      */
     public function prepare(String $sql);
-
-    /**
-     *  Executes a sql command on this Socket.
-     * @param \proof\sql\SQLSocketCommand $cmd    The command to be executed.
-     * @return    mixed    Returns the result of the command.
-     */
-    public function execute(SQLSocketCommand $cmd);
 
     /**
      * Close this SQLSocket.
