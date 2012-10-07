@@ -14,7 +14,7 @@ namespace proof\sql;
  */
 use proof\php\String;
 
-interface PDOSocket
+interface SQLSocket
 {
 
     /**
