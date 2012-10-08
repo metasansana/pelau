@@ -34,7 +34,7 @@ class WebController extends AbstractHttpListener
 
 
     /**
-     * Constructs a new WebListener
+     * Constructs a new WebController
      * @param \proof\app\web\WebApplication $app  The WebApplication associated with this class.
      * @param \proof\app\web\HtmlDocument $doc    The HtmlDocument associated with this class.
      */
