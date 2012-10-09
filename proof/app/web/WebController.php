@@ -35,10 +35,10 @@ class WebController extends AbstractHttpListener
 
     /**
      * Constructs a new WebController
-     * @param \proof\app\web\WebApplication $app  The WebApplication associated with this class.
+     * @param \proof\app\web\Application $app  The Application associated with this class.
      * @param \proof\app\web\HtmlDocument $doc    The HtmlDocument associated with this class.
      */
-    public function __construct(WebApplication $app, HtmlDocument $doc)
+    public function __construct(Application $app, HtmlDocument $doc)
     {
 
         $this->app = $app;
