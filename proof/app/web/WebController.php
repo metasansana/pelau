@@ -12,6 +12,7 @@ namespace proof\app\web;
  *  <p>WebListener class <i>listen</i> for HttpEvents and respond via the associated on*() handlers.
  *
  */
+use proof\app\Application;
 use proof\net\http\AbstractHttpListener;
 
 class WebController extends AbstractHttpListener
