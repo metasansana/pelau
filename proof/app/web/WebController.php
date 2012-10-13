@@ -13,6 +13,7 @@ namespace proof\app\web;
  *
  */
 use proof\net\http\AbstractHttpListener;
+use proof\app\Application;
 
 class WebController extends AbstractHttpListener
 {
