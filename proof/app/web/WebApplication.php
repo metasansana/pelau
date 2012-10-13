@@ -12,9 +12,9 @@ namespace proof\app\web;
  *
  *
  */
-use proof\app\DatabaseApplication;
+use proof\app\Application;
 
-interface  WebApplication extends DatabaseApplication
+interface  WebApplication extends Application
 {
 
       public  function getSessionManager();

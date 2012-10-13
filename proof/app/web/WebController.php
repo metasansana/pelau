@@ -12,7 +12,9 @@ namespace proof\app\web;
  *  <p>WebListener class <i>listen</i> for HttpEvents and respond via the associated on*() handlers.
  *
  */
+use proof\app\Application;
 use proof\net\http\AbstractHttpListener;
+use proof\app\Application;
 
 class WebController extends AbstractHttpListener
 {
@@ -20,7 +22,7 @@ class WebController extends AbstractHttpListener
 
     /**
      * The WebApplication associated with this class.
-     * @var proof\app\web\WebApplication
+     * @var proof\app\Application
      * @access protected
      */
     protected $app;
@@ -34,11 +36,15 @@ class WebController extends AbstractHttpListener
 
 
     /**
+<<<<<<< HEAD
+     * Constructs a new WebController
+=======
      * Constructs a new WebListener
-     * @param \proof\app\web\WebApplication $app  The WebApplication associated with this class.
+>>>>>>> f934b90c5f3e681b198ec64018a6b3e9cacc53fd
+     * @param \proof\app\web\Application $app  The Application associated with this class.
      * @param \proof\app\web\HtmlDocument $doc    The HtmlDocument associated with this class.
      */
-    public function __construct(WebApplication $app, HtmlDocument $doc)
+    public function __construct(Application $app, HtmlDocument $doc)
     {
 
         $this->app = $app;
