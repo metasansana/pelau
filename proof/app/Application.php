@@ -17,10 +17,10 @@ interface Application
     /**
      * Starts the application.
      */
-    public function run();
+    public function main();
 
     /**
-     * Stops the application and optional exists with a status code.
+     * Stops the application and optionally exists with a status code.
      * @param int $code
      */
     public function shutdown($code=0);
