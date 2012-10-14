@@ -9,7 +9,7 @@ namespace proof\util;
  * The Colleciton interface provides methods for manipulating the data a class aggregates.
  *
  */
-interface Collection extends Aggregate
+interface Collection extends Aggregate, \IteratorAggregate
 {
 
     /**
