@@ -33,11 +33,7 @@ class Stack implements Aggregate
     public function pop()
     {
 
-        if ($this->isEmpty())
-            throw new StackEmptyException;
-
         return array_pop($this->items);
-
     }
 
     public function isEmpty()
