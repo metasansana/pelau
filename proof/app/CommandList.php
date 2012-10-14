@@ -17,7 +17,7 @@ use proof\php\String;
 use proof\util\ArrayList;
 use proof\util\Iterator;
 
-class URLCommandList implements Iterator
+class CommandList implements Iterator
 {
 
     /**
@@ -30,8 +30,8 @@ class URLCommandList implements Iterator
     public function __construct(String $url)
     {
 
-        $array = $url->split("/");
-        array_shift($array);
+        $array = $url->split("/");    //@todo: Should split return an ArrayObject? You can then shift from there.
+        array_shift($array);          //This class could become a generic command list class, leavi
         $this->list = new ArrayList($array);
     }
 
@@ -44,4 +44,6 @@ class URLCommandList implements Iterator
     {
 
     }
+
+    public function
 }
