@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\http;
+namespace proof\net\http;
 
 
 /**
