@@ -8,64 +8,25 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util;
  *
- * Interface for classes that act as aggregate holders of objects and/or primitives.
- * The Aggregate heirachy is used to differentiate between associatively collected items
- * and listed items. ($items['a'] vs $items[0]).
- *
- *
- *
- *
+ *  Interface for classes that represent an aggregration of objects or primitives.
  *
  */
-interface Aggregate extends \IteratorAggregate
+interface Aggregate
 {
 
-    /**
-     * Returns the value stored at a specific index
-     *
-     */
-    public function get($index);
 
-
-    /**
-     * Removes all item members.
-     *
-     */
-    public function clear();
-
-    /**
-     * Tests for the existence of an index
-     */
-    public  function indexAt($index);
-
-    /**
-     *Test if an item exists at the specifed index.
-     */
-    public function itemAt($index);
-
-    /**
-     * Test for emptiness
+   /**
+     * Test this Aggregate for emptiness.
+     *  @return boolean    TRUE if empty, FALSE otherwise.
      */
     public function isEmpty();
 
 
     /**
-     * Returns the number of elements in the Collection
-     *
+     * Returns the number of items in this Aggregate
+     * @return int    The number of items.
      */
     public function size();
-
-    /**
-     * Removes the item at $index
-     *
-     */
-    public function remove($index);
-
-    /**
-     * Returns a array representation of this object
-     *
-     */
-    public function toArray();
 
 
 
