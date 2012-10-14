@@ -11,8 +11,22 @@ namespace proof\util;
  * Container for  storing items in sequence
  *
  */
-class ArrayList extends AbstractListing
+class ArrayList extends AbstractCollection
 {
+
+
+    /**
+     * Adds an item to this Collection
+     * @param int $item
+     * @return \proof\util\AbstractListing
+     */
+    public function add($item)
+    {
+
+        $this->items[] = $item;
+        return $this;
+
+    }
 
 
 }
