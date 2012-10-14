@@ -11,45 +11,92 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util
  *
- *  Abstract implementor of the Collection interface for making implementation easier in other clases.
+ *  Abstract implementor of the Collection interface. The method for adding new items is left up to child classes.
  *
  */
-abstract class AbstractCollection extends AbstractAggregate implements Collection
+class AbstractCollection implements Collection
 {
 
     /**
-     * Check that the index is a string or char type.
-     * @param mixed $index
-     * @throws InvalidIndexException
+     * The items that are part of this Aggregate.
+     * @var array $items
+     * @access protected
      */
-    protected function checkIndex($index)
+    protected $items;
+
+    /**
+     * Constructs a new Collection with optional members $items.
+     * @param array $items    The optional members.
+     */
+    public function __construct(array $items = array ())
     {
-        if (!is_string($index))
-            throw new InvalidIndexException;
+
+        $this->items = $items;
 
     }
 
-    /**
-     * Adds an item to this Collection
-     * @param string $index
-     * @param mixed $item
-     * @return \proof\util\AbstractCollection
-     *
-     */
-    public function add($index, $item)
+    public function indexAt($index)
     {
 
-        $this->checkIndex($index);
+        return array_key_exists($index, $this->items);
 
-        $this->items[$index] = $item;
+    }
 
+    public function itemAt($index)
+    {
+
+        return isset($this->items[$index]);
+
+    }
+
+    public function get($index)
+    {
+        return $this->items[$index];
+
+    }
+
+    public function remove($index)
+    {
+
+        if ($this->indexAt($index))
+        {
+            unset($this->items[$index]);
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }
+
+    public function size()
+    {
+        return count($this->items);
+
+    }
+
+    public function isEmpty()
+    {
+
+        if ($this->size() > 0)
+            return FALSE;
+
+        return TRUE;
+
+    }
+
+    public function clear()
+    {
+
+        $this->items = array ();
         return $this;
 
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->toArray());
+        return new IteratorAdapter(new \ArrayIterator($this->items), $this->size());
 
     }
 
