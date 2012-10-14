@@ -36,5 +36,15 @@ class Stack extends AbstractAggregate
         return array_pop($this->items);
     }
 
+    public function peek()
+    {
+
+        $item = $this->pop();
+
+        $this->push($item);
+
+        return $item;
+    }
+
 
 }
