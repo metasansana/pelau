@@ -14,7 +14,7 @@ namespace proof\util;
  *  Implementation of a Stack.
  *
  */
-class Stack implements Aggregate
+class Stack extends AbstractAggregate
 {
 
     private $stack = array ();
@@ -36,16 +36,5 @@ class Stack implements Aggregate
         return array_pop($this->items);
     }
 
-    public function isEmpty()
-    {
-        return empty($this->stack);
-
-    }
-
-    public function size()
-    {
-        return count($this->stack);
-
-    }
 
 }

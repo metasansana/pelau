@@ -14,7 +14,7 @@ namespace proof\util;
  *  Abstract implementor of the Collection interface. The method for adding new items is left up to child classes.
  *
  */
-class AbstractCollection implements Collection
+class AbstractCollection extends AbstractAggregate implements Collection
 {
 
     /**
@@ -67,22 +67,6 @@ class AbstractCollection implements Collection
         {
             return FALSE;
         }
-
-    }
-
-    public function size()
-    {
-        return count($this->items);
-
-    }
-
-    public function isEmpty()
-    {
-
-        if ($this->size() > 0)
-            return FALSE;
-
-        return TRUE;
 
     }
 
