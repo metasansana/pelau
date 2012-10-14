@@ -1,5 +1,8 @@
 <?php
+
 namespace proof\util;
+
+
 /**
  * timestamp Jul 25, 2012 11:45:17 AM
  *
@@ -8,33 +11,44 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util
  *
- *  Class that allows a Listing to behave like a stack
+ *  Implementation of a Stack.
  *
  */
-
-class Stack  extends AbstractListing
+class Stack implements Aggregate
 {
 
-    public function __construct()
-    {
+    private $stack = array ();
 
-    }
-
-
+    /**
+     * Pushes an item on to the stack.
+     * @param mixed $item
+     */
     public function push($item)
     {
 
-        return parent::add($item);
+        array_push($this->s, $item);
 
     }
 
     public function pop()
     {
 
-        if($this->isEmpty())
+        if ($this->isEmpty())
             throw new StackEmptyException;
 
         return array_pop($this->items);
+
+    }
+
+    public function isEmpty()
+    {
+        return empty($this->stack);
+
+    }
+
+    public function size()
+    {
+        return count($this->stack);
 
     }
 
