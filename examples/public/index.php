@@ -1,18 +1,30 @@
 <?php
-$start  = microtime();
+//$start  = microtime();
 require_once 'proof.php';
-new proof\util\ArrayList;
-new proof\util\Map;
-new proof\php\String;
-new \proof\php\Object();
+//new proof\util\ArrayList;
+//new proof\util\Map;
+//new proof\php\String;
+//new \proof\php\Object();
+//
+//session_name('bdigsijpfg');
+//
+//$time = microtime() - $start;
+//
+//echo "<p>$time</p>";
 
-session_name('bdigsijpfg');
 
-$time = microtime() - $start;
+$i = new proof\util\IteratorAdapter(new \ArrayIterator(array(0,1,2,3,4)), 5);
 
-echo "<p>$time</p>";
+$count = 0;
 
+while($i->hasNext())
+{
 
+    echo "Item $count:".$i->next()."<br/>";
+
+    $count++;
+
+}
 
 
 ?>
