@@ -14,8 +14,9 @@ namespace proof\app\web;
 use proof\util\Map;
 use proof\util\ArrayList;
 use proof\php\String;
+use proof\php\Object;
 
-class WebTemplate implements HtmlTemplate
+class WebTemplate extends Object implements HtmlTemplate
 {
 
     /**
