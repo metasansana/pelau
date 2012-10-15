@@ -67,7 +67,9 @@ class WebTemplate extends Object implements HtmlTemplate
 
     public function put($key, Stringable $item)
     {
+
         $this->keys->add($key, "$item");
+        return $this;
     }
 
     public function render()
