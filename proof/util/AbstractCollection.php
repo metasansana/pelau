@@ -17,24 +17,6 @@ namespace proof\util;
 class AbstractCollection extends AbstractAggregate implements Collection
 {
 
-    /**
-     * The items that are part of this Aggregate.
-     * @var array $items
-     * @access protected
-     */
-    protected $items;
-
-    /**
-     * Constructs a new Collection with optional members $items.
-     * @param array $items    The optional members.
-     */
-    public function __construct(array $items = array ())
-    {
-
-        $this->items = $items;
-
-    }
-
     public function indexAt($index)
     {
 
@@ -82,6 +64,11 @@ class AbstractCollection extends AbstractAggregate implements Collection
     {
         return new IteratorAdapter(new \ArrayIterator($this->items), $this->size());
 
+    }
+
+    public function toArray()
+    {
+        return $this->items;
     }
 
 }

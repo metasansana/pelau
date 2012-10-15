@@ -41,6 +41,12 @@ interface Collection extends Aggregate, \IteratorAggregate
     public function remove($index);
 
     /**
+     * Returns an array representation of this Collection.
+     * @return array
+     */
+    public function toArray();
+
+    /**
      * Removes all items.
      */
     public function clear();
