@@ -1,49 +1,35 @@
 <?php
 namespace proof\app\web;
 /**
- * timestamp Sep 10, 2012 4:41:25 AM
+ * timestamp Oct 14, 2012 10:55:55 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\app
+ * @package proof\app\web
  *
- * Document class for web pages.
  *
  */
-use proof\app\AbstractDocument;
 use proof\php\String;
+use proof\php\Stringable;
+use proof\app\Document;
 
-class HtmlDocument extends AbstractDocument
+interface HtmlDocument extends Document
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->keys->add('mime', 'text/html');
-
-    }
-
     /**
-     * Makes text for a charset type available to templates.
-     * @param String $set
-     * @return \proof\app\web\HtmlDocument
+     * Adds a template to the document to be included upon rendering.
+     * @param String $filepath
+     * @todo this method will accept a File class in future.
      */
-    public function setCharacterSet(String $set)
-    {
-        $this->keys->add('charset', $set);
-        return $this;
-    }
+    public function addTemplate(String $filepath);
 
-    /**
-     * Makes text for the document title available to templates.
-     * @param String $title
-     * @return \proof\app\web\HtmlDocument
+     /**
+     * Puts a key into the document's queue.
+     * @param mixed $key    The key.
+     * @param \proof\php\Stringable $item    An item that can be stored as text.
      */
-    public function setTitle(String $title)
-    {
-        $this->keys->add('title', $title);
-        return $this;
-    }
+    public function put($key, Stringable $item);
 
+    
 }
