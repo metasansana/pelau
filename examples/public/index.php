@@ -11,20 +11,19 @@ require_once 'proof.php';
 //$time = microtime() - $start;
 //
 //echo "<p>$time</p>";
+use proof\php\String;
 
+$dir = new String (getcwd());
 
-$i = new proof\util\IteratorAdapter(new \ArrayIterator(array(0,1,2,3,4)), 5);
+$title = new String('Test Template');
 
-$count = 0;
+$charset = new String('utf8');
 
-while($i->hasNext())
-{
+$doc = new proof\app\web\WebTemplate($dir, $title, $charset);
 
-    echo "Item $count:".$i->next()."<br/>";
+$doc->add(new String('template.php'));
 
-    $count++;
-
-}
+$doc->render();
 
 
 ?>
