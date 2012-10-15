@@ -86,7 +86,7 @@ class IteratorAdapter implements \Iterator, Iterator
     public function valid()
     {
 
-       $this->i->valid();
+       return $this->i->valid();
 
     }
 
