@@ -17,7 +17,7 @@ namespace proof\net\http;
  */
 use proof\util\ArrayList;
 
-class HttpEventDispatcher implements HttpSource
+class HttpEventDispatcher
 {
 
     /**
