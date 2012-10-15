@@ -8,7 +8,7 @@ namespace proof\util;
  * @copyright 2012 Lasana Murray
  * @package proof\util
  *
- * Implementation of the PHP iterator.
+ * Implementation of the PHP iterator for arrays.
  *
  */
 class PHPIterator implements \Iterator
@@ -22,13 +22,13 @@ class PHPIterator implements \Iterator
     private $pos = 0;
 
     /**
-     *
+     * The array that will be iterated over.
      * @var array $list
      * @access private
      */
     private $list;
 
-    public function __construct(array $list)
+    public function __construct(array $list = array())
     {
         $this->list = $list;
     }

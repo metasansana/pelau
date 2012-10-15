@@ -62,7 +62,7 @@ class AbstractCollection extends AbstractAggregate implements Collection
 
     public function getIterator()
     {
-        return new IteratorAdapter(new \ArrayIterator($this->items), $this->size());
+        return new IteratorAdapter(new PHPIterator($this->items), $this->size());
 
     }
 
