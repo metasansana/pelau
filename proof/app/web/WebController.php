@@ -29,7 +29,7 @@ class WebController extends AbstractHttpListener
 
     /**
      * The HtmlDocument associated with this class.
-     * @var proof\app\web\HtmlDocument
+     * @var proof\app\web\HtmlTemplate
      * @access protected
      */
     protected $doc;
@@ -38,9 +38,9 @@ class WebController extends AbstractHttpListener
     /**
      * Constructs a new WebListener
      * @param \proof\app\web\Application $app  The Application associated with this class.
-     * @param \proof\app\web\HtmlDocument $doc    The HtmlDocument associated with this class.
+     * @param \proof\app\web\HtmlTemplate $doc    The HtmlDocument associated with this class.
      */
-    public function __construct(Application $app, HtmlDocument $doc)
+    public function __construct(Application $app, HtmlTemplate $doc)
     {
 
         $this->app = $app;
