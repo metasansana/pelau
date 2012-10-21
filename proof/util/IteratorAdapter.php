@@ -66,12 +66,8 @@ class IteratorAdapter implements \Iterator, Iterator
 
         $this->ptr++;
 
-        $return  = $this->current();
-
-        $this->i->next();
-
-        return $return;
-
+        return $this->i->next();
+       
     }
 
     public function rewind()

@@ -1,5 +1,8 @@
 <?php
+
 namespace proof\util;
+
+
 /**
  * timestamp Oct 14, 2012 11:29:59 AM
  *
@@ -15,11 +18,18 @@ class PHPIterator implements \Iterator
 {
 
     /**
-     *
-     * @var int $pos
+     * Indicates if all items have been iterated.
+     * @var boolean $flag
      * @access private
      */
-    private $pos = 0;
+    private $flag = FALSE;
+
+    /**
+     * Keeps track of the number of iterations.
+     * @var int $count
+     * @access private
+     */
+    private $ptr = 0;
 
     /**
      * The array that will be iterated over.
@@ -28,33 +38,67 @@ class PHPIterator implements \Iterator
      */
     private $list;
 
-    public function __construct(array $list = array())
+    public function __construct(array $list = array ())
     {
-        $this->list = $list;
+
+        $this->list = array_values($list);
+
+    }
+
+    /**
+     * Checks if the list has been iterated beyond its size.
+     */
+    private function _isBeyond()
+    {
+
+        if($this->ptr >= count($this->list))
+            return TRUE;
+
+        return FALSE;
+
     }
 
     public function current()
     {
+
         return current($this->list);
+
     }
 
     public function key()
     {
-        return key($this->pos);
-    }
+
+        return key($this->list);
+
+     }
 
     public function next()
     {
-        return next($this->list);
-    }
+
+        $this->ptr++;
+        return  next($this->list);
+
+   }
 
     public function rewind()
     {
+
         reset($this->list);
+        $this->ptr = 0;
+
     }
 
     public function valid()
     {
-        array_key_exists($this->current(), $this->list);
+
+        if(empty($this->list))
+            return FALSE;
+
+        if ($this->_isBeyond())
+            return FALSE;
+
+        return TRUE;
+
     }
+
 }
