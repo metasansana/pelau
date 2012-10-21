@@ -45,7 +45,7 @@ abstract class HttpEvent extends Event
      * @param \proof\net\http\HttpRequest $request
      * @param Object $src
      */
-    public function __construct(HttpRequest $request, Object $src)
+    public function __construct(HttpRequest $request, HttpClient $src)
     {
 
         $this->request = $request;

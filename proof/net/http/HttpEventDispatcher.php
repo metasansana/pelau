@@ -11,13 +11,13 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- *  Class that dispatches http requests as events.
+ *  Internal class for generating HTTP events.
  *
  *
  */
 use proof\util\ArrayList;
 
-class HttpEventDispatcher
+class HttpEventDispatcher implements HttpSource
 {
 
     /**
@@ -35,41 +35,49 @@ class HttpEventDispatcher
     private $request;
 
     /**
+     * The HttpSource that will become the source of events generated.
+     * @var proof\net\http\HttpSource $src
+     * @access private
+     */
+    private $src;
+
+    /**
      * Constructs a new Visitor object.
      */
-    public function __construct(HttpRequest $request)
+    public function __construct(HttpRequest $request, HttpSource $src)
     {
 
         $this->listeners = new ArrayList;
         $this->request = $request;
+        $this->src = $src;
 
     }
 
     private function _fireGet()
     {
         foreach($this->listeners as $l)
-            $l->onGet(new GetEvent($this->request, $this));
+            $l->onGet(new GetEvent($this->request, $this->src));
 
     }
 
     private function _firePost()
     {
         foreach($this->listeners as $l)
-            $l->onPost(new PostEvent($this->request, $this));
+            $l->onPost(new PostEvent($this->request, $this->src));
 
     }
 
     private function _fireHead()
     {
         foreach($this->listeners as $l)
-            $l->onHead(new HeadEvent($this->request, $this));
+            $l->onHead(new HeadEvent($this->request, $this->src));
 
     }
 
     private function _firePut()
     {
         foreach($this->listeners as $l)
-            $l->onPut(new PutEvent($this->request, $this));
+            $l->onPut(new PutEvent($this->request, $this->src));
 
     }
 
@@ -78,7 +86,7 @@ class HttpEventDispatcher
      * @param \proof\net\http\HttpListener $l    The HttpListener to be attached.
      * @return \proof\net\http\HttpDispatcher
      */
-    public function addHttpListener(HttpListener $l)
+    public function addListener(HttpListener $l)
     {
 
         $this->listeners->add($l);
