@@ -56,12 +56,13 @@ class WebPage extends Object implements ContentContainer
 
         $key_count = extract($this->keys->toArray(), EXTR_PREFIX_INVALID, "key");
 
-        $i = $list->getIterator();
-
-        foreach ($i as $import)
+        foreach ($list as $import)
         {
-            include_once($import);
+
+            (include_once (string)$import);
         }
+
+
     }
 
 }

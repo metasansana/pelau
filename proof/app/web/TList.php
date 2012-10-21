@@ -46,7 +46,7 @@ class TList implements \IteratorAggregate
 
     public function addTemplate($path)
     {
-        $this->list->add($path);
+        $this->list->add($this->dir.DIRECTORY_SEPARATOR."$path");
         return $this;
 
     }
