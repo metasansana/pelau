@@ -20,23 +20,40 @@ class PHPIteratorTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new PHPIterator(array (1, 2, 3, 4));
+        $this->object = new PHPIterator(array (0, 1, 2, 3));
 
     }
 
-    public function testIteration()
+    private function iterate(PHPIterator $i)
     {
-        $count = -1;
 
-        foreach ($this->object as $key => $value)
+        $count = 0;
+
+        foreach ($i as $key => $value)
         {
+
+            $this->assertEquals($key, $value);
 
             $count++;
 
-            $this->assertEquals($count, $key);
 
-            $this->assertEquals($key, $value);
         }
+
+        return $count;
+
+    }
+
+    public function testWithValues()
+    {
+
+       $this->assertEquals(4, $this->iterate($this->object));
+
+    }
+
+    public function testWithoutValues()
+    {
+
+        $this->assertEquals(0, $this->iterate(new PHPIterator(array ())));
 
     }
 
