@@ -17,7 +17,7 @@ namespace proof\util;
 class Stack extends AbstractAggregate
 {
 
-    private $stack = array ();
+
 
     /**
      * Pushes an item on to the stack.
@@ -26,7 +26,7 @@ class Stack extends AbstractAggregate
     public function push($item)
     {
 
-        array_push($this->s, $item);
+        array_push($this->items, $item);
 
     }
 
