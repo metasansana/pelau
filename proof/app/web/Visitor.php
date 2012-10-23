@@ -15,6 +15,8 @@ use proof\net\http\HttpClient;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpEventDispatcher;
 use proof\net\http\HttpListener;
+use proof\util\ArrayList;
+use proof\php\String;
 
 class Visitor implements HttpClient
 {
@@ -54,10 +56,10 @@ class Visitor implements HttpClient
     public function getCommands()
     {
 
-        $cmds = new Stack((new String($this->request->getProperty(HttpRequest::URI)))->split('/'));  //@todo URLDecoder
+        //@todo URLDecoder
+        $cmds = new ArrayList((new String($this->request->getProperty(HttpRequest::URI)))->split('/'));
 
-        $cmds->pop();
-
+        
         return $cmds;
 
     }
