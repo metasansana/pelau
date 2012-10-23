@@ -59,7 +59,9 @@ class Visitor implements HttpClient
         //@todo URLDecoder
         $cmds = new ArrayList((new String($this->request->getProperty(HttpRequest::URI)))->split('/'));
 
-        
+        $cmds->remove(0);
+
+
         return $cmds;
 
     }
