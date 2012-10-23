@@ -15,7 +15,5 @@ interface HttpClient
 {
 
     public function addListener(HttpListener $l);
-
-    public function getCommands();
-
+    
 }
