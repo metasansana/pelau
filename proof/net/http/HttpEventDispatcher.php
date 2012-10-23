@@ -36,15 +36,15 @@ class HttpEventDispatcher implements HttpClient
 
     /**
      * The HttpSource that will become the source of events generated.
-     * @var proof\net\http\HttpSource $src
+     * @var proof\net\http\HttpClient $src
      * @access private
      */
     private $src;
 
     /**
-     * Constructs a new Visitor object.
+     * Constructs a new HttpEventDispatcher object.
      */
-    public function __construct(HttpRequest $request, HttpSource $src)
+    public function __construct(HttpRequest $request, HttpClient$src)
     {
 
         $this->listeners = new ArrayList;
