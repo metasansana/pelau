@@ -11,12 +11,12 @@ namespace proof\app\web;
  *  Class representing a user of a web application.
  *
  */
-use proof\net\http\HttpSource;
+use proof\net\http\HttpClient;
 use proof\net\http\HttpRequest;
 use proof\net\http\HttpEventDispatcher;
 use proof\net\http\HttpListener;
 
-class Visitor implements HttpSource
+class Visitor implements HttpClient
 {
 
     /**
