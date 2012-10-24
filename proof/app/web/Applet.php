@@ -21,12 +21,12 @@ abstract class Applet extends AbstractHttpListener
      * @var proof\app\Application $main
      * @access private
      */
-    private $main;
+    protected $app;
 
     public function __construct(Application $main)
     {
 
-        $this->main = $main;
+        $this->app = $main;
 
     }
 
