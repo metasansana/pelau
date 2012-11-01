@@ -17,7 +17,6 @@ namespace proof\net\http;
  *
  *
  */
-use proof\php\Object;
 use proof\util\Event;
 use proof\util\Map;
 
@@ -27,35 +26,26 @@ abstract class HttpEvent extends Event
 {
 
     /**
-     * The HttpRequest associated with this event.
-     * @var proof\net\http\Request
-     * @access protected
-     */
-    protected $request;
-
-    /**
      * The parameters associated with the request.
      * @var proof\util\Map
      * @access protected
      */
-    protected $params;
+    protected $params = array();
 
     /**
      * Constructs a new HttpEvent type object.
-     * @param \proof\net\http\HttpRequest $request
-     * @param Object $src
+     * @param proof\net\http\HttpSource $src
      */
-    public function __construct(HttpRequest $request, HttpClient $src)
+    public function __construct(HttpSource $src)
     {
 
-        $this->request = $request;
 
         parent::__construct($src);
 
     }
 
      /**
-     * Returns the parameters for this event.
+     * This method is called internally to set the parameters of the event.
      */
     abstract protected function params();
 
@@ -66,29 +56,22 @@ abstract class HttpEvent extends Event
     public function getParameters()
     {
 
-        return new Map($this->params());
+        $this->params();
+        return new Map($this->params);
 
-    }
-
-    public function getRequest()
-    {
-        return $this->request;
     }
 
     /**
      * Returns a single parameter value from the request.
      * @param mixed $name    The name of the desired parameter.
-     * @return mixed
+     * @return mixed    The value of the requested key.
      */
     public function getParameter($name)
     {
+
         if($this->params->indexAt($name))
             return $this->params->get($name);
     }
-
-
-
-
 
 
 }

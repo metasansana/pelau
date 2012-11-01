@@ -18,7 +18,7 @@ class PostEvent extends HttpEvent
     protected function params()
     {
 
-        return $_POST;
+        $this->params =  $_POST;
 
     }
 }

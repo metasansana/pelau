@@ -18,7 +18,7 @@ class GetEvent extends HttpEvent
     protected function params()
     {
 
-        return $_GET;
+        $this->params = $_GET;
 
     }
 
