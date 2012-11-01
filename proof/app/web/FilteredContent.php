@@ -14,7 +14,7 @@ namespace proof\app\web;
 use proof\app\InputFilter;
 use proof\php\Object;
 
-class FilteredContent extends Object implements ContentContainer
+class FilteredContainer extends Object implements Container
 {
 
     /**
@@ -43,14 +43,14 @@ class FilteredContent extends Object implements ContentContainer
         $this->f = $f;
     }
 
-    public function addContent($key, $content)
+    public function add($key, $content)
     {
         $this->c->addContent($key, $this->f->filter($content));
     }
 
-    public function render(\IteratorAggregate $list)
+    public function show()
     {
-        $this->c->render($list);
+        $this->c->show();
     }
 
 

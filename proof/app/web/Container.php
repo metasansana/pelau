@@ -11,9 +11,8 @@ namespace proof\app\web;
  *  Interface  for storing a web app's content.
  *
  */
-use proof\util\Iterator;
 
-interface ContentContainer
+interface Container
 {
 
     /**
@@ -21,11 +20,11 @@ interface ContentContainer
      * @param mixed $key
      * @param string $content
      */
-    public function addContent($key, $content);
+    public function add($key, $content);
 
     /**
-     * Makes content visible by attempting to include file paths from an iterable list.
+     * Shows the content of this container to a web app user.
      */
-    public function render(\IteratorAggregate $list);
+    public function show();
 
 }

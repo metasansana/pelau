@@ -27,19 +27,27 @@ class WebPage extends Object implements ContentContainer
      */
     private $keys;
 
+    /**
+     * Path to a file that will be used as the WebPage's template.
+     * @var string $file
+     * @access private
+     */
+    private $file;
+
 
     /**
      * Constructs a new WebPage
      * @param string $title    The title for the web page.
+     * @param string $file   Path to a file that will be used as the WebPage's template.
      * @param string $charset    The character set for the page.
      */
-    public function __construct($title, $charset)
+    public function __construct($title, $file, $charset)
     {
 
         $this->keys = new Map;
-        $this->keys->add('mime', 'text/html');
         $this->keys->add('title', (string)$title);
         $this->keys->add('charset', (string)$charset);
+        $this->file =$file;
 
     }
 
@@ -51,17 +59,12 @@ class WebPage extends Object implements ContentContainer
         return $this;
     }
 
-    public function render(\IteratorAggregate $list)
+    public function show()
     {
 
         $key_count = extract($this->keys->toArray(), EXTR_PREFIX_INVALID, "key");
 
-        foreach ($list as $import)
-        {
-
-            (include_once (string)$import);
-        }
-
+        return (include_once (string)$this->file);
 
     }
 
