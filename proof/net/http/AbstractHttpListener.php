@@ -8,7 +8,7 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- *  Abstarct implementor of the HttpListener class.
+ *  Extend this class to write HttpListeners by overwriting the desired methods.
  *
  */
 abstract class AbstractHttpListener implements HttpListener
@@ -20,18 +20,9 @@ abstract class AbstractHttpListener implements HttpListener
 
     }
 
-    public function onHead(HeadEvent $e)
-    {
-
-    }
-
     public function onPost(PostEvent $e)
     {
 
     }
 
-    public function onPut(PutEvent $e)
-    {
-
-    }
 }
