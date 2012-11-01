@@ -21,7 +21,7 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = $this->getMockForAbstractClass("proof\\net\http\HttpEvent",
-                array($this->getMock("proof\\net\http\HttpRequest"), $this->getMock("proof\php\Object")));
+                array(new MockHttpSource));
 
     }
 
@@ -41,32 +41,10 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
     public function testGetParameters()
     {
 
+
         $this->assertInstanceOf("proof\util\Map", $this->object->getParameters());
 
     }
 
-    /**
-     * @covers proof\net\http\HttpEvent::getRequest
-     * @todo   Implement testGetRequest().
-     */
-    public function testGetRequest()
-    {
-
-        $this->assertInstanceOf("proof\\net\http\HttpRequest", $this->object->getRequest());
-
-    }
-
-    /**
-     * @covers proof\net\http\HttpEvent::getUrl
-     * @todo   Implement testGetUrl().
-     */
-    public function testGetUrl()
-    {
-
-
-        $this->assertInstanceOf("proof\\net\Url", $this->object->getUrl());
-
-
-    }
 
 }
