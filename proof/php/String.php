@@ -23,7 +23,7 @@ final class String extends Type
     public function __construct($string="")
     {
 
-        parent::__construct(((string) $string));
+        parent::__construct((string) $string);
 
     }
 
@@ -96,26 +96,15 @@ final class String extends Type
 
     /**
      * Returns a copy of this string with any occurences of $search replaced by $replace.
-     * @param String $target              The sub-string to be replaced.
-     * @param String $replacement   The value to replace the sub-string with.
+     * @param string $target              The sub-string to be replaced.
+     * @param string $replacement   The value to replace the sub-string with.
      * @param int $count=1                Optional: Number of times to do the replacement.
      * @return String
      */
-    public function replace(String $target, String $replacement, $count = 1)
+    public function replace($target, $replacement, $count = 1)
     {
 
         return new String(str_replace($target, $replacement, $this->value, $count));
-
-    }
-
-    /**
-     * Returns a copy of this string reversed.
-     * @return String
-     */
-    public function reverse()
-    {
-
-        return new String(strrev($this));
 
     }
 
@@ -144,14 +133,5 @@ final class String extends Type
 
     }
 
-    /**
-     * Retuns a character sequence of this String.
-     * @return array
-     */
-    public function toArray()
-    {
-        return str_split($this->value);
-
-    }
 
 }
