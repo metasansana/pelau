@@ -13,29 +13,15 @@ namespace proof\net\http;
  */
 class HttpRequest
 {
-
-    const  URI = "REQUEST_URI";
-    const  IPREMOTE =  "REMOTE_ADDR";
-    const  METHOD = "REQUEST_METHOD";
-
     /**
-     * Http methods
+     * Returns a property of the request.
+     * @param string $key
+     * @return mixed
      */
-    const GET = "GET" ;
-    const POST = "POST" ;
-    const HEAD = "HEAD" ;
-    const PUT = "PUT";
-
-
-    public function getProperty($property)
+    public static function getProperty($key)
     {
 
-        if(array_key_exists($property, $_SERVER))
-                return $_SERVER[$property];
-
-        throw new HttpRequestException("Bad key detected!");
-
-
+                return @$_SERVER[$key];
     }
 
 }
