@@ -8,7 +8,7 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- *  Class representing an HTTP request made by a user of a web application.
+ *  Class for querying the properties of an HTTP request.
  *
  */
 class HttpRequest
