@@ -22,7 +22,7 @@ class AbstractAggregate implements Aggregate
      * @var array $items
      * @access protected
      */
-    protected $items;
+    protected $items = array();
 
     /**
      * Constructs a new Collection with optional members $items.
