@@ -1,104 +1,80 @@
 <?php
+
 namespace proof\net\http;
+
+
 /**
- * timestamp Sep 20, 2012 5:29:07 AM
+ * timestamp Sep 23, 2012 1:26:53 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\net\http;
+ * @package proof\net\http
  *
- *  Class for using HttpSessions.
- * <p>This class is designed to be used with a HttpSessionManager implementor in a bridge like pattern.
- * HttpSession only implements methods for putting and retrieving values, the rest is left to the internal manager.</p>
+ *
+ * Class representing an http session.
  *
  */
-use proof\php\Stringable;
-
-class HttpSession implements HttpSessionController
+class HttpSession implements HttpSessionState
 {
 
     /**
-     * The manager of this session.
-     * @var proof\net\http    $manager
+     * The state of the session
+     * @var proof\net\http\HttpSessionState   $state
      * @access private
      */
-    private $manager;
+    private $state;
 
-
-    public function __construct(HttpSessionManager $manager)
+    /**
+     * Constructs a new HttpSession
+     * @param string $id  = "PFSIDSTART"    The id that will be used as the session name.
+     * @param \SessionHandlerInterface $h    Optional save handler.
+     */
+    public function construct($id = "PFSIDSTART", \SessionHandlerInterface $h = null)
     {
 
-        $this->manager = $manager;
 
+        $this->state = new InactiveHttpSession($id, $h);
+
+        if ($h)
+            session_set_save_handler($h, true);
 
     }
 
-    public function start($name=NULL)
+    public function begin()
     {
 
-        $this->manager->start($name);
-
-    }
-
-    public function put($key, Stringable $item)
-    {
-
-         $_SESSION[$key] = (string)$item;
-        return $this;
-
-        return $this;
-
-    }
-
-    public function get($key)
-    {
-
-     if(array_key_exists($key, $_SESSION))
-                return $_SESSION[$key];
-    }
-
-    public function delete($key)
-    {
-
-        unset($_SESSION[$key]);
-
-        return $this;
-    }
-
-    public function regenerate()
-    {
-
-        $this->manager->regenerate();
-
-        return $this;
+        $this->state->begin();
 
     }
 
     public function destroy()
     {
 
-        $this->manager->destroy();
+        return $this->state->destroy();
+
+    }
+
+    public function regenerate()
+    {
+
+        return $this->state->regenerate();
+
+    }
+
+    public function getPrevious()
+    {
+        return $this->state->getPrevious();
+
+    }
+
+    public function store($key, $value)
+    {
+
+        $this->state->store($key, $value);
 
         return $this;
 
     }
-
-    public function isActive()
-    {
-
-        return $this->manager->isActive();
-
-    }
-
-    /**
-     * Returns the internal HttpSessionManager
-     * @return proof\net\http\HttpSessionManager    A reference to the internal manager.
-     */
-    public function getManager()
-    {
-        return $this->manager;
-    }
-
 
 }
