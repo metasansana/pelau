@@ -22,22 +22,34 @@ class InactiveHttpSession implements HttpSessionState
     private $id;
 
     /**
+     * Handler for this session
+     * @var \SessionHandlerInterface $handler
+     * @access private
+     */
+    private $handler;
+
+    /**
      * Constructs a new InactiveHttpSession
      * @param string $id  = "PFSIDSTART"    The id that will be used as the session name.
+     * @param \SessionHandlerInterface $handler    Optional save handler.
      */
-    public function construct($id = "PFSIDSTART")
+    public function __construct($id = "PFSIDSTART", \SessionHandlerInterface $handler = null)
     {
 
         $this->id = $id;
+        $this->handler  = $handler;
 
     }
 
 
-    public function begin()
+    public function activate()
     {
 
         if(session_status() === PHP_SESSION_ACTIVE)
                throw new SessionExistsException;
+
+        if($this->handler)
+            session_set_save_handler ($this->handler);
 
         session_name($this->id);
 
@@ -52,6 +64,10 @@ class InactiveHttpSession implements HttpSessionState
 
     }
 
+    /**
+     * @inheritdoc
+     * @return false    Since this is an inactive state, no values are available.
+     */
     public function getPrevious()
     {
 
@@ -62,7 +78,7 @@ class InactiveHttpSession implements HttpSessionState
 
     }
 
-    public function store($key, $value)
+    public function put($key, $value)
     {
 
     }

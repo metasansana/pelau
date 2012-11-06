@@ -18,8 +18,9 @@ use proof\util\Map;
 class ActiveHttpSession implements HttpSessionState
 {
 
-    public function begin()
+    public function activate()
     {
+         //@todo Should a call to ActiveHttpSession::begin force a regeneration? This would eliminate the need for a regenerate method.
 
     }
 
@@ -61,7 +62,7 @@ class ActiveHttpSession implements HttpSessionState
 
     }
 
-    public function store($key, $value)
+    public function put($key, $value)
     {
 
         $_SESSION[$key] = $value;

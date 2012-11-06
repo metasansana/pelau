@@ -19,32 +19,36 @@ class HttpSession implements HttpSessionState
 {
 
     /**
-     * The state of the session
-     * @var proof\net\http\HttpSessionState   $state
+     * Internal state of this session.
+     * @var proof\net\http\HttpSessionState $state
      * @access private
      */
     private $state;
+
 
     /**
      * Constructs a new HttpSession
      * @param string $id  = "PFSIDSTART"    The id that will be used as the session name.
      * @param \SessionHandlerInterface $h    Optional save handler.
      */
-    public function construct($id = "PFSIDSTART", \SessionHandlerInterface $h = null)
+    public function __construct($id = "PFSIDSTART", \SessionHandlerInterface $h = null)
     {
-
 
         $this->state = new InactiveHttpSession($id, $h);
 
-        if ($h)
-            session_set_save_handler($h, true);
-
     }
 
-    public function begin()
+    public function activate()
     {
 
-        $this->state->begin();
+        if($this->state->activate())
+        {
+
+            $this->state = new ActiveHttpSession();
+
+            return true;
+
+        }
 
     }
 
@@ -64,16 +68,28 @@ class HttpSession implements HttpSessionState
 
     public function getPrevious()
     {
+
         return $this->state->getPrevious();
 
     }
 
-    public function store($key, $value)
+    public function put($key, $value)
     {
 
-        $this->state->store($key, $value);
+        $this->state->put($key, $value);
 
         return $this;
+
+    }
+
+    public function isActive()
+    {
+
+        if($this->state instanceof ActiveHttpSession)
+
+            return true;
+
+        return false;
 
     }
 
