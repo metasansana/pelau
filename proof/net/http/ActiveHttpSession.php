@@ -30,15 +30,11 @@ class ActiveHttpSession implements HttpSessionState
         if (ini_get("session.use_cookies"))
         {
 
-            $params = session_get_cookie_params();
+            $values = session_get_cookie_params();
 
-            setcookie
-                    (
+            $c = new CookieCache ($values["path"], $values["domain"], $values["secure"], $values["httponly"]);
 
-                    session_name(), '', time() - (time() + 1000),
-                    $params["path"], $params["domain"], $params["secure"], $params["httponly"]
-
-                    );
+            $c->store(session_name(), '', (time() + 1000));
 
         }
 
