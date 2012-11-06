@@ -22,4 +22,11 @@ interface HttpSource
      */
     public function addListener(HttpListener $l);
 
+    /**
+     * Sends a redirect request to the source.
+     * @param string $location
+     *
+     */
+    public function redirect($location);
+
 }
