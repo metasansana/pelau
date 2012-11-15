@@ -1,6 +1,5 @@
 <?php
-namespace proof\sql;
-
+namespace proof\sql\pdo;
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
  *
@@ -11,8 +10,10 @@ namespace proof\sql;
  *
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
+use proof\sql\PreparedStatement;
+use proof\util\Sequence;
 
-class PDOPreparedStatement implements SQLPreparedStatement
+class PDOPreparedStatement implements PreparedStatement
 {
 
     /**
@@ -31,18 +32,18 @@ class PDOPreparedStatement implements SQLPreparedStatement
     private $pstmt;
 
     /**
-     * Helper class for PDOStatements.
-     * @var proof\sql\PDOStatementProxy    $helper
+     * The associated connection class.
+     * @var proof\sql\pdo\PDOConnection $pdo
      * @access private
      */
-    private $helper;
+    private $con;
 
 
     public function __construct(\PDOStatement $pstmt)
     {
 
         $this->pstmt = $pstmt;
-        $this->helper = new PDOStatementProxy;
+        
 
 
     }
@@ -68,27 +69,14 @@ class PDOPreparedStatement implements SQLPreparedStatement
 
     }
 
-    public function fetch(TupleSet $set)
+    public function query(Sequence $s)
     {
 
-
-        if ($this->pstmt->execute($this->params))
-        {
-
-            return $this->helper->dofetch($this->pstmt, $set);
-
-        }
-        else
-        {
-
-            $this->helper->generateException($this->pstmt->errorInfo());
-
-        }
 
 
     }
 
-    public function push()
+    public function update()
     {
 
         if ($this->pstmt->execute($this->params))
@@ -103,6 +91,11 @@ class PDOPreparedStatement implements SQLPreparedStatement
             $this->helper->generateException($this->pstmt->errorInfo());
 
         }
+
+    }
+
+    public function getConnection()
+    {
 
     }
 

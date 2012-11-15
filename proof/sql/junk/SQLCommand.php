@@ -17,7 +17,7 @@ interface SQLCommand
     /**
      * Pulls data from the database (query).
      * @param proof\sql\TupleSet    Tuple set for the query.
-     * @return    proof\sql\TupleIterator    An iterator that can be used
+     * 
      */
     public function fetch(TupleSet $set);
 
