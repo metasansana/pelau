@@ -14,9 +14,9 @@ namespace proof\sql\pdo;
  *
  */
 use proof\sql\SQLConnection;
-use proof\sql\Transactional;
+use proof\sql\Transactable;
 
-class PDOConnection implements SQLConnection, Transactional
+class PDOConnection implements SQLConnection, Transactable
 {
 
     /**
@@ -47,12 +47,19 @@ class PDOConnection implements SQLConnection, Transactional
 
     }
 
-    public function initiate()
+    public function begin()
     {
 
 
-        return $this->state->initiate();
+        return $this->state->begin();
 
+
+    }
+
+    public function close()
+    {
+
+        return $this->state->close();
 
     }
 

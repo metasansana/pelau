@@ -11,7 +11,7 @@ namespace proof\sql;
  *  Class representing a handle to an sql transaction session.
  *
  */
-interface Transaction
+interface Transaction extends SQLConnection
 {
 
     /**

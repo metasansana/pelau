@@ -51,13 +51,21 @@ class ValidState implements  PDOState
 
     }
 
-    public function initiate()
+    public function begin()
     {
 
         if (!$this->pdo->beginTransaction())
             throw new TransactionFailedException;
 
         return new PDOTransaction($this->pdo, $this, $this->active);
+
+    }
+
+    public function close()
+    {
+
+        unset($this->pdo);
+
 
     }
 

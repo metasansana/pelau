@@ -11,7 +11,9 @@ namespace proof\sql;
  * Class representing a connection to an sql database.
  *
  */
-interface SQLConnection
+use proof\php\Closable;
+
+interface SQLConnection extends Closable
 {
 
     /**

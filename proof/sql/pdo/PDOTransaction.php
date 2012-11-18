@@ -14,7 +14,7 @@ namespace proof\sql\pdo;
 use proof\sql\Transaction;
 use proof\sql\SQLConnection;
 
-class PDOTransaction implements SQLConnection, Transaction
+class PDOTransaction implements Transaction
 {
 
     /**

@@ -11,13 +11,13 @@ namespace proof\sql;
  *  Interface for initiating sql transactions.
  *
  */
-interface Transactional
+interface Transactable
 {
 
    /**
-    * Initiates a Transaction object for usage.
+    * Issues a Transaction handle that must be used for queries/updates until commit or rollback.
     * @return proof\sql\Transaction
     */
-    public function initiate();
+    public function begin();
 
 }

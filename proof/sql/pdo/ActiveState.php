@@ -60,10 +60,17 @@ class ActiveState implements PDOState
 
     }
 
-    public function initiate()
+    public function begin()
     {
 
-        return $this->state->initiate();
+        return $this->state->begin();
+
+    }
+
+    public function close()
+    {
+
+        $this->state->close();
 
     }
 

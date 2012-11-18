@@ -39,9 +39,16 @@ class InValidState implements PDOState
 
     }
 
-    public function initiate()
+    public function begin()
     {
         $this->_respond();
+    }
+
+    public function close()
+    {
+
+        $this->_respond();
+
     }
 
 }
