@@ -1,8 +1,27 @@
-PROOF
+Proof
 =====
 
-###PHP Related Object Oriented Framework (Working title)
+Proof is a PHP library meant to provide a more natural feel to object oriented programming in the language.
+Objects are king and are used wherever possible.
 
-This is a small PHP library of classes created by Lasana Murray (dev@trinistorm.org) during development of
-various PHP applications. This library is completely object oriented (except for the proof.php script that does class loading etc).
 
+Why?
+----
+
+I started this library because I was learning about OOP analysis and design around the same time I was learning
+PHP. It seemed like a nice oppurtunity to learn something.
+
+Commence the reinvention of the wheel. :)
+
+
+Usage
+-----
+
+To start using proof just copy the "proof" folder and "proof.php" file to your server route.
+From there just include the "proof.php" file and your on your way.
+
+
+Contribute
+----------
+
+See the TODO file.
