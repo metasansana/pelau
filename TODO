@@ -1,0 +1,41 @@
+TODO
+====
+
+Bugs
+-----
+
+*Track down any bugs and errors.
+
+Legal
+-----
+
+*Choose a suitable license (most likely Apache or BSD).
+
+Unit Tests
+----------
+
+*Review exisiting unit tests.
+*Identify no longer needed tests.
+*Add tests that are missing (where feasible).
+
+Documentation
+-------------
+
+*Review comments on classes.
+*Generate class docs.
+*Make class docs available online.
+
+API
+---
+
+*Website login API
+*Filesystem API
+*Networking API
+*OAuth API
+
+Packaging
+---------
+
+*A .deb file would be nice.
+
+
