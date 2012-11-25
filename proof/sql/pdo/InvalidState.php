@@ -15,40 +15,29 @@ namespace proof\sql\pdo;
  */
 use proof\php\UnsupportedOperationException;
 
-class InValidState implements PDOState
+class InvalidState implements PDOState
 {
-
-    private function _respond()
-    {
-
-        throw new UnsupportedOperationException
-        ("Connection cannot be used, Transaction might be active.");
-
-    }
 
     public function create($sql)
     {
-        $this->_respond();
+
+        throw new UnsupportedOperationException;
 
     }
 
     public function prepare($sql)
     {
 
-        $this->_respond();
+        throw new UnsupportedOperationException;
 
     }
 
-    public function begin()
-    {
-        $this->_respond();
-    }
-
-    public function close()
+    public function getTransaction()
     {
 
-        $this->_respond();
+        throw new UnsupportedOperationException;
 
     }
+
 
 }

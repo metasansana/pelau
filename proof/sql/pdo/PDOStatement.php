@@ -20,10 +20,10 @@ class PDOStatement implements Statement
 
     /**
      * The PDOConnection object that will be used.
-     * @var proof\sql\pdo\PDOConnection $con
+     * @var \PDO $pdo
      * @access private
      */
-    private $con;
+    private $pdo;
 
     /**
      * String representing the statement.
@@ -41,35 +41,40 @@ class PDOStatement implements Statement
     {
 
         $this->sql = $sql;
-        $this->con = $pdo;
+        $this->pdo = $pdo;
 
     }
 
     public function query(Sequence $s)
     {
 
-        if(!$this->con->execute(new QueryCommand($this->sql, $s)))
-                $this->con->execute (new ErrorCommand);
+        $w = new PDOWorker();
+
+        $stmt = $this->pdo->query($this->sql);
+
+        if(!$stmt)
+        {
+            return $w->error ($this->pdo->errorInfo ());
+        }
+
+        return $w->fetch($stmt, $s);
 
     }
 
     public function update()
     {
 
-        $cmd = new UpdateCommand($this->sql);
+        $result = $this->pdo->exec($this->sql);
 
-        if(!$this->con->execute($cmd))
-            $this->con->execute (new ErrorCommand);
+        if($result  === false)
+        {
+            $w = new PDOWorker();
+            $w->error($this->pdo->errorInfo());
+        }
 
-        return $cmd->count();
-
-    }
-
-    public function getConnection()
-    {
-
-        return $this->con;
+        return $result;
 
     }
+
 
 }

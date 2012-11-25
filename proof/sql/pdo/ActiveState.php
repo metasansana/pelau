@@ -60,19 +60,13 @@ class ActiveState implements PDOState
 
     }
 
-    public function begin()
+    public function getTransaction()
     {
 
-        return $this->state->begin();
+        return $this->state->getTransaction();
 
     }
 
-    public function close()
-    {
-
-        $this->state->close();
-
-    }
 
 
 

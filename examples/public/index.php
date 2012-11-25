@@ -21,6 +21,33 @@ require_once 'proof.php';
 //
 //$doc->render($t);
 
+//use proof\net\http\HttpRequest;
+//
+//
+//echo HttpRequest::getPath();
+//
+//$l = HttpRequest::getPathList();
+//
+//foreach ($l as $key=>$v)
+//{
+//    echo "<br/>";
+//    echo "Key #$key=>[$v]";
+//}
 
+use proof\sql\pdo\PDOConnection;
+
+$con = new PDOConnection(new \PDO('benson', 'root', 'samurix'));
+
+$con->prepare('SELECT * FROM vendors');
+
+$tran = $con->getTransaction();
+
+var_dump($tran);
+
+$tran2 = $con->getTransaction();
+
+var_dump($tran2);
+
+$con->create('SELECT * FROM vendors');
 
 ?>

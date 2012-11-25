@@ -16,8 +16,15 @@ use proof\util\Sequence;
 interface Statement
 {
 
+    /**
+     * Treats the Statement as a query.     
+     * @param \proof\util\Sequence $s
+     */
     public function query(Sequence $s);
 
+    /**
+     * Treats the statement as an update.
+     */
     public function update();
-    
+
 }

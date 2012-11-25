@@ -11,6 +11,7 @@ namespace proof\sql\pdo;
  * Class representing a PDO conneciton in auto commit mode.
  *
  */
+use proof\php\UnsupportedOperationException;
 class ValidState implements  PDOState
 {
 
@@ -51,25 +52,15 @@ class ValidState implements  PDOState
 
     }
 
-    public function begin()
+    public function getTransaction()
     {
 
         if (!$this->pdo->beginTransaction())
-            throw new TransactionFailedException;
+            throw new UnsupportedOperationException;
 
         return new PDOTransaction($this->pdo, $this, $this->active);
 
     }
-
-    public function close()
-    {
-
-        unset($this->pdo);
-
-
-    }
-
-
 
 
 

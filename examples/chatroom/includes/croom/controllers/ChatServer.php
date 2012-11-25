@@ -29,7 +29,7 @@ class ChatServer extends App
     }
 
 
-    protected function init()
+    protected function begin()
     {
 
         //@todo parse url

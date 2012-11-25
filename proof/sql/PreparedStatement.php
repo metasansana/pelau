@@ -8,14 +8,23 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- * Interface representing a PreparedStatement
+ * Interface representing a PreparedStatement with an SQL database.
  *
  */
 interface PreparedStatement extends Statement
 {
 
+    /**
+     * Binds a value when using unamed placeholders.
+     * @param mixed $value    The value to be bound to the prepared statement.
+     */
     public function bind($value);
 
+    /**
+     * Binds a named value when using named placeholders.
+     * @param mixed $name     The name of the value to be bound.
+     * @param mixed $value    The value to be bound to the prepared statement.
+     */
     public function bindName($name, $value);
 
 }

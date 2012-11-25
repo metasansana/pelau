@@ -14,9 +14,8 @@ namespace proof\sql\pdo;
  *
  */
 use proof\sql\SQLConnection;
-use proof\sql\Transactable;
 
-class PDOConnection implements SQLConnection, Transactable
+class PDOConnection implements SQLConnection
 {
 
     /**
@@ -47,20 +46,10 @@ class PDOConnection implements SQLConnection, Transactable
 
     }
 
-    public function begin()
+
+    public function getTransaction()
     {
-
-
-        return $this->state->begin();
-
-
-    }
-
-    public function close()
-    {
-
-        return $this->state->close();
-
+        return $this->state->getTransaction();
     }
 
 }
