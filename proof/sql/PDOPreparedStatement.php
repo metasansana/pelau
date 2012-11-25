@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
 
 namespace proof\sql\pdo;
+=======
+namespace proof\sql;
+>>>>>>> Black Friday?:proof/sql/PDOPreparedStatement.php
 
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
@@ -12,10 +16,8 @@ namespace proof\sql\pdo;
  *
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
-use proof\sql\PreparedStatement;
-use proof\util\Sequence;
 
-class PDOPreparedStatement implements PreparedStatement
+class PDOPreparedStatement implements SQLPreparedStatement
 {
 
     /**
@@ -33,10 +35,26 @@ class PDOPreparedStatement implements PreparedStatement
      */
     private $pstmt;
 
+<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
+=======
+    /**
+     * Helper class for PDOStatements.
+     * @var proof\sql\PDOStatementProxy    $helper
+     * @access private
+     */
+    private $helper;
+
+
+>>>>>>> Black Friday?:proof/sql/PDOPreparedStatement.php
     public function __construct(\PDOStatement $pstmt)
     {
 
         $this->pstmt = $pstmt;
+<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
+=======
+        $this->helper = new PDOStatementProxy;
+
+>>>>>>> Black Friday?:proof/sql/PDOPreparedStatement.php
 
     }
 
@@ -61,21 +79,37 @@ class PDOPreparedStatement implements PreparedStatement
 
     }
 
-    public function query(Sequence $s)
+    public function fetch(TupleSet $set)
     {
 
         $w = new PDOWorker;
 
+<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
         if (!$this->pstmt->execute($this->params))
         {
             return $w->error($this->pstmt->errorInfo());
         }
 
         return $w->fetch($this->pstmt, $s);
+=======
+        if ($this->pstmt->execute($this->params))
+        {
+
+            return $this->helper->dofetch($this->pstmt, $set);
+
+        }
+        else
+        {
+
+            $this->helper->generateException($this->pstmt->errorInfo());
+
+        }
+
+>>>>>>> Black Friday?:proof/sql/PDOPreparedStatement.php
 
     }
 
-    public function update()
+    public function push()
     {
 
         if (!$this->pstmt->execute($this->params))
