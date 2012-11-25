@@ -1,5 +1,7 @@
 <?php
+
 namespace proof\sql\pdo;
+
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
  *
@@ -22,29 +24,19 @@ class PDOPreparedStatement implements PreparedStatement
      * @var array $params
      * @access private
      */
-    private $params = array();
+    private $params = array ();
 
     /**
-     * The wrapped SQLPreparedStatement
-     * @var proof\sql\SQLPreparedStatement $pstmt
+     * The wrapped PDOStatement
+     * @var \PDOStatement $pstmt
      * @access private
      */
     private $pstmt;
-
-    /**
-     * The associated connection class.
-     * @var proof\sql\pdo\PDOConnection $pdo
-     * @access private
-     */
-    private $con;
-
 
     public function __construct(\PDOStatement $pstmt)
     {
 
         $this->pstmt = $pstmt;
-        
-
 
     }
 
@@ -52,7 +44,7 @@ class PDOPreparedStatement implements PreparedStatement
     {
 
 
-        $this->params[] =  $value;
+        $this->params[] = $value;
 
         return $this;
 
@@ -63,7 +55,7 @@ class PDOPreparedStatement implements PreparedStatement
 
         $name = ":$name";
 
-        $this->params[$name] =  $value;
+        $this->params[$name] = $value;
 
         return $this;
 
@@ -72,30 +64,31 @@ class PDOPreparedStatement implements PreparedStatement
     public function query(Sequence $s)
     {
 
+        $w = new PDOWorker;
 
+        if (!$this->pstmt->execute($this->params))
+        {
+            return $w->error($this->pstmt->errorInfo());
+        }
+
+        return $w->fetch($this->pstmt, $s);
 
     }
 
     public function update()
     {
 
-        if ($this->pstmt->execute($this->params))
+        if (!$this->pstmt->execute($this->params))
         {
 
-            return $this->pstmt->rowCount();
+            $w = new PDOWorker;
 
+            return $w->error($this->pstmt->errorInfo());
         }
         else
         {
-
-            $this->helper->generateException($this->pstmt->errorInfo());
-
+            return $this->pstmt->rowCount();
         }
-
-    }
-
-    public function getConnection()
-    {
 
     }
 

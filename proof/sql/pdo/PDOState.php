@@ -12,9 +12,8 @@ namespace proof\sql\pdo;
  *
  */
 use proof\sql\SQLConnection;
-use proof\sql\Transactable;
 
-interface PDOState extends SQLConnection, Transactable
+interface PDOState extends SQLConnection
 {
 
 

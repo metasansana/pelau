@@ -86,5 +86,12 @@ class PDOTransaction implements Transaction
 
     }
 
+    public function getTransaction()
+    {
+
+        return $this;
+
+    }
+
 
 }

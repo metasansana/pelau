@@ -8,12 +8,12 @@ namespace proof\sql;
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- * Class representing a connection to an sql database.
+ * Interface for interacting with SQL databases.
  *
  */
-use proof\php\Closable;
 
-interface SQLConnection extends Closable
+
+interface SQLConnection
 {
 
     /**
@@ -29,6 +29,12 @@ interface SQLConnection extends Closable
      * @return proof\sql\PreparedStatement    The PreparedStatement.
      */
     public function prepare($sql);
+    
+    /**
+     * Generates a new transaction with the server.
+     * @return proof\sql\Transaction    A Transaction class representing an open transaction with the server.
+     */
+    public function getTransaction();
 
 
 
