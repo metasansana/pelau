@@ -34,9 +34,9 @@ abstract class HttpEvent extends Event
 
     /**
      * Constructs a new HttpEvent type object.
-     * @param proof\net\http\HttpClient $src
+     * @param proof\net\http\HttpSource $src
      */
-    public function __construct(HttpClient $src)
+    public function __construct(HttpSource $src)
     {
 
 

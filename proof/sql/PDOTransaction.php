@@ -12,7 +12,7 @@ namespace proof\sql;
  */
 use proof\php\String;
 
-class TransactionState implements SQLTransaction
+class PDOTransaction implements SQLTransaction
 {
 
     /**

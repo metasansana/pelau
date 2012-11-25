@@ -58,7 +58,7 @@ class PDOSocket implements SQLSocket, Transactable
 
         $this->pdo->beginTransaction();
 
-        return new Transaction(new TransactionState($this, $this->pdo));
+        return new Transaction(new PDOTransaction($this, $this->pdo));
 
     }
 
