@@ -11,7 +11,7 @@ namespace proof\util;
  * Container for  storing items in sequence
  *
  */
-class ArrayList extends AbstractCollection
+class ArrayList extends AbstractCollection implements Sequence
 {
 
 

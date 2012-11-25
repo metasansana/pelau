@@ -1,52 +1,30 @@
 <?php
-
 namespace proof\sql;
-
 /**
- * timestamp Aug 4, 2012 9:00:02 AM
+ * timestamp Nov 10, 2012 6:28:28 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  FastStatement represents an SQL statement that will be executed in one trip, that is, without preperation.
- *  <b>The contents of FastStatements should be properly escaped to defened against SQL injection attacks.</b>
- *SQLInstruction
+ *  Interface representing an SQL Statement
+ *
  */
+use proof\util\Sequence;
 
-class Statement implements SQLStatement
+interface Statement
 {
 
     /**
-     * An sql statement string
-     * @var proof\php\String
+     * Treats the Statement as a query.     
+     * @param \proof\util\Sequence $s
      */
-    private $stmt;
+    public function query(Sequence $s);
 
-
-   /**
-    * Constructs a new Statement class.
-    * @param \proof\sql\SQLStatement $stmt    The SQLStatement class this class will wrap around.
-    */
-    public function __construct(SQLStatement $stmt)
-    {
-
-        $this->stmt = $stmt;
-    }
-
-    public function fetch(TupleSet $set)
-    {
-
-        return $this->stmt->fetch($set);
-
-    }
-
-    public function push()
-    {
-
-        return $this->stmt->push();
-
-    }
+    /**
+     * Treats the statement as an update.
+     */
+    public function update();
 
 }

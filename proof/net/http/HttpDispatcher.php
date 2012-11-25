@@ -36,9 +36,9 @@ class HttpDispatcher implements HttpSource
 
     /**
      * Constructs a new HttpEventDispatcher object.
-     * @param \proof\net\http\HttpSource $src    The source object that will be replace this one in events.
+     * @param \proof\net\http\HttpClient $src    The HttpClient object that will become the source of http events.
      */
-    public function __construct(HttpSource $src)
+    public function __construct(HttpClient $src)
     {
 
         $this->listeners = new ArrayList;

@@ -1,64 +1,27 @@
 <?php
 namespace proof\sql;
 /**
- * timestamp Oct 7, 2012 12:08:29 AM
+ * timestamp Nov 15, 2012 3:20:41 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package proof\sql
  *
- *  Class representing transaction mode SQL.
+ *  Class representing a handle to an sql transaction session.
  *
  */
-use proof\php\String;
-
-class Transaction implements SQLTransaction
+interface Transaction extends SQLConnection
 {
 
     /**
-     * The SQLTransaction being wrapped.
-     * @var proof\sql\Transaction    $proxy
-     * @access private
+     * Commits changes made during the transaction.
      */
-    private $proxy;
+    public function commit();
 
-    public function __construct(SQLTransaction $proxy)
-    {
+    /**
+     * 'Rolls back' any changes made during the transaction.
+     */
+    public function rollback();
 
-        $this->proxy = $proxy;
-
-    }
-
-    public function cancel()
-    {
-
-        $this->proxy->cancel();
-        return $this;
-    }
-
-    public function close()
-    {
-
-
-        $this->proxy->close();
-
-    }
-
-    public function commit()
-    {
-        return $this->proxy->commit();
-    }
-
-    public function create(String $sql)
-    {
-
-        return $this->proxy->create($sql);
-
-    }
-
-    public function prepare(String $sql)
-    {
-        return $this->proxy->prepare($sql);
-    }
 }
