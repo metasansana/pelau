@@ -11,7 +11,6 @@ namespace proof\sql\pdo;
  *  SQL statement class that uses PDO.
  *
  */
-use proof\php\String;
 use proof\sql\Statement;
 use proof\util\Sequence;
 
@@ -37,7 +36,7 @@ class PDOStatement implements Statement
      * @param string $sql    The sql statement.
      * @param \PDO $con   The PDOConnection object that will be used.
      */
-    public function __construct(String $sql, \PDO $pdo)
+    public function __construct($sql, \PDO $pdo)
     {
 
         $this->sql = $sql;
