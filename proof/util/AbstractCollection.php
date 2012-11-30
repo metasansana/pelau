@@ -33,7 +33,7 @@ class AbstractCollection extends AbstractAggregate implements Collection
 
     public function get($index)
     {
-        return $this->items[$index];
+        return @$this->items[$index];
 
     }
 
