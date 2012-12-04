@@ -32,6 +32,7 @@ class ValidState implements  PDOState
     public function __construct(\PDO $pdo, ActiveState $active)
     {
 
+        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->pdo = $pdo;
         $this->active = $active;
 
