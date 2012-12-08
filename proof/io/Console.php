@@ -25,6 +25,8 @@
 
 namespace proof\io;
 
+use proof\php\String;
+
 
 class Console
 {
@@ -32,12 +34,12 @@ class Console
 
     /**
      * Reads a line from STDIN.
-     * @return string  A line read with superflous whitespace removed.
+     * @return proof\php\String  A line read with superflous whitespace removed.
      */
     static public function readLine()
     {
 
-        return fgetss(STDIN);
+        return new String(fgetss(STDIN));
 
     }
 
