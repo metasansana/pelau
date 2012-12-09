@@ -39,7 +39,7 @@ class Console
     static public function readLine()
     {
 
-        return new String(fgetss(STDIN));
+        return new String(trim(fgetss(STDIN)));
 
     }
 
