@@ -133,5 +133,15 @@ final class String extends Type
 
     }
 
+    public function toUpper()
+    {
+        return strtoupper("$this");
+    }
+
+    public function toLower()
+    {
+        return strtolower("$this");
+    }
+
 
 }
