@@ -36,10 +36,10 @@ class Console
      * Reads a line from STDIN.
      * @return proof\php\String  A line read with superflous whitespace removed.
      */
-    static public function readLine()
+    static public function scan()
     {
 
-        return new String(trim(fgetss(STDIN)));
+        return new String(trim(fgets(STDIN)));
 
     }
 
