@@ -28,11 +28,11 @@ final class String extends Type
     }
 
     /**
-     * Search for the first occurence of a string in this string.
-     * @param String $needle
+     * Returns the position of the first found occurrence of a value in this String.
+     * @param string $needle
      * @return int|boolean    The position the $needle was found (-1) or FALSE if it was not found.
      */
-    public function indexOf(String $needle)
+    public function indexOf($needle)
     {
 
         return strpos($this->value, "$needle");
@@ -40,29 +40,19 @@ final class String extends Type
     }
 
     /**
-     * Returns true if this String mathces a regex.
+     * Determines if this String matches a regex.
      * @param String $regex
      * @return boolean
-     * @throws proof\regex\RegexException
      */
-    public function matches(String $regex)
+    public function match($regex)
     {
 
-        $flag = preg_match("$regex", $this->value);
-
-        if ($flag === FALSE)
-            throw new proof\regex\RegexException;
-
-        if (!$flag)
-            return FALSE;
-
-        if ($flag)
-            return TRUE;
+        return preg_match($regex, $this->value);
 
     }
 
     /**
-     * Returns the length of this string.
+     * Returns the length of this String.
      * @return int
      */
     public function length()
@@ -72,11 +62,11 @@ final class String extends Type
     }
 
     /**
-     * Returns a copy of this string with $string appended to it.
-     * @param String $string
+     * Creates a copy of this String with $string appended.
+     * @param string $string
      * @return String
      */
-    public function append(String $string)
+    public function append($string)
     {
 
         return new String("$this" . "$string");
@@ -84,18 +74,18 @@ final class String extends Type
     }
 
     /**
-     * Returns a copy of this string with $string prepended to it.
-     * @param String $string
+     * Creates a copy of this String with $string prepended.
+     * @param string $string
      * @return String
      */
-    public function prepend(String $string)
+    public function prepend($string)
     {
         return new String("$string" . "$this");
 
     }
 
     /**
-     * Returns a copy of this string with any occurences of $search replaced by $replace.
+     * Replaces a substring found in this String with a $replacement string.
      * @param string $target              The sub-string to be replaced.
      * @param string $replacement   The value to replace the sub-string with.
      * @param int $count=1                Optional: Number of times to do the replacement.
@@ -122,7 +112,7 @@ final class String extends Type
     }
 
     /**
-     * Splits this string around a common marker.
+     * Splits this string around a common marker into an array.
      * @param mixed $marker    The marker that will be used for spliting.
      * @return array    An array consiting of the split up string.
      */
