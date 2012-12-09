@@ -25,6 +25,8 @@
 
 namespace proof\util;
 
+use proof\php\String;
+
 
 
 class CommandChain
@@ -45,10 +47,10 @@ class CommandChain
 
     /**
      *  Adds a chainable to the list of commands.
-     * @param \proof\util\Chainable $link
+     * @param \proof\util\ChainCommand $link
      * @return proof\util\CommandChain
      */
-    public function add(Chainable $link)
+    public function add(ChainCommand $link)
     {
         $this->links->add($link);
         return $this;
@@ -56,16 +58,16 @@ class CommandChain
 
     /**
      * Attempts to handle a command internally.
-     * @param mixed $link
+     * @param proof\php\String $cmd
      * @param \proof\util\ArrayList $args
      * @return boolean True if a command is handled , false if otherwise.
      */
-    public function runCommand($link, ArrayList $args = null)
+    public function runCommand(String $cmd, ArrayList $args = null)
     {
 
         foreach($this->links as $link)
         {
-            if($link->onCommand($link, $args))
+            if($link->onCommand($cmd, $args))
                     return true;
         }
 
