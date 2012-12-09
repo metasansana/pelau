@@ -64,7 +64,7 @@ final class String extends Type
     /**
      * Creates a copy of this String with $string appended.
      * @param string $string
-     * @return String
+     * @return proof\php\String
      */
     public function append($string)
     {
@@ -76,7 +76,7 @@ final class String extends Type
     /**
      * Creates a copy of this String with $string prepended.
      * @param string $string
-     * @return String
+     * @return proof\php\String
      */
     public function prepend($string)
     {
@@ -89,7 +89,7 @@ final class String extends Type
      * @param string $target              The sub-string to be replaced.
      * @param string $replacement   The value to replace the sub-string with.
      * @param int $count=1                Optional: Number of times to do the replacement.
-     * @return String
+     * @return proof\php\String
      */
     public function replace($target, $replacement, $count = 1)
     {
@@ -102,7 +102,7 @@ final class String extends Type
      * Returns a substring of this String
      * @param int $start
      * @param int $end
-     * @return String
+     * @return proof\php\String
      */
     public function cut($start, $end)
     {
@@ -123,14 +123,26 @@ final class String extends Type
 
     }
 
+    /**
+     * Returns an upper case representation of this String.
+     * @return proof\php\String
+     */
     public function toUpper()
     {
-        return strtoupper("$this");
+
+        return new String(strtoupper("$this"));
+
     }
 
+    /**
+     * Returns a lowercase representation of this String.
+     * @return proof\php\String
+     */
     public function toLower()
     {
-        return strtolower("$this");
+
+        return new String(strtolower("$this"));
+
     }
 
 
