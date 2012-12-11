@@ -28,6 +28,16 @@ final class String extends Type
     }
 
     /**
+     * Removes whitespaces from both ends of this string.
+     * @return proof\util\String
+     */
+    public function trim()
+    {
+        return new String(trim($this->value));
+    }
+
+
+    /**
      * Returns the position of the first found occurrence of a value in this String.
      * @param string $needle
      * @return int|boolean    The position the $needle was found (-1) or FALSE if it was not found.
