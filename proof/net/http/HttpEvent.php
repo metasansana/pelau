@@ -26,17 +26,10 @@ abstract class HttpEvent extends Event
 {
 
     /**
-     * The parameters associated with the request.
-     * @var proof\util\Map
-     * @access protected
-     */
-    protected $params = array();
-
-    /**
      * Constructs a new HttpEvent type object.
-     * @param proof\net\http\HttpClient $src
+     * @param proof\net\http\HttpSource $src
      */
-    public function __construct(HttpClient $src)
+    public function __construct(HttpSource $src)
     {
 
 
@@ -56,21 +49,9 @@ abstract class HttpEvent extends Event
     public function getParameters()
     {
 
-        $this->params();
-        return new Map($this->params);
 
-    }
+        return new Map($this->params());
 
-    /**
-     * Returns a single parameter value from the request.
-     * @param mixed $name    The name of the desired parameter.
-     * @return mixed    The value of the requested key.
-     */
-    public function getParameter($name)
-    {
-
-        if($this->params->indexAt($name))
-            return $this->params->get($name);
     }
 
 
