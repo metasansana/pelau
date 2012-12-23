@@ -8,23 +8,15 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- *  Interface for listening to HTTP events (GET, POST and HEAD are supported).
+ *  Interface for listening to any HTTP event.
  *
  */
-interface HttpListener
+interface HttpListener extends GetListener, PostListener
 {
 
-    /**
-     * React to GET events.
-     * @param \proof\net\http\GetEvent $e
-     */
-    public function onGet(GetEvent $e);
 
 
-    /**
-     *  React to POST events.
-     * @param \proof\net\http\PostEvent $e
-     */
-    public function onPost(PostEvent $e);
+
+
 
 }
