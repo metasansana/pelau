@@ -39,7 +39,7 @@ class Console
     static public function scan()
     {
 
-        return new String(trim(fgets(STDIN)));
+        return (new String(fgets(STDIN)))->trim();
 
     }
 
@@ -49,7 +49,14 @@ class Console
      */
     static public function write($string)
     {
+
         return fwrite(STDIN, (string)$string);
+
+    }
+
+    static public function writeLine($string)
+    {
+        return self::write($string."\n");
     }
 
 
