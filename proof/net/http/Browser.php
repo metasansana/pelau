@@ -29,7 +29,7 @@ namespace proof\net\http;
 use proof\util\Map;
 use proof\php\Object;
 
-class Browser extends Object implements HttpClient, HttpSource
+class Browser extends Object implements HttpSource, HttpClient
 {
 
 

@@ -17,7 +17,7 @@ namespace proof\net\http;
  */
 use proof\util\ArrayList;
 
-class HttpDispatcher implements HttpSource
+class HttpDispatcher implements HttpClient
 {
 
     /**
@@ -36,9 +36,9 @@ class HttpDispatcher implements HttpSource
 
     /**
      * Constructs a new HttpEventDispatcher object.
-     * @param \proof\net\http\HttpClient $src    The HttpClient object that will become the source of http events.
+     * @param \proof\net\http\HttpSource $src    The HttpSource object that will become the source of http events.
      */
-    public function __construct(HttpClient $src)
+    public function __construct(HttpSource$src)
     {
 
         $this->listeners = new ArrayList;
@@ -48,6 +48,7 @@ class HttpDispatcher implements HttpSource
 
     private function _fireGet()
     {
+
         foreach($this->listeners as $l)
             $l->onGet(new GetEvent($this->src));
 
@@ -55,6 +56,7 @@ class HttpDispatcher implements HttpSource
 
     private function _firePost()
     {
+
         foreach($this->listeners as $l)
             $l->onPost(new PostEvent($this->src));
 
@@ -62,6 +64,7 @@ class HttpDispatcher implements HttpSource
 
     private function _fireHead()
     {
+
         foreach($this->listeners as $l)
             $l->onHead(new HeadEvent($this->src));
 
@@ -69,6 +72,7 @@ class HttpDispatcher implements HttpSource
 
     private function _firePut()
     {
+
         foreach($this->listeners as $l)
             $l->onPut(new PutEvent($this->src));
 
@@ -94,6 +98,8 @@ class HttpDispatcher implements HttpSource
     public function fire()
     {
 
+        //This is an deal setup for a chain of command pattern.
+        //@todo Refactor this class to use commands.
 
         $meth = HttpRequest::getProperty("REQUEST_METHOD");
 

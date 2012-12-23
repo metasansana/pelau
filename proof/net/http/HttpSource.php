@@ -8,17 +8,37 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- * Interface representing the source of incomming http requests.
+ * Interface of object that represent an http client.
  *
  */
-interface HttpClient
+interface HttpSource
 {
 
+
     /**
-     * Adds an HttpListener to this source
-     * @param \proof\net\http\HttpListener $l
-     * @return \proof\net\http\HttpClient
+     * Redirects the source to another url.
+     * @param string $location    The location to redirect to.
+     * @param int $timer=null      Optional: Time the source should wait before rediredting.
      */
-    public function addListener(HttpListener $l);
+    public function redirect($location, $timer=null);
+
+    /**
+     * Returns any cookies this client sent.
+     * @return proof\util\Map    A Map containing the cookies.
+     */
+    public function getCookies();
+
+    /**
+     * Returns the remote address for the HTTP source.
+     * @return string The address of the remote source in string form.
+     */
+    public function getRemoteAddress();
+
+    /**
+     * Returns the sources UA string if one is supplied.
+     * @return string | null
+     */
+    public function getUAString();
+
 
 }

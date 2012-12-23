@@ -8,32 +8,17 @@ namespace proof\net\http;
  * @copyright 2012 Lasana Murray
  * @package proof\net\http
  *
- * Interface for the source of http events.
+ * Interface for objects that can actually generate HTTP events.
  *
  */
-interface HttpClient extends HttpClient
+interface HttpClient
 {
 
     /**
-     * Returns an object capable of sending headers.
-     * @param int $status = null    The status code the response will be created with.
-     * @return proof\net\http\HttpResponse    The object capable of sending headers.
+     * Adds an HttpListener to this source
+     * @param \proof\net\http\HttpListener $l
+     * @return \proof\net\http\HttpSource
      */
-    public function getResponse($status=null);
-
-    /**
-     * Returns any cookies this client sent.
-     * @return proof\util\Map    A Map containing the cookies.
-     */
-    public function getCookies();
-    
-    /**
-     * Attempts to return the user agent string.
-     * @return string | null
-     */
-    public function getUA();
-
-
-
+    public function addListener(HttpListener $l);
 
 }
