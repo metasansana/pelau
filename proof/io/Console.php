@@ -44,6 +44,26 @@ class Console
     }
 
     /**
+     * Reads a line from STDIN silently.
+     * @return proof\php\String A line silently read from STDIN.
+     * NOTE: This method only works on *nix.
+     */
+    static public function scanSilent()
+    {
+
+        `stty -echo`;
+
+        $in = self::scan();
+
+        `stty echo`;
+
+        return $in;
+
+
+
+    }
+
+    /**
      * Writes a string to STDIN
      * @param string $string The string to be written to STDIN.
      */
@@ -58,6 +78,8 @@ class Console
     {
         return self::write($string."\n");
     }
+
+
 
 
 
