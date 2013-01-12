@@ -91,4 +91,14 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
 
     }
 
+    /**
+     * Turns this Collection into a String
+     * @param mixed $glue    A character that the members will be bonded by.
+     * @return pelau\php\String;
+     */
+    public function stringify($glue=",")
+    {
+        return new pelau\php\String(implode($glue, $this->items));
+    }
+
 }
