@@ -15,7 +15,7 @@ namespace pelau\util;
 use pelau\php\Object;
 use pelau\php\String;
 
-class Event extends Object
+abstract class Event extends Object
 {
 
     /**
@@ -32,6 +32,7 @@ class Event extends Object
     public function __construct(Object $source)
     {
 
+
         $this->source = $source;
 
 
@@ -45,14 +46,5 @@ class Event extends Object
     {
         return $this->source;
     }
-
-
-    public function getMessage()
-    {
-        $type = $this->getClassName();
-        return new String("$type occured.");
-    }
-
-
 
 }

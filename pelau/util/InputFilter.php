@@ -11,14 +11,14 @@ namespace pealu\util;
  *  Interface for filtering user input to an app.
  *
  */
-interface InputFilter
+interface Filter
 {
 
     /**
      * The value to be filtered.
-     * @param mixed $input
+     * @param mixed $target
      * @return mixed    The filtered value input to the app.
      */
-    public function filter($input);
+    public function filter($target);
 
 }
