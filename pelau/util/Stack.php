@@ -14,7 +14,7 @@ namespace pelau\util;
  *  Implementation of a Stack.
  *
  */
-class Stack extends AbstractAggregate
+class Stack extends Aggregate
 {
 
 

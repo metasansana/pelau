@@ -11,13 +11,13 @@ namespace pelau\util;
  * Collection that allows keys to be assigned when adding to it.
  *
  */
-class Map extends AbstractCollection
+class Map extends Collection
 {
     /**
      * Adds an item to this Collection
      * @param string $index
      * @param mixed $item
-     * @return \pelau\util\AbstractCollection
+     * @return \pelau\util\Collection
      *
      */
     public function add($index, $item)
