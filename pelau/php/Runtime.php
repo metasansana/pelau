@@ -45,7 +45,7 @@ class Runtime extends Object
      * @param int $status
      * @param string $message
      */
-    static public function halt($status, $message=null)
+    static public function halt($status=0, $message=null)
     {
 
         if($message)
