@@ -1,12 +1,12 @@
 <?php
-namespace pelau\sql;
+namespace proof\sql;
 /**
  * timestamp Nov 15, 2012 3:20:41 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql
+ * @package proof\sql
  *
  *  Class representing a handle to an sql transaction session.
  *

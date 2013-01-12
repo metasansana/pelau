@@ -1,12 +1,12 @@
 <?php
-namespace pelau\sql;
+namespace proof\sql;
 /**
  * timestamp Oct 6, 2012 11:51:55 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql
+ * @package proof\sql
  *
  *  Exception class for SQL related errors.
  *
