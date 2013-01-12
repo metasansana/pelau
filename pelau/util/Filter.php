@@ -15,7 +15,7 @@ interface Filter
 {
 
     /**
-     * The value to be filtered.
+     * Filter the specified target.
      * @param mixed $target
      * @return mixed    The filtered value input to the app.
      */
