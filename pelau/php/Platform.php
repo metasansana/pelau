@@ -32,7 +32,7 @@ class Platform
     static public function parseINI($filename)
     {
 
-            return new \pealu\util\Map(parse_ini_file($filename, true));
+            return new \pelau\util\Map(parse_ini_file($filename, true));
 
     }
 
