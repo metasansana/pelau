@@ -14,6 +14,12 @@ namespace pelau\net\http;
 interface HttpSource
 {
 
+    /**
+     * Adds an HttpListener to this source
+     * @param \pelau\net\http\HttpListener $l
+     * @return \pelau\net\http\HttpSource
+     */
+    public function addListener(HttpListener $l);
 
     /**
      * Redirects the source to another url.
