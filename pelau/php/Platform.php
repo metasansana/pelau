@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Jan 12, 2013 12:25:33 PM
+ * timestamp: Jan 12, 2013 5:19:32 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,35 +19,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\php
+ * @package pelau\php;
  *
- *  Class representing a runtime instance of the program.
+ * Convience class that contains static methods for useful PHP features.
  */
 namespace pelau\php;
 
-use pelau\util\ArrayList;
-
-class Runtime extends Object
+class Platform
 {
 
 
-    /**
-     *  Returns a runtime object associated with the current application.
-     * @return \pelau\php\Runtime
-     */
-    static public function getRuntime()
+    static public function parseINI($filename)
     {
-        return new Runtime();
-    }
 
-    /**
-     * Returns the command line arguments this program was started with (if any).
-     * @return pelau\util\ArrayList
-     */
-    public function getArguments()
-    {
-        global $argv; //ewwww
-        return new ArrayList($argv);
+            return new pealu\util\Map(parse_ini_file($filename, true));
+
     }
 
 }
