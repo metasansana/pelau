@@ -27,7 +27,7 @@ namespace pelau\php;
 
 use pelau\util\ArrayList;
 
-class Runtime
+class Runtime extends Object
 {
 
 
@@ -48,6 +48,16 @@ class Runtime
     {
         global $argv; //ewwww
         return new ArrayList($argv);
+    }
+
+    /**
+     * Loads an ini file into a Map.
+     * @param string $filename
+     * @return \pelau\php\pelau\util\Map
+     */
+    public function parseINI($filename)
+    {
+        return new pelau\util\Map(parse_ini_file($filename, true));
     }
 
 }
