@@ -30,24 +30,29 @@ use pelau\util\ArrayList;
 class Runtime extends Object
 {
 
-
-    /**
-     *  Returns a runtime object associated with the current application.
-     * @return \pelau\php\Runtime
-     */
-    static public function getRuntime()
-    {
-        return new Runtime();
-    }
-
     /**
      * Returns the command line arguments this program was started with (if any).
      * @return pelau\util\ArrayList
      */
-    public function getArguments()
+    static public function getArguments()
     {
         global $argv; //ewwww
         return new ArrayList($argv);
+    }
+
+    /**
+     * End execution of this program.
+     * @param int $status
+     * @param string $message
+     */
+    static public function halt($status, $message=null)
+    {
+
+        if($message)
+            echo $message;
+
+        exit((int)$status);
+
     }
 
 }
