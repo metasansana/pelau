@@ -1,12 +1,12 @@
 <?php
-namespace pelau\net\http;
+namespace pelau\web;
 /**
  * timestamp Nov 6, 2012 4:14:42 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\net\http
+ * @package pelau\web
  *
  * Class for storing client  side cookies.
  *
@@ -53,7 +53,7 @@ class CookieCache implements CookieStore
     public function __construct($path=null, $domain=null, $issecure=false, $ishttponly=false)
     {
 
-        
+
         $this->path = $path;
         $this->domain  = $domain;
         $this->issecure = $issecure;

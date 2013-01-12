@@ -19,23 +19,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http;
+ * @package pelau\web
  *
  *  Class representing a client browser.
  */
 
-namespace pelau\net\http;
+namespace pelau\web;
 
 use pelau\util\Map;
 use pelau\php\Object;
+use pelau\web\HttpSource;
+use pelau\web\HttpRequest;
+use pelau\web\HttpEventGenerator;
 
-class Browser extends Object implements HttpSource, HttpClient
+class Browser extends Object implements HttpSource
 {
 
 
     /**
      * Internal HttpEventDispatcher.
-     * @var pelau\net\http\HttpDispatcher $dispatch
+     * @var pelau\web\HttpDispatcher $dispatch
      * @access private
      */
     private $dispatch;
@@ -44,7 +47,7 @@ class Browser extends Object implements HttpSource, HttpClient
     public function __construct()
     {
 
-        $this->dispatch = new HttpDispatcher($this);
+        $this->dispatch = new HttpEventGenerator($this);
 
     }
 
@@ -90,7 +93,7 @@ class Browser extends Object implements HttpSource, HttpClient
 
     public function redirect($location, $timer = null)
     {
-
+          throw new pelau\php\UnsupportedOperationException;
     }
 
 }

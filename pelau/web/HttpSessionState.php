@@ -1,12 +1,12 @@
 <?php
-namespace pelau\net\http;
+namespace pelau\web;
 /**
  * timestamp Nov 5, 2012 4:30:15 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\net\http
+ * @package pelau\web
  *
  *  Interface representing http session interaction.
  *
@@ -36,7 +36,7 @@ interface HttpSessionState
      * Stores a value to the http session.
      * @param string $key
      * @param mixed $value
-     * @return pelau\net\http\HttpSessionState
+     * @return pelau\web\HttpSessionState
      */
     public function put($key, $value);
 

@@ -1,12 +1,12 @@
 <?php
-namespace pelau\app\web;
+namespace pelau\web;
 /**
  * timestamp Oct 20, 2012 4:29:02 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\app\web
+ * @package pelau\web
  *
  *  Filter for safe html input.
  *

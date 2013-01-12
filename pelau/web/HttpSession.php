@@ -1,6 +1,6 @@
 <?php
 
-namespace pelau\net\http;
+namespace pelau\web;
 
 
 /**
@@ -9,7 +9,7 @@ namespace pelau\net\http;
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\net\http
+ * @package pelau\web
  *
  *
  * Class representing an http session.
@@ -20,7 +20,7 @@ class HttpSession implements HttpSessionState
 
     /**
      * Internal state of this session.
-     * @var pelau\net\http\HttpSessionState $state
+     * @var pelau\web\HttpSessionState $state
      * @access private
      */
     private $state;
