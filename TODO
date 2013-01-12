@@ -1,6 +1,7 @@
 TODO
 ====
 
+<<<<<<< HEAD
 Bugs
 -----
 
@@ -10,13 +11,33 @@ Legal
 -----
 
 *Choose a suitable license (most likely Apache or BSD).
+=======
+Legal
+-------
+
+Insert the Apache license in the  LICENSE file.
+>>>>>>> experimental
 
 Unit Tests
 ----------
 
+<<<<<<< HEAD
 *Review exisiting unit tests.
 *Identify no longer needed tests.
 *Add tests that are missing (where feasible).
+=======
+Not all classes will have unit tests. These are the ones not done yet:
+
+
+
+
+Broken Tests
+------------
+
+
+
+
+>>>>>>> experimental
 
 Documentation
 -------------
@@ -39,3 +60,22 @@ Packaging
 *A .deb file would be nice.
 
 
+<<<<<<< HEAD
+=======
+Packages
+-------------
+
+[php]
+
+*Number class.
+*Character class.
+
+
+Code
+---------------
+
+Browser->redirect() needs implementation.
+HttpResponse will become a static class.
+Ensure all classes have Object as a root.
+
+>>>>>>> experimental

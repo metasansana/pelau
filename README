@@ -17,8 +17,13 @@ Commence the reinvention of the wheel. :)
 Usage
 -----
 
+<<<<<<< HEAD
 To start using proof just copy the "proof" folder and "proof.php" file to your server route.
 From there just include the "proof.php" file and your on your way.
+=======
+To start using pelau just copy the "pelau" folder and "pelau.php" file to your server route.
+From there just include the "pelau.php" file and your on your way.
+>>>>>>> experimental
 
 
 Contribute
