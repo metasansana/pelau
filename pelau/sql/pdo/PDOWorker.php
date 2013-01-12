@@ -1,17 +1,17 @@
 <?php
-namespace pelau\sql\pdo;
+namespace proof\sql\pdo;
 /**
  * timestamp Nov 17, 2012 10:02:59 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql\pdo
+ * @package proof\sql\pdo
  *
  *  Internal helper class for PDO Statement classes.
  *
  */
-use pelau\util\Sequence;
+use proof\util\Sequence;
 
 class PDOWorker
 {
@@ -20,7 +20,7 @@ class PDOWorker
     public function error(array $err)
     {
 
-        throw new \pelau\sql\SQLException($err[0], $err[1], $err[2]);
+        throw new \proof\sql\SQLException($err[0], $err[1], $err[2]);
 
     }
 

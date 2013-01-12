@@ -1,21 +1,17 @@
 <?php
-namespace pelau\sql\pdo;
+namespace proof\sql\pdo;
 /**
  * timestamp Nov 10, 2012 4:38:50 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql\pdo
+ * @package proof\sql\pdo
  *
  * Class representing a PDO conneciton in auto commit mode.
  *
  */
-<<<<<<< HEAD:proof/sql/pdo/ValidState.php
 use proof\php\UnsupportedOperationException;
-=======
-use pelau\php\UnsupportedOperationException;
->>>>>>> experimental:pelau/sql/pdo/ValidState.php
 class ValidState implements  PDOState
 {
 
@@ -28,7 +24,7 @@ class ValidState implements  PDOState
 
     /**
      * The active state of the connection
-     * @var pelau\sql\pdo\ActiveState $state
+     * @var proof\sql\pdo\ActiveState $state
      * @access private
      */
     private $active;
@@ -36,6 +32,7 @@ class ValidState implements  PDOState
     public function __construct(\PDO $pdo, ActiveState $active)
     {
 
+        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->pdo = $pdo;
         $this->active = $active;
 

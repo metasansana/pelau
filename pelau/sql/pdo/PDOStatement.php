@@ -1,19 +1,19 @@
 <?php
-namespace pelau\sql\pdo;
+namespace proof\sql\pdo;
 /**
  * timestamp Oct 3, 2012 9:48:19 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql\pdo
+ * @package proof\sql\pdo
  *
  *  SQL statement class that uses PDO.
  *
  */
-use pelau\php\String;
-use pelau\sql\Statement;
-use pelau\util\Sequence;
+use proof\php\String;
+use proof\sql\Statement;
+use proof\util\Sequence;
 
 class PDOStatement implements Statement
 {
@@ -33,7 +33,7 @@ class PDOStatement implements Statement
     private $sql;
 
     /**
-     * Constructs a new pelau\sql\PDOStatement
+     * Constructs a new proof\sql\PDOStatement
      * @param string $sql    The sql statement.
      * @param \PDO $con   The PDOConnection object that will be used.
      */

@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
 namespace proof\sql\pdo;
-=======
-namespace pelau\sql\pdo;
->>>>>>> experimental:pelau/sql/pdo/PDOPreparedStatement.php
 
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
@@ -12,12 +8,12 @@ namespace pelau\sql\pdo;
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql
+ * @package proof\sql
  *
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
-use pelau\sql\PreparedStatement;
-use pelau\util\Sequence;
+use proof\sql\PreparedStatement;
+use proof\util\Sequence;
 
 class PDOPreparedStatement implements PreparedStatement
 {

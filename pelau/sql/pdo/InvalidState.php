@@ -1,6 +1,6 @@
 <?php
 
-namespace pelau\sql\pdo;
+namespace proof\sql\pdo;
 
 /**
  * timestamp Nov 10, 2012 5:31:06 PM
@@ -8,12 +8,12 @@ namespace pelau\sql\pdo;
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package pelau\sql\pdo
+ * @package proof\sql\pdo
  *
  *  Represents a closed PDO connection.
  *
  */
-use pelau\php\UnsupportedOperationException;
+use proof\php\UnsupportedOperationException;
 
 class InvalidState implements PDOState
 {
