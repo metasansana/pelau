@@ -50,7 +50,7 @@ class Event extends Object
     public function getMessage()
     {
         $type = $this->getClassName();
-        return new String("An event of type: $type has occured.");
+        return new String("$type occured.");
     }
 
 

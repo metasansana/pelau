@@ -20,8 +20,7 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass("proof\\net\http\HttpEvent",
-                array(new MockHttpSource));
+        $this->object = $this->getMockForAbstractClass("proof\\net\http\HttpEvent", array (new MockHttpSource));
 
     }
 
@@ -45,6 +44,5 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf("proof\util\Map", $this->object->getParameters());
 
     }
-
 
 }

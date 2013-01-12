@@ -36,7 +36,6 @@ class StackTest extends \PHPUnit_Framework_TestCase
 
     }
 
-
     /**
      * @covers proof\util\Stack::push
      *
@@ -62,12 +61,13 @@ class StackTest extends \PHPUnit_Framework_TestCase
     public function testPushinAndPopin()
     {
         $this->object->push(new \stdClass());
-        
+
         $this->assertEquals(1, $this->object->size());
 
         $this->object->pop();
 
         $this->assertEquals(0, $this->object->size());
+
     }
 
 }
