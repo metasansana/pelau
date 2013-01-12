@@ -166,6 +166,11 @@ final class String extends Type
 
     }
 
+    public function trim()
+    {
+        return new String(trim("$this"));
+    }
+        
     /**
      * Converts this string to a Character array.
      * @return array    An array containing the characters of this string.
