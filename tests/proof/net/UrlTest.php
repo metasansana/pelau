@@ -1,7 +1,7 @@
 <?php
 
-namespace proof\net;
-use proof\php\String;
+namespace pelau\net;
+use pelau\php\String;
 
 
 /**
@@ -35,7 +35,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getPath
+     * @covers pelau\net\Url::getPath
      * @todo   Implement testGetPath().
      */
     public function testGetPath()
@@ -50,7 +50,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getCleanPath
+     * @covers pelau\net\Url::getCleanPath
      * @todo   Implement testGetCleanPath().
      */
     public function testGetCleanPath()
@@ -65,7 +65,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getHost
+     * @covers pelau\net\Url::getHost
      * @todo   Implement testGetHost().
      */
     public function testGetHost()
@@ -78,7 +78,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getProtocol
+     * @covers pelau\net\Url::getProtocol
      * @todo   Implement testGetProtocol().
      */
     public function testGetProtocol()
@@ -91,7 +91,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getPort
+     * @covers pelau\net\Url::getPort
      * @todo   Implement testGetPort().
      */
     public function testGetPort()
@@ -104,7 +104,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getQueryString
+     * @covers pelau\net\Url::getQueryString
      * @todo   Implement testGetQueryString().
      */
     public function testGetQueryString()
@@ -117,7 +117,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::getFragment
+     * @covers pelau\net\Url::getFragment
      * @todo   Implement testGetFragment().
      */
     public function testGetFragment()
@@ -130,7 +130,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\Url::__toString
+     * @covers pelau\net\Url::__toString
      * @todo   Implement test__toString().
      */
     public function test__toString()

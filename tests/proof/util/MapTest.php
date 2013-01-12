@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
 /**
@@ -34,7 +34,7 @@ class MapTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\Map::add
+     * @covers pelau\util\Map::add
      */
     public function testAdd()
     {

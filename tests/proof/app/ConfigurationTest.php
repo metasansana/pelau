@@ -1,7 +1,7 @@
 <?php
 
-namespace proof\app;
-use proof\php\String;
+namespace pelau\app;
+use pelau\php\String;
 
 
 /**
@@ -35,7 +35,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\Configuration::getIterator
+     * @covers pelau\app\Configuration::getIterator
      */
     public function testIteration()
     {
@@ -52,14 +52,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\Configuration::get
+     * @covers pelau\app\Configuration::get
      */
     public function testGet()
     {
 
         $this->assertEquals("Big bertha", $this->object->get('name'));
 
-        $this->assertInstanceOf("proof\util\Map", $this->object->get('version'));
+        $this->assertInstanceOf("pelau\util\Map", $this->object->get('version'));
 
     }
 

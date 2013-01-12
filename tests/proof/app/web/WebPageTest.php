@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\app\web;
+namespace pelau\app\web;
 
 
 /**
@@ -34,7 +34,7 @@ class WebPageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\web\WebPage::addContent
+     * @covers pelau\app\web\WebPage::addContent
      * @todo   Implement testAddContent().
      */
     public function testAddContent()
@@ -47,7 +47,7 @@ class WebPageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\web\WebPage::render
+     * @covers pelau\app\web\WebPage::render
      * @todo   Implement testRender().
      */
     public function testRender()

@@ -11,7 +11,7 @@ namespace tests\helpers;
  *
  *
  */
-use proof\net\http;
+use pelau\net\http;
 
 class MockHttpListener implements HttpListener
 {

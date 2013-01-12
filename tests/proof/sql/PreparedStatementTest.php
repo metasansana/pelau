@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\sql;
+namespace pelau\sql;
 
 
 /**
@@ -20,7 +20,7 @@ class PreparedStatementTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $mock = $this->getMockForAbstractClass("proof\\sql\\SQLPreparedStatement");
+        $mock = $this->getMockForAbstractClass("pelau\\sql\\SQLPreparedStatement");
 
         $this->object = new PreparedStatement($mock);
 
@@ -36,7 +36,7 @@ class PreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PreparedStatement::bind
+     * @covers pelau\sql\PreparedStatement::bind
      * @todo   Implement testBind().
      */
     public function testBind()
@@ -47,7 +47,7 @@ class PreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PreparedStatement::bindName
+     * @covers pelau\sql\PreparedStatement::bindName
      * @todo   Implement testBindName().
      */
     public function testBindName()
@@ -58,42 +58,42 @@ class PreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PreparedStatement::addSQLEventListener
+     * @covers pelau\sql\PreparedStatement::addSQLEventListener
      * @todo   Implement testAddSQLEventListener().
      */
     public function testAddSQLEventListener()
     {
-       $mock = $this->getMockForAbstractClass('proof\\sql\\SQLEventListener');
+       $mock = $this->getMockForAbstractClass('pelau\\sql\\SQLEventListener');
         $this->assertInstanceOf(get_class($this->object), $this->object->addSQLEventListener($mock));
 
     }
 
     /**
-     * @covers proof\sql\PreparedStatement::fetch
+     * @covers pelau\sql\PreparedStatement::fetch
      * @todo   Implement testFetch().
      */
     public function testFetch()
     {
-        $mock = $this->getMockForAbstractClass("proof\\sql\\SQLPreparedStatement");
+        $mock = $this->getMockForAbstractClass("pelau\\sql\\SQLPreparedStatement");
 
         $mock->expects($this->once())->method('fetch')->will($this->returnValue(1));
 
         $stmt = new PreparedStatement($mock);
 
-        $cache = $this->getMockForAbstractClass("proof\\sql\\RowCache");
+        $cache = $this->getMockForAbstractClass("pelau\\sql\\RowCache");
 
         $this->assertEquals(1, $stmt->fetch($cache));
 
     }
 
     /**
-     * @covers proof\sql\PreparedStatement::push
+     * @covers pelau\sql\PreparedStatement::push
      * @todo   Implement testPush().
      */
     public function testPush()
     {
 
-        $mock = $this->getMockForAbstractClass("proof\\sql\\SQLPreparedStatement");
+        $mock = $this->getMockForAbstractClass("pelau\\sql\\SQLPreparedStatement");
 
         $mock->expects($this->once())->method('push')->will($this->returnValue(1));
 

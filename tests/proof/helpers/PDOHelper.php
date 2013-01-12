@@ -1,12 +1,12 @@
 <?php
-namespace proof\helpers;
+namespace pelau\helpers;
 /**
  * timestamp Sep 3, 2012 4:52:36 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\helpers
+ * @package pelau\helpers
  *
  *  <b>Unit testing class, NOT part of the official package!</b>
  *
@@ -15,7 +15,7 @@ class PDOHelper
 {
 
 
-    public static function getPDO($dsn = "proof", $username =  "proof-user", $passwd = "test")
+    public static function getPDO($dsn = "pelau", $username =  "pelau-user", $passwd = "test")
     {
 
 

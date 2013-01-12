@@ -1,9 +1,9 @@
 <?php
 
-namespace proof\http;
+namespace pelau\http;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/http/HttpRequest.php';
+require_once dirname(__FILE__) . '/../../../../pelau/http/HttpRequest.php';
 
 /**
  * Test class for HttpRequest.
@@ -39,24 +39,24 @@ class HttpRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\http\HttpRequest::getPaths
+     * @covers pelau\http\HttpRequest::getPaths
      * @todo Implement testGetPaths().
      */
     public function testGetPaths()
     {
 
-        $this->assertInstanceOf('proof\util\ArrayList', $this->object->getPaths());
+        $this->assertInstanceOf('pelau\util\ArrayList', $this->object->getPaths());
         
     }
 
     /**
-     * @covers proof\http\HttpRequest::getPost
+     * @covers pelau\http\HttpRequest::getPost
      * @todo Implement testGetPost().
      */
     public function testGetPost()
     {
 
-        $this->assertInstanceOf('proof\util\Map', $this->object->getPost());
+        $this->assertInstanceOf('pelau\util\Map', $this->object->getPost());
 
     }
 

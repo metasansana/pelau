@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\sql;
+namespace pelau\sql;
 
 
 /**
@@ -34,7 +34,7 @@ class PDOPreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PDOPreparedStatement::bind
+     * @covers pelau\sql\PDOPreparedStatement::bind
      * @todo   Implement testBind().
      */
     public function testBind()
@@ -47,7 +47,7 @@ class PDOPreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PDOPreparedStatement::bindName
+     * @covers pelau\sql\PDOPreparedStatement::bindName
      * @todo   Implement testBindName().
      */
     public function testBindName()
@@ -60,7 +60,7 @@ class PDOPreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PDOPreparedStatement::fetch
+     * @covers pelau\sql\PDOPreparedStatement::fetch
      * @todo   Implement testFetch().
      */
     public function testFetch()
@@ -73,7 +73,7 @@ class PDOPreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PDOPreparedStatement::push
+     * @covers pelau\sql\PDOPreparedStatement::push
      * @todo   Implement testPush().
      */
     public function testPush()
@@ -86,7 +86,7 @@ class PDOPreparedStatementTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\sql\PDOPreparedStatement::addSQLEventListener
+     * @covers pelau\sql\PDOPreparedStatement::addSQLEventListener
      * @todo   Implement testAddSQLEventListener().
      */
     public function testAddSQLEventListener()

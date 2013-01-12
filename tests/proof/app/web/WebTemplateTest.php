@@ -1,8 +1,8 @@
 <?php
 
-namespace proof\app\web;
+namespace pelau\app\web;
 
-use proof\php\String;
+use pelau\php\String;
 
 
 /**
@@ -28,9 +28,9 @@ class WebTemplateTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @covers proof\app\web\WebTemplate::render
-     * @covers proof\app\web\WebTemplate::put
-     * @covers proof\app\web\WebTemplate::put
+     * @covers pelau\app\web\WebTemplate::render
+     * @covers pelau\app\web\WebTemplate::put
+     * @covers pelau\app\web\WebTemplate::put
      */
     public function testRender()
     {

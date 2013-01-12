@@ -1,9 +1,9 @@
 <?php
 
-namespace proof\php;
+namespace pelau\php;
 
 
-require_once dirname(__FILE__) . '/../../../proof/php/ArrayObject.php';
+require_once dirname(__FILE__) . '/../../../pelau/php/ArrayObject.php';
 
 /**
  * Test class for ArrayObject.
@@ -37,7 +37,7 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\php\ArrayObject::offsetExists
+     * @covers pelau\php\ArrayObject::offsetExists
      * @todo Implement testOffsetExists().
      */
     public function testOffsetExists()
@@ -50,7 +50,7 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\php\ArrayObject::offsetGet
+     * @covers pelau\php\ArrayObject::offsetGet
      * @depends testOffsetSet
      */
     public function testOffsetGet()
@@ -65,7 +65,7 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\php\ArrayObject::offsetSet
+     * @covers pelau\php\ArrayObject::offsetSet
      * @todo Implement testOffsetSet().
      */
     public function testOffsetSet()
@@ -77,7 +77,7 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\php\ArrayObject::offsetUnset
+     * @covers pelau\php\ArrayObject::offsetUnset
      *
      */
     public function testOffsetUnset()
@@ -95,7 +95,7 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\php\ArrayObject::count
+     * @covers pelau\php\ArrayObject::count
      *
      */
     public function testCount()

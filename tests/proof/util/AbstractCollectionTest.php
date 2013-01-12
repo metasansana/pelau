@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
 /**
@@ -20,17 +20,17 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass("proof\\util\\AbstractCollection");
+        $this->object = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection");
 
     }
 
     /**
-     * @covers proof\util\AbstractCollection::indexAt
+     * @covers pelau\util\AbstractCollection::indexAt
      */
     public function testIndexAt()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array("one"=>NULL, 1=>NULL)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array("one"=>NULL, 1=>NULL)));
 
         $this->assertTrue($obj->indexAt("one"));
 
@@ -43,12 +43,12 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractCollection::itemAt
+     * @covers pelau\util\AbstractCollection::itemAt
      */
     public function testItemAt()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array(1, 2 ,3, "index"=>100)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array(1, 2 ,3, "index"=>100)));
 
         $this->assertTrue($obj->itemAt(0));
 
@@ -59,12 +59,12 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractCollection::get
+     * @covers pelau\util\AbstractCollection::get
      */
     public function testGet()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array(1,  "index"=>100)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array(1,  "index"=>100)));
 
         $this->assertEquals(1, $obj->get(0));
 
@@ -73,12 +73,12 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractCollection::remove
+     * @covers pelau\util\AbstractCollection::remove
      */
     public function testRemove()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array(1, 2)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array(1, 2)));
 
         $this->assertTrue($obj->remove(1));
 
@@ -88,28 +88,28 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractCollection::size
+     * @covers pelau\util\AbstractCollection::size
      */
     public function testSize()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array(1, 2)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array(1, 2)));
 
         $this->assertEquals(2, $obj->size());
 
     }
 
     /**
-     * @covers proof\util\AbstractCollection::isEmpty
+     * @covers pelau\util\AbstractCollection::isEmpty
      */
     public function testIsEmpty()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection");
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection");
 
         $this->assertTrue($obj->isEmpty());
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection", array(array(1, 2)));
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection", array(array(1, 2)));
 
         $this->assertFalse($obj->isEmpty());
 
@@ -118,16 +118,16 @@ class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractCollection::getIterator
+     * @covers pelau\util\AbstractCollection::getIterator
      */
     public function testGetIterator()
     {
 
-        $obj = $this->getMockForAbstractClass("proof\\util\\AbstractCollection");
+        $obj = $this->getMockForAbstractClass("pelau\\util\\AbstractCollection");
 
         $this->assertInstanceOf("\Iterator", $obj->getIterator());
 
-        $this->assertInstanceOf("proof\util\Iterator", $obj->getIterator());
+        $this->assertInstanceOf("pelau\util\Iterator", $obj->getIterator());
 
     }
 
