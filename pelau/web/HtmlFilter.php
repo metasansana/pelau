@@ -11,9 +11,8 @@ namespace pelau\web;
  *  Filter for safe html input.
  *
  */
-use pelau\app\InputFilter;
 
-class HtmlFilter implements InputFilter
+class HtmlFilter implements pelau\util\Filter
 {
 
     /**
@@ -43,9 +42,9 @@ class HtmlFilter implements InputFilter
 
     }
 
-    public function filter($input)
+    public function on($target)
     {
-        return htmlentities($input, $this->flags, $this->enc);
+        return htmlentities($target, $this->flags, $this->enc);
     }
 
 
