@@ -19,6 +19,6 @@ interface Filter
      * @param mixed $target
      * @return mixed    The filtered value input to the app.
      */
-    public function filter($target);
+    public function on($target);
 
 }
