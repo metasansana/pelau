@@ -14,7 +14,7 @@ namespace pelau\util;
  *  Abstract implementation of the Aggregate interface.
  *
  */
-abstract class Aggregate extends pelau\php\Object
+abstract class Aggregate extends \pelau\php\Object
 {
 
     /**
