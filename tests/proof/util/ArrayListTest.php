@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
 /**
@@ -25,7 +25,7 @@ class ArrayListTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\ArrayList::add
+     * @covers pelau\util\ArrayList::add
      */
     public function testAdd()
     {

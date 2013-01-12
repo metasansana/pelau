@@ -1,8 +1,8 @@
 <?php
 
-namespace proof\app;
+namespace pelau\app;
 
-use proof\php\String;
+use pelau\php\String;
 
 
 /**
@@ -22,7 +22,7 @@ class AbstractDocumentTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass("proof\\app\\AbstractDocument");
+        $this->object = $this->getMockForAbstractClass("pelau\\app\\AbstractDocument");
 
     }
 
@@ -36,7 +36,7 @@ class AbstractDocumentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\AbstractDocument::addTemplates
+     * @covers pelau\app\AbstractDocument::addTemplates
      */
     public function testAddTemplates()
     {
@@ -46,7 +46,7 @@ class AbstractDocumentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\AbstractDocument::clear
+     * @covers pelau\app\AbstractDocument::clear
      */
     public function testClear()
     {
@@ -56,7 +56,7 @@ class AbstractDocumentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\AbstractDocument::get
+     * @covers pelau\app\AbstractDocument::get
      * @depends testPut
      */
     public function testGet()
@@ -69,7 +69,7 @@ class AbstractDocumentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\AbstractDocument::put
+     * @covers pelau\app\AbstractDocument::put
      */
     public function testPut()
     {

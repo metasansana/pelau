@@ -1,9 +1,9 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/util/Stack.php';
+require_once dirname(__FILE__) . '/../../../../pelau/util/Stack.php';
 
 /**
  * Test class for Stack.
@@ -38,7 +38,7 @@ class StackTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @covers proof\util\Stack::push
+     * @covers pelau\util\Stack::push
      *
      */
     public function testPush()
@@ -49,8 +49,8 @@ class StackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\Stack::pop
-     * @expectedException proof\util\StackEmptyException
+     * @covers pelau\util\Stack::pop
+     * @expectedException pelau\util\StackEmptyException
      */
     public function testPopEmtpy()
     {

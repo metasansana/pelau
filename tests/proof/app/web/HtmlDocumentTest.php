@@ -1,7 +1,7 @@
 <?php
 
-namespace proof\app\web;
-use proof\php\String;
+namespace pelau\app\web;
+use pelau\php\String;
 
 
 /**
@@ -27,7 +27,7 @@ class HtmlDocumentTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @covers proof\app\web\HtmlDocument::setCharacterSet
+     * @covers pelau\app\web\HtmlDocument::setCharacterSet
      * @todo   Implement testSetCharacterSet().
      */
     public function testSetCharacterSet()
@@ -39,7 +39,7 @@ class HtmlDocumentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\app\web\HtmlDocument::setTitle
+     * @covers pelau\app\web\HtmlDocument::setTitle
      * @todo   Implement testSetTitle().
      */
     public function testSetTitle()

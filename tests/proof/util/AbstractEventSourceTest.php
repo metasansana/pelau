@@ -1,9 +1,9 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/util/AbstractEventSource.php';
+require_once dirname(__FILE__) . '/../../../../pelau/util/AbstractEventSource.php';
 
 /**
  * Test class for AbstractEventSource.
@@ -37,7 +37,7 @@ class AbstractEventSourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractEventSource::getListeners
+     * @covers pelau\util\AbstractEventSource::getListeners
      * @todo Implement testGetListeners().
      */
     public function testGetListeners()
@@ -50,7 +50,7 @@ class AbstractEventSourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractEventSource::fire
+     * @covers pelau\util\AbstractEventSource::fire
      * @todo Implement testFire().
      */
     public function testFire()
@@ -63,7 +63,7 @@ class AbstractEventSourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractEventSource::flushListeners
+     * @covers pelau\util\AbstractEventSource::flushListeners
      * @todo Implement testFlushListeners().
      */
     public function testFlushListeners()
@@ -76,7 +76,7 @@ class AbstractEventSourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractEventSource::setListeners
+     * @covers pelau\util\AbstractEventSource::setListeners
      * @todo Implement testSetListeners().
      */
     public function testSetListeners()

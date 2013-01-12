@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
 /**
@@ -44,8 +44,8 @@ class IteratorAdapterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\IteratorAdapter::hasNext
-     * @covers proof\util\IteratorAdapter::next
+     * @covers pelau\util\IteratorAdapter::hasNext
+     * @covers pelau\util\IteratorAdapter::next
      */
     public function testNext()
     {

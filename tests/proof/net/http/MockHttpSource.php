@@ -1,16 +1,16 @@
 <?php
-namespace proof\net\http;
+namespace pelau\net\http;
 /**
  * timestamp Nov 1, 2012 5:11:56 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\net\http
+ * @package pelau\net\http
  *
  *
  */
-use proof\php\Object;
+use pelau\php\Object;
 
 class MockHttpSource extends Object implements HttpSource
 {

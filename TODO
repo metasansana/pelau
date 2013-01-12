@@ -1,6 +1,11 @@
 TODO
 ====
 
+
+Migration
+-----
+We are moving the pelau repo to QuenkTechnologies and the library is to be called 'pelau' now.
+
 Bugs
 -----
 
@@ -39,3 +44,10 @@ Packaging
 *A .deb file would be nice.
 
 
+Packages
+-------------
+
+[php]
+
+*Number class.
+*Character class.

@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\net\http;
+namespace pelau\net\http;
 
 
 /**
@@ -20,7 +20,7 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = $this->getMockForAbstractClass("proof\\net\http\HttpEvent",
+        $this->object = $this->getMockForAbstractClass("pelau\\net\http\HttpEvent",
                 array(new MockHttpSource));
 
     }
@@ -35,14 +35,14 @@ class HttpEventTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\net\http\HttpEvent::getParameters
+     * @covers pelau\net\http\HttpEvent::getParameters
      * @todo   Implement testGetParameters().
      */
     public function testGetParameters()
     {
 
 
-        $this->assertInstanceOf("proof\util\Map", $this->object->getParameters());
+        $this->assertInstanceOf("pelau\util\Map", $this->object->getParameters());
 
     }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace proof\util;
+namespace pelau\util;
 
 
-require_once dirname(__FILE__) . '/../../../../proof/util/AbstractObservable.php';
+require_once dirname(__FILE__) . '/../../../../pelau/util/AbstractObservable.php';
 
 /**
  * Test class for AbstractObservable.
@@ -37,7 +37,7 @@ class AbstractObservableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractObservable::addObservers
+     * @covers pelau\util\AbstractObservable::addObservers
      * @todo Implement testAddObservers().
      */
     public function testAddObservers()
@@ -51,7 +51,7 @@ class AbstractObservableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers proof\util\AbstractObservable::getObservers
+     * @covers pelau\util\AbstractObservable::getObservers
      * @todo Implement testGetObservers().
      */
     public function testGetObserver()
@@ -60,7 +60,7 @@ class AbstractObservableTest extends \PHPUnit_Framework_TestCase
 
        $this->object->attachObserver($stub);
 
-       $this->assertInstanceOf('proof\util\Observer', $stub);
+       $this->assertInstanceOf('pelau\util\Observer', $stub);
     }
 
 }
