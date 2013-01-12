@@ -28,4 +28,9 @@ class Map extends Collection
         return $this;
 
     }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->add($offset, $value);
+    }
 }

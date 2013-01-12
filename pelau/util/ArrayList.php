@@ -44,5 +44,10 @@ class ArrayList extends Collection implements Sequence
 
     }
 
+    public function offsetSet($offset, $value)
+    {
+        throw \pelau\php\UnsupprotedOperationException;
+    }
+
 
 }
