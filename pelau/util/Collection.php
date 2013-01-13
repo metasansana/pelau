@@ -41,14 +41,10 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
     {
 
         if ($this->indexAt($index))
-        {
             unset($this->items[$index]);
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
+
+        return $this;
+
 
     }
 

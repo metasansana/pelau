@@ -31,7 +31,7 @@ class ArrayList extends Collection implements Sequence
     /**
      * Removes the item specified by $index. Note that the numeric keys are recalculated.
      * @param mixed $index    The index to remove.
-     * @return boolean    TRUE if successful, FALSE otherwise.
+     * @return pelau\util\ArrayList
      */
     public function remove($index)
     {
@@ -40,7 +40,7 @@ class ArrayList extends Collection implements Sequence
 
         $this->items = array_values($this->items);
 
-        return $flag;
+        return $this;
 
     }
 
