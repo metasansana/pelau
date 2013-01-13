@@ -61,7 +61,7 @@ final class Console extends \pelau\php\Object
      */
     public function readLine()
     {
-        return (new \pelau\php\String(fgets(STDIN)))->trim();
+        return (string)(new \pelau\php\String(fgets(STDIN)))->trim();
     }
 
 
