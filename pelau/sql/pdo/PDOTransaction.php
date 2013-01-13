@@ -1,18 +1,18 @@
 <?php
-namespace proof\sql\pdo;
+namespace pelau\sql\pdo;
 /**
  * timestamp Nov 15, 2012 3:34:00 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\sql\pdo
+ * @package pelau\sql\pdo
  *
  * Class representing a pdo specific transation.
  *
  */
-use proof\sql\Transaction;
-use proof\sql\SQLConnection;
+use pelau\sql\Transaction;
+use pelau\sql\SQLConnection;
 
 class PDOTransaction implements Transaction
 {
@@ -26,14 +26,14 @@ class PDOTransaction implements Transaction
 
     /**
      * The state object used for sql execution.
-     * @var proof\sql\pdo\ValidState $valid
+     * @var pelau\sql\pdo\ValidState $valid
      * @access private
      */
     private $valid;
 
     /**
      * The ActiveState of the related connection.
-     * @var proof\sql\pdo\ActiveState $active
+     * @var pelau\sql\pdo\ActiveState $active
      * @access private
      */
     private $active;

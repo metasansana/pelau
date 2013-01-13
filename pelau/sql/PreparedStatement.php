@@ -1,12 +1,12 @@
 <?php
-namespace proof\sql;
+namespace pelau\sql;
 /**
  * timestamp Nov 10, 2012 6:40:46 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\sql
+ * @package pelau\sql
  *
  * Interface representing a PreparedStatement with an SQL database.
  *

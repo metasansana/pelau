@@ -17,14 +17,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package proof\sql;
+ * @package pelau\sql;
  *
  * Interface for generating sql queries.
  *
  *
  */
 
-namespace proof\sql;
+namespace pelau\sql;
 
 interface Selection
 {
@@ -32,7 +32,7 @@ interface Selection
     /**
      * Restricts the retrieved rows to the the columns specified.
      * @param string $cols    A comma seperated list of columns of interest.
-     * @return proof\sql\Selection
+     * @return pelau\sql\Selection
      */
     public function select($cols);
 
@@ -40,20 +40,20 @@ interface Selection
      * Restricts the retrieved rows to specific limits.
      * @param int $low
      * @param int $high
-     * @return proof\sql\Selection
+     * @return pelau\sql\Selection
      */
     public function offset($low, $high);
 
     /**
      *  Orders the retrieved rows according to the specified clause.
      * @param string $clause
-     * @return proof\sql\Selection
+     * @return pelau\sql\Selection
      */
     public function orderBy($clause);
 
     /**
      * Generates an SQL Statement modified by the options of this class.
-     * @return proof\sql\PreparedStatement
+     * @return pelau\sql\PreparedStatement
      */
     public function toStatement();
 

@@ -1,12 +1,12 @@
 <?php
-namespace proof\sql\pdo;
+namespace pelau\sql\pdo;
 /**
  * timestamp Nov 15, 2012 3:09:42 AM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\sql\pdo
+ * @package pelau\sql\pdo
  *
  *  Class representing the current state of a PDOConnection.
  *
@@ -16,7 +16,7 @@ class ActiveState implements PDOState
 
     /**
      * The current state of the connection.
-     * @var proof\sql\pdo
+     * @var pelau\sql\pdo
      * @access private
      */
     private $state;
@@ -32,8 +32,8 @@ class ActiveState implements PDOState
 
     /**
      * Switches the internal state with the given state.
-     * @param \proof\sql\pdo\PDOState $state
-     * @return proof\sql\pdo\PDOState The previous state.
+     * @param \pelau\sql\pdo\PDOState $state
+     * @return pelau\sql\pdo\PDOState The previous state.
      */
     public function swap(PDOState $state)
     {

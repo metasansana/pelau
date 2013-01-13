@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package proof\sql
+ * @package pelau\sql
  *
  * Class for customising general sql queries.
  */
 
-namespace proof\sql;
+namespace pelau\sql;
 
-use proof\util\Map;
+use pelau\util\Map;
 
 
 class ActiveRecord implements Selection
@@ -33,21 +33,21 @@ class ActiveRecord implements Selection
 
     /**
      * Generates the required sql.
-     * @var proof\sql\SQLFactory $c
+     * @var pelau\sql\SQLFactory $c
      * @access private
      */
     private $factory;
 
     /**
      * Contains the bindings for the compiler.
-     * @var proof\util\Map $map
+     * @var pelau\util\Map $map
      * @access private
      */
     private $map;
 
     /**
      * SQLConnection associated.
-     * @var proof\sql\SQLConnection $con
+     * @var pelau\sql\SQLConnection $con
      * @access private
      */
     private $con;

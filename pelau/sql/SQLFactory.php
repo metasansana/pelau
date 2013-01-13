@@ -18,22 +18,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package proof\sql
+ * @package pelau\sql
  *
  * Interface for generating sql strings.
  */
 
-namespace proof\sql;
+namespace pelau\sql;
 
-use proof\util\Map;
+use pelau\util\Map;
 
 interface SQLFactory
 {
 
     /**
      * Returns a String representing the sql statement.
-     * @param \proof\util\Map $bindings
-     * @return proof\php\String
+     * @param \pelau\util\Map $bindings
+     * @return pelau\php\String
      */
     public function generate(Map $bindings);
 

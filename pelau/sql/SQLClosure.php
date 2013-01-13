@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package proof\sql
+ * @package pelau\sql
  *
  *  Wrapper class that uses an anonymous function to generate sql query strings.
  */
 
-namespace proof\sql;
+namespace pelau\sql;
 
-use proof\util\Map;
-use proof\php\String;
+use pelau\util\Map;
+use pelau\php\String;
 
 
 

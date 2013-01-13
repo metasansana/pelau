@@ -1,6 +1,6 @@
 <?php
 
-namespace proof\sql\pdo;
+namespace pelau\sql\pdo;
 
 /**
  * timestamp Nov 10, 2012 5:16:27 PM
@@ -8,19 +8,19 @@ namespace proof\sql\pdo;
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\sql\pdo
+ * @package pelau\sql\pdo
  *
  *  Class represnting a sql connection via PDO.
  *
  */
-use proof\sql\SQLConnection;
+use pelau\sql\SQLConnection;
 
 class PDOConnection implements SQLConnection
 {
 
     /**
      * Mode of the connection.
-     * @var proof\sql\PDOState $state
+     * @var pelau\sql\PDOState $state
      * @access private
      */
     private $state;

@@ -1,24 +1,24 @@
 <?php
-namespace proof\sql;
+namespace pelau\sql;
 /**
  * timestamp Nov 10, 2012 6:28:28 PM
  *
  *
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
- * @package proof\sql
+ * @package pelau\sql
  *
  *  Interface representing an SQL Statement
  *
  */
-use proof\util\Sequence;
+use pelau\util\Sequence;
 
 interface Statement
 {
 
     /**
      * Treats the Statement as a query.     
-     * @param \proof\util\Sequence $s
+     * @param \pelau\util\Sequence $s
      */
     public function query(Sequence $s);
 

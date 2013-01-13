@@ -19,35 +19,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package proof\sql\pdo
+ * @package pelau\sql\pdo
  */
 
-namespace proof\sql\pdo;
+namespace pelau\sql\pdo;
 
-use proof\util\Map;
-use proof\app\Configuration;
-use proof\util\AbstractObservable;
-use proof\app\Logger;
+use pelau\util\Map;
+use pelau\app\Configuration;
+use pelau\util\AbstractObservable;
+use pelau\app\Logger;
 
 class PDOFactory extends AbstractObservable
 {
 
     /**
      *
-     * @var proof\util\Map $pool
+     * @var pelau\util\Map $pool
      */
     private $pool;
 
     /**
      *
-     * @var proof\app\Configuration $config
+     * @var pelau\app\Configuration $config
      */
     private $config;
 
 
     /**
      * The logger that will be logged to upon failure.
-     * @var proof\app\Logger $err
+     * @var pelau\app\Logger $err
      * @access private;
      */
     private $err;
