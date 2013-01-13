@@ -23,7 +23,7 @@ class Map extends Collection
     public function add($index, $item)
     {
 
-        $this->items[$index] = $item;
+        $this->items["$index"] = $item;
 
         return $this;
 
