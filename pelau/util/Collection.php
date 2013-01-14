@@ -94,7 +94,7 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
      */
     public function stringify($glue=",")
     {
-        return new pelau\php\String(implode($glue, $this->items));
+        return new \pelau\php\String(implode($glue, $this->items));
     }
 
 }
