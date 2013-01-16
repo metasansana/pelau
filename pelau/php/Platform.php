@@ -29,10 +29,15 @@ class Platform
 {
 
 
-    static public function parseINI($filename)
+    static public function parseINI($filename, $map=true)
     {
 
+        //the prototype is to be changed in future.
+
+        if($map)
             return new \pelau\util\Map(parse_ini_file($filename, true));
+
+        return parse_ini_file($filename, true);
 
     }
 

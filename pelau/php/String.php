@@ -109,10 +109,10 @@ final class String extends Type
      * Returns a copy of this string with any occurences of $search replaced by $replace.
      * @param string $target              The sub-string to be replaced.
      * @param string $replacement   The value to replace the sub-string with.
-     * @param int $count=1                Optional: Number of times to do the replacement.
+     * @param int $count=null                Optional: Number of times to do the replacement.
      * @return pelau\php\String
      */
-    public function replace($target, $replacement, $count = 1)
+    public function replace($target, $replacement, $count = null)
     {
 
         return new String(str_replace($target, $replacement, $this->value, $count));
