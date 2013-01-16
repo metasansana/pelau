@@ -37,7 +37,7 @@ class Runtime extends Object
     static public function getArguments()
     {
         global $argv; //ewwww
-        return new ArrayList($argv);
+        return (new ArrayList($argv))->remove(0);
     }
 
     /**
@@ -45,11 +45,11 @@ class Runtime extends Object
      * @param int $status
      * @param string $message
      */
-    static public function halt($status=0, $message=null)
+    static public function halt($message=null, $status=0)
     {
 
         if($message)
-            echo $message;
+            echo $message.PHP_EOL;
 
         exit((int)$status);
 
