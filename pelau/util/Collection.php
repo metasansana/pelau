@@ -24,7 +24,7 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
 
     }
 
-    public function itemAt($index)
+    public function contains($index)
     {
 
         return isset($this->items[$index]);

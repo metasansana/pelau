@@ -72,7 +72,7 @@ class PDOFactory extends AbstractObservable
     public function create($name)
     {
 
-        if ($this->pool->itemAt($name))
+        if ($this->pool->contains($name))
             return $this->pool->get($name);
 
         if (!$this->config->exists($name))
