@@ -54,10 +54,9 @@ class ActiveRecord implements Selection
 
 
 
-    public function __construct(SQLFactory $factory, SQLConnection $con)
+    public function __construct(SQLFactory $factory)
     {
 
-        $this->con = $con;
         $this->factory = $factory;
         $this->map = new Map;
 
@@ -106,10 +105,10 @@ class ActiveRecord implements Selection
     }
 
 
-    public function toStatement()
+    public function toStatement(\pealu\sql\SQLConnection $con)
     {
 
-        return $this->con->prepare((string)$this->factory->generate($this->map));
+        return $con->prepare((string)$this->factory->generate($this->map));
 
     }
 }
