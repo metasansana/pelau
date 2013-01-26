@@ -108,7 +108,7 @@ class SQLDataSelector
     public function toStatement(\pealu\sql\SQLConnection $con)
     {
 
-        return $con->prepare((string)$this->tmpl->toSQL(new SQLSelectorAdapter($this->map)));
+        return $con->prepare((string)$this->tmpl->toSQL(new SQLClauseAdapter($this->map)));
 
     }
 }
