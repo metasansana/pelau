@@ -36,7 +36,7 @@ class SQLDataSelector
      * @var pelau\sql\SQLTemplate $c
      * @access private
      */
-    private $factory;
+    private $tmpl;
 
     /**
      * Contains the bindings for the compiler.
@@ -57,7 +57,7 @@ class SQLDataSelector
     public function __construct(SQLTemplate $factory)
     {
 
-        $this->factory = $factory;
+        $this->tmpl = $factory;
         $this->map = new Map;
 
 
@@ -108,7 +108,7 @@ class SQLDataSelector
     public function toStatement(\pealu\sql\SQLConnection $con)
     {
 
-        return $con->prepare((string)$this->factory->toSQL($this->map));
+        return $con->prepare((string)$this->tmpl->toSQL($this->map));
 
     }
 }
