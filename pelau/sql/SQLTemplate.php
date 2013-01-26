@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Dec 4, 2012 4:36:15 AM
+ * timestamp: Dec 4, 2012 4:33:27 AM
  * encoding: UTF-8
  *
  * Copyright 2012  Lasana Murray <dev@trinistorm.org>
@@ -20,44 +20,21 @@
  *
  * @package pelau\sql
  *
- *  Wrapper class that uses an anonymous function to generate sql query strings.
+ * Interface for generating sql strings.
  */
 
 namespace pelau\sql;
 
 use pelau\util\Map;
-use pelau\php\String;
 
-
-
-
-class SQLClosureTemplate implements SQLTemplate
+interface SQLTemplate
 {
 
     /**
-     * The closure that will be used to generate sql.
-     * @var \Closure $c
-     * @access private
+     * Returns a String representing the sql statement.
+     * @param \pelau\util\Map $bindings
+     * @return pelau\php\String
      */
-    private $c;
+    public function toSQL(Map $bindings);
 
-    /**
-     * Constructs a SQLClosure object.
-     * @param \Closure $c
-     */
-    public function __construct(\Closure $c)
-    {
-
-        $this->c = $c;
-
-    }
-
-    public function toSQL(Map $bindings)
-    {
-
-        $c = $this->c;
-
-        return new String($c($bindings));
-
-    }
 }
