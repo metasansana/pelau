@@ -135,12 +135,12 @@ final class String extends Type
     /**
      * Splits this string around a common marker.
      * @param mixed $marker    The marker that will be used for spliting.
-     * @return pelau\util\ArrayList  An ArrayList containing the split members of the string.
+     * @return array An array containing the split members of the string.
      */
     public function split($marker)
     {
 
-        return new \pelau\util\ArrayList(explode((string) $marker, $this->value));
+        return explode((string) $marker, $this->value);
 
     }
 
