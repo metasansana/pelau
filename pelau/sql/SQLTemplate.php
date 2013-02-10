@@ -32,9 +32,9 @@ interface SQLTemplate
 
     /**
      * Returns a String representing the sql statement.
-     * @param \pelau\util\Map $bindings
-     * @return pelau\php\String
+     * @param \pelau\sql\SQLClauseAdapter $adapter
+     * @return string
      */
-    public function toSQL(Map $bindings);
+    public function toSQL(SQLClauseAdapter $adapter);
 
 }

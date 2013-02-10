@@ -32,12 +32,15 @@ WishList
 
 *Number class.
 *Character class.
+*Platform::import() method.
+*A String->trim() method that removes whatever we want.
 
 
-Fixes
+Outstanding Fixes
 -------
 
-Browser->redirect() needs implementation.
-HttpResponse will become a static class.
-Ensure all classes have Object as a root.
+*Browser->redirect() needs implementation.
+*HttpResponse should become a static class.
+*Ensure all classes have Object as a root.
+
 

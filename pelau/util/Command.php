@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Jan 12, 2013 12:25:33 PM
+ * timestamp: Jan 21, 2013 9:04:09 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,35 +19,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\php
+ * @package pelau\util
  *
- *  Class representing a runtime instance of the program.
+ * Interface for implementing a Command pattern.
  */
-namespace pelau\php;
+namespace pelau\util;
 
-use pelau\util\ArrayList;
 
-class Runtime
+interface Command
 {
 
-
     /**
-     *  Returns a runtime object associated with the current application.
-     * @return \pelau\php\Runtime
+     * Returns the result of executing this command.
+     * @return boolean
      */
-    static public function getRuntime()
-    {
-        return new Runtime();
-    }
+    public function execute();
 
-    /**
-     * Returns the command line arguments this program was started with (if any).
-     * @return pelau\util\ArrayList
-     */
-    public function getArguments()
-    {
-        global $argv; //ewwww
-        return new ArrayList($argv);
-    }
 
 }

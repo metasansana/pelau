@@ -24,13 +24,10 @@
  *  Class representing a client browser.
  */
 
-namespace pelau\web;
+namespace pelau\net\http;
 
 use pelau\util\Map;
 use pelau\php\Object;
-use pelau\web\HttpSource;
-use pelau\web\HttpRequest;
-use pelau\web\HttpEventGenerator;
 
 class Browser extends Object implements HttpSource
 {
@@ -91,6 +88,8 @@ class Browser extends Object implements HttpSource
 
     }
 
+    public function set(Header $h);
+    
     public function redirect($location, $timer = null)
     {
           throw new pelau\php\UnsupportedOperationException;

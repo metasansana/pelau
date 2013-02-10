@@ -40,7 +40,7 @@ class HttpEventGenerator
      * Constructs a new HttpEventDispatcher object.
      * @param \pelau\net\http\HttpSource $src    The HttpSource object that will become the source of http events.
      */
-    public function __construct(HttpSource$src)
+    public function __construct(HttpSource $src)
     {
 
         $this->listeners = new ArrayList;

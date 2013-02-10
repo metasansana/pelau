@@ -52,12 +52,12 @@ class SQLClosureTemplate implements SQLTemplate
 
     }
 
-    public function toSQL(Map $bindings)
+    public function toSQL(SQLClauseAdapter $adapter)
     {
 
         $c = $this->c;
 
-        return new String($c($bindings));
+        return ($c($adapter));
 
     }
 }

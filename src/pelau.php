@@ -21,5 +21,3 @@ if (defined('HANDLE_EXCEPTIONS'))
 {
     set_exception_handler('pelau\\php\\ExceptionHandler::onException');
 }
-
-?>
