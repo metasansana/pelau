@@ -1,0 +1,22 @@
+{
+	"name": "pelau/pelau",
+	"type": "library",
+	"description": "The pelau PHP library."
+		"authors": [
+		{
+			"name": "Lasana Murray",
+			"email": "lmurray@quenk.com"
+				"role": "Developer"
+		}
+	],
+		"require': {
+			"php": ">=5.4.0"
+},
+
+	"autoload": {	
+		"psr-0": {
+			"pelau": "src/"
+		}
+	}
+}
+
