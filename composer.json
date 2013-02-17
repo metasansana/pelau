@@ -1,11 +1,11 @@
 {
 	"name": "pelau/pelau",
 	"type": "library",
-	"description": "The pelau PHP library."
+	"description": "The pelau PHP library.",
 		"authors": [
 		{
 			"name": "Lasana Murray",
-			"email": "lmurray@quenk.com"
+			"email": "lmurray@quenk.com",
 				"role": "Developer"
 		}
 	],
