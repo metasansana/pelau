@@ -1,7 +1,7 @@
 {
 	"name": "QuenkTechnologies/pelau",
 	"type": "library",
-	"keywords": "Object, Orieted, Progarmming"
+	"keywords": "Object, Orieted, Progarmming",
 	"description": "The pelau PHP library.",
 	"license": "Apache-2.0",	
 	"authors": 
