@@ -1,7 +1,36 @@
 TODO
 ====
 
+<<<<<<< HEAD
 Expect the current release to be very buggy. More unit testing is necessary.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+
+Migration
+-----
+We are moving the pelau repo to QuenkTechnologies and the library is to be called 'pelau' now.
+
+>>>>>>> experimental
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
+Bugs
+-----
+
+*Track down any bugs and errors.
+
+Legal
+-----
+
+*Choose a suitable license (most likely Apache or BSD).
+=======
+Legal
+-------
+
+Insert the Apache license in the  LICENSE file.
+>>>>>>> experimental
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
 
 Unit Tests
 ----------
@@ -32,9 +61,13 @@ WishList
 
 *Number class.
 *Character class.
+<<<<<<< HEAD
 *Platform::import() method.
 *A String->trim() method that removes whatever we want.
 
+=======
+<<<<<<< HEAD
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
 
 Outstanding Fixes
 -------
@@ -44,3 +77,9 @@ Outstanding Fixes
 *Ensure all classes have Object as a root.
 
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
+>>>>>>> experimental
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
