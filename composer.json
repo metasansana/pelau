@@ -14,9 +14,9 @@
 	],
 	"support": 
 	{
-	        "email": "pelau@quenk.com"
+	        "email": "pelau@quenk.com",
 		"irc": "irc://irc.freenode.org/pelau"
-	}
+	},
 
 	"require": 
 	{		
@@ -30,7 +30,7 @@
 		{
 			"\\pelau\\": "src/pelau/"
 			
-		}
+		},
 		"file": ["src/pelau.php"]
 	}
 }
