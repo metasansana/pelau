@@ -1,24 +1,37 @@
 {
-	"name": "pelau/pelau",
+	"name": "QuenkTechnologies/pelau",
 	"type": "library",
+	"keywords": "Object, Orieted, Progarmming"
 	"description": "The pelau PHP library.",
-	"license": "Apache 2",
-		"authors": [
-		{
-			"name": "Lasana Murray",
-			"email": "lmurray@quenk.com",
-				"role": "Developer"
-		}
+	"license": "Apache-2.0",	
+	"authors": 
+	[
+	     {		
+		     "name": "Lasana Murray",
+                     "email": "lmurray@quenk.com",
+                     "role": "Developer"
+	     }
 	],
-		"require": {
-			"php": ">=5.4.0"
+	"support": 
+	{
+	        "email": "pelau@quenk.com"
+		"irc": "irc://irc.freenode.org/pelau"
+	}
 
-},
+	"require": 
+	{		
+		"php": ">=5.3.*"
 
-	"autoload": {	
-		"psr-0": {
-			"pelau": "src/pelau/"
+	},
+
+	"autoload": 
+	{	
+		"psr-0": 
+		{
+			"\\pelau\\": "src/pelau/"
+			
 		}
+		"file": ["src/pelau.php"]
 	}
 }
 
