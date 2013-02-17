@@ -2,6 +2,16 @@ TODO
 ====
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+
+Migration
+-----
+We are moving the pelau repo to QuenkTechnologies and the library is to be called 'pelau' now.
+
+>>>>>>> experimental
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
 Bugs
 -----
 
@@ -69,6 +79,7 @@ Packages
 
 *Number class.
 *Character class.
+<<<<<<< HEAD
 
 
 Code
@@ -78,4 +89,6 @@ Browser->redirect() needs implementation.
 HttpResponse will become a static class.
 Ensure all classes have Object as a root.
 
+=======
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
 >>>>>>> experimental
