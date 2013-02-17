@@ -2,6 +2,7 @@
 	"name": "pelau/pelau",
 	"type": "library",
 	"description": "The pelau PHP library.",
+	"license": "Apache2",
 		"authors": [
 		{
 			"name": "Lasana Murray",
