@@ -88,8 +88,11 @@ class Browser extends Object implements HttpSource
 
     }
 
-    public function set(Header $h);
-    
+    public function set(Header $h)
+    {
+        
+    }
+
     public function redirect($location, $timer = null)
     {
           throw new pelau\php\UnsupportedOperationException;
