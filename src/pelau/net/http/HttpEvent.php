@@ -27,9 +27,9 @@ abstract class HttpEvent extends Event
 
     /**
      * Constructs a new HttpEvent type object.
-     * @param pelau\net\http\HttpSource $src
+     * @param pelau\net\http\HttpClient $src
      */
-    public function __construct(HttpSource $src)
+    public function __construct(HttpClient $src)
     {
 
 
