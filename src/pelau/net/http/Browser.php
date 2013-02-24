@@ -29,7 +29,7 @@ namespace pelau\net\http;
 use pelau\util\Map;
 use pelau\php\Object;
 
-class Browser extends Object implements HttpSource
+class Browser extends Object implements HttpClient
 {
 
 
@@ -40,11 +40,27 @@ class Browser extends Object implements HttpSource
      */
     private $dispatch;
 
+    /**
+     *
+     * @var \pelau\net\http\HttpRequest $request
+     */
+    private $request;
+
+    /**
+     *
+     * @var \pelau\net\http\HttpResponse $response;
+     */
+    private $response;
+
+
+
 
     public function __construct()
     {
 
         $this->dispatch = new HttpEventGenerator($this);
+        $this->request = new HttpRequest;
+        $this->response = new HttpResponse;
 
     }
 
@@ -57,45 +73,26 @@ class Browser extends Object implements HttpSource
 
     }
 
-    /**
-     * Simulates the UserAgent making a request to the application.
-     */
-    public function submit()
+    public function browse()
     {
 
         $this->dispatch->fire();
 
     }
 
-    public function getUAString()
+    public function relocate($location, $timer = null)
     {
-
-        return HttpRequest::getProperty("USER_AGENT");
 
     }
 
-    public function getCookies()
+    public function getRequest()
     {
-
-        return new Map($_COOKIE);
-
+        return $this->request;
     }
 
-    public function getRemoteAddress()
+    public function getResponse()
     {
-
-        return HttpRequest::getProperty("REMOTE_ADDRESS");
-
-    }
-
-    public function set(Header $h)
-    {
-        
-    }
-
-    public function redirect($location, $timer = null)
-    {
-          throw new pelau\php\UnsupportedOperationException;
+        return $this->response;
     }
 
 }
