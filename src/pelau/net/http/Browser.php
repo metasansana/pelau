@@ -58,9 +58,10 @@ class Browser extends Object implements HttpClient
     public function __construct()
     {
 
-        $this->dispatch = new HttpEventGenerator($this);
         $this->request = new HttpRequest;
         $this->response = new HttpResponse;
+        $this->dispatch = new HttpEventGenerator($this, $this->request);
+
 
     }
 
@@ -80,8 +81,12 @@ class Browser extends Object implements HttpClient
 
     }
 
-    public function relocate($location, $timer = null)
+    public function redirect(HttpLocation $l, $status)
     {
+
+        $l->go($this->response, $status);
+
+        return $this;
 
     }
 
