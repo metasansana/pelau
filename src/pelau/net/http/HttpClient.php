@@ -23,10 +23,10 @@ interface HttpClient
 
     /**
      * Redirects the source to another url.
-     * @param string $location    The location to redirect to.
-     * @param int $timer=null      Optional: Time the source should wait before rediredting.
+     * @param \pelau\net\http\FastLocation $l   The location to redirect to.
+     * @param int $status   The status of the redirect.
      */
-    public function relocate($location, $timer=null);
+    public function redirect(HttpLocation $l, $status);
 
     /**
      * Returns a HttpRequest object.

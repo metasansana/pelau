@@ -37,14 +37,23 @@ class HttpEventGenerator
     private $src;
 
     /**
-     * Constructs a new HttpEventDispatcher object.
-     * @param \pelau\net\http\HttpSource $src    The HttpSource object that will become the source of http events.
+     *
+     * @var pelau\net\http\HttpRequest;
      */
-    public function __construct(HttpSource $src)
+    private $req;
+
+
+
+    /**
+     * Constructs a new HttpEventDispatcher object.
+     * @param \pelau\net\http\HttpClient $src    The HttpSource object that will become the source of http events.
+     */
+    public function __construct(HttpClient $src, HttpRequest $req)
     {
 
         $this->listeners = new ArrayList;
         $this->src = $src;
+        $this->req = $req;
 
     }
 
@@ -103,7 +112,7 @@ class HttpEventGenerator
         //This is an deal setup for a chain of command pattern.
         //@todo Refactor this class to use commands.
 
-        $meth = HttpRequest::getProperty("REQUEST_METHOD");
+        $meth = $this->req->getProperty("REQUEST_METHOD");
 
         if ($meth === "GET")
             $this->_fireGet();
