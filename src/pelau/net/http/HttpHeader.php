@@ -2,10 +2,10 @@
 
 /**
  *
- * timestamp: Dec 22, 2012 5:43:57 PM
+ * timestamp: Feb 25, 2013 8:47:43 PM
  * encoding: UTF-8
  *
- * Copyright 2012  Lasana Murray <dev@trinistorm.org>
+ * Copyright 2013  Lasana Murray <dev@trinistorm.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,25 +19,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\web
+ * @package pelau\net\http
  *
- *  Class representing a client browser.
  */
-
 namespace pelau\net\http;
 
-class Browser extends \pelau\php\Object
+
+abstract class HttpHeader extends \pelau\php\Object
 {
 
-    public function sendHeader(HttpHeader $h, $status)
+
+    /**
+     * The value of the header.
+     * @var string
+     */
+    protected $value;
+
+    public function __toString()
     {
 
-        header("$h", true, $status);
-
-        return $this;
+        return $this->value;
 
     }
-
-    
 
 }

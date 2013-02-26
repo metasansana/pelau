@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Feb 24, 2013 12:34:43 AM
+ * timestamp: Feb 24, 2013 2:10:26 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,26 +19,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package \pelau\net\http
  *
- *  Class for sending http headers.
+ * Class for performing timed HTTP redirects.
  */
+
 namespace pelau\net\http;
 
-class HttpResponse
+
+class Refresh extends HttpHeader
 {
 
-    /**
-     * Sends a header to the client.
-     * @param string $header
-     */
-    public function send($header, $status)
+    public function __construct($location, $timer)
     {
-                
-        header((string)$header, true, (int)$status);
 
-        return $this;
+        $this->value = "Refresh $timer; url='$location";
 
     }
+
 
 }

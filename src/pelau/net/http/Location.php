@@ -23,16 +23,16 @@
  */
 namespace pelau\net\http;
 
-class FastLocation extends HttpLocation
+class Location extends HttpHeader
 {
 
+    const PERM_REDIRECT=302;
 
-
-    public function go(HttpResponse $r, $status)
+    public function __construct($location)
     {
 
-        $r->send("Location: {$this->header}", $status);
-        
+        $this->value ="Location: $location" ;
+
     }
 
 }

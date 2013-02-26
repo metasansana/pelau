@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Feb 24, 2013 2:10:26 AM
+ * timestamp: Feb 25, 2013 8:54:43 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,34 +19,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package \pelau\net\http
+ * @package pelau\net\http
  *
- * Class for performing timed HTTP redirects.
  */
 namespace pelau\net\http;
 
-class TimedLocation extends HttpLocation
+class Header extends HttpHeader
 {
 
-    /**
-     *
-     * @var int  $timer
-     */
-    private $timer;
-
-
-    public function __construct($loc, $timer)
+    public function __construct($value)
     {
 
-        parent::__construct($loc);
-        $this->timer = $timer;
-
-        }
-
-    public function go(HttpResponse $r, $status)
-    {
-
-        $r->send("Refresh {$this->timer}; url='{$this->header}'", $status);
+        $this->value = $value;
 
     }
 
