@@ -1,7 +1,8 @@
 <?php
+
 /**
  *
- * timestamp: Mar 3, 2013 3:04:44 AM
+ * timestamp: Mar 3, 2013 11:16:24 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,20 +20,17 @@
  * limitations under the License.
  *
  * @package pelau\net\http
- *
- * Invoker class for GET requests.
- *
  */
 namespace pelau\net\http;
 
-class GetInvoker extends HttpMethodInvoker
+class PostInvoker extends HttpMethodInvoker
 {
 
 
     public function invoke(HttpListener $l)
     {
 
-        return $l->onGet($this->client, new GetEvent($this));
+        return $l->onPost($this->client, $evt);
 
     }
 }
