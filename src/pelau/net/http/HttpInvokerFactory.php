@@ -1,11 +1,10 @@
 <?php
-
 /**
  *
- * timestamp: Dec 22, 2012 5:43:57 PM
+ * timestamp: Mar 3, 2013 1:40:41 AM
  * encoding: UTF-8
  *
- * Copyright 2012  Lasana Murray <dev@trinistorm.org>
+ * Copyright 2013  Lasana Murray <dev@trinistorm.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,47 +18,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\web
+ * @package pelau\net\http
  *
- *  Class representing a client browser.
+ * Interface for manufacturing HTTP events.
+ *
+ * Use implementors of this interface to get your http requests going.
  */
-
 namespace pelau\net\http;
 
-
-class Browser extends \pelau\php\Object
+class HttpInvokerFactory implements HttpInvoker
 {
 
     use \pelau\util\Composition;
-    use \pelau\util\ListAddition;
+    use \pelau\util\MapAddition;
 
 
-    public function send(HttpHeader $h, $status)
+    public function set($method, HttpInvoker $invoker)
     {
 
-        header("$h", true, $status);
+        $this->_add($method, $invoker);
 
         return $this;
 
     }
 
-    public function addListener(HttpListener $l)
+    /**
+     * Invokes the appropriate method on
+     * @param \pelau\net\http\HttpListener $l
+     */
+    public function invoke(HttpListener $l)
     {
 
-        $this->_add($l);
-        return $this;
+        $meth = $_SERVER['REQUEST_METHOD'];
+
+        if($this->members->contains($meth))
+            $this->members->get($meth)->invoke($l);
 
     }
 
-    public function request(HttpInvoker $invoker)
-    {
-
-        $this->_each(function (HttpListener $l) use ($invoker) {
-
-                    $invoker->invoke($l);
-                }
-        );
-
-    }
 
 }
