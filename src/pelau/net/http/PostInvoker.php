@@ -30,7 +30,7 @@ class PostInvoker extends HttpMethodInvoker
     public function invoke(HttpListener $l)
     {
 
-        return $l->onPost($this->client, $evt);
+        return $l->onPost($this->client, new PostEvent($this));
 
     }
 }
