@@ -25,17 +25,6 @@ use pelau\util\Map;
 abstract class HttpEvent extends Event
 {
 
-    /**
-     * Constructs a new HttpEvent type object.
-     * @param pelau\net\http\HttpClient $src
-     */
-    public function __construct(HttpClient $src)
-    {
-
-
-        parent::__construct($src);
-
-    }
 
      /**
      * This method is called internally to set the parameters of the event.
@@ -52,6 +41,16 @@ abstract class HttpEvent extends Event
 
         return new Map($this->params());
 
+    }
+
+    public function getURI()
+    {
+        return new \pelau\net\URI($_SERVER['PATH_INFO']);
+    }
+
+    public function getHeaders()
+    {
+        throw new \pelau\php\UnsupportedOperationException;
     }
 
 
