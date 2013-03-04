@@ -50,7 +50,7 @@ abstract class HttpEvent extends Event
 
     public function getHeaders()
     {
-        throw new \pelau\php\UnsupportedOperationException;
+        return new \pelau\util\Map($_SERVER);
     }
 
 
