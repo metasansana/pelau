@@ -34,7 +34,7 @@ class Browser extends \pelau\php\Object
     use \pelau\util\ListAddition;
 
 
-    public function send(HttpHeader $h, $status)
+    public function send(Header $h, $status)
     {
 
         header("$h", true, $status);
