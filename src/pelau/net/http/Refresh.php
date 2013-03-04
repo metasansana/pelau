@@ -27,13 +27,13 @@
 namespace pelau\net\http;
 
 
-class Refresh extends HttpHeader
+class Refresh extends Header
 {
 
     public function __construct($location, $timer)
     {
 
-        $this->value = "Refresh $timer; url='$location";
+        parent::__construct("Refresh $timer; url='$location");
 
     }
 

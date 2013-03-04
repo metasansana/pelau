@@ -23,7 +23,7 @@
  */
 namespace pelau\net\http;
 
-class Location extends HttpHeader
+class Location extends Header
 {
 
     const PERM_REDIRECT=302;
@@ -31,7 +31,8 @@ class Location extends HttpHeader
     public function __construct($location)
     {
 
-        $this->value ="Location: $location" ;
+        parent::__construct("Location: $location");
+
 
     }
 

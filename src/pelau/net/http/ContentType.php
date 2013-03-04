@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Feb 25, 2013 8:47:43 PM
+ * timestamp: Mar 4, 2013 4:03:57 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,34 +19,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package pelau\http
  *
+ * Class for sending a Content-type header.
  */
-
 namespace pelau\net\http;
 
-
-abstract class Header extends \pelau\php\Object
+class ContentType extends Header
 {
 
-    /**
-     * The value of the header.
-     * @var string
-     */
-    protected $value;
+    const PLAIN = 'text/plain';
 
-    public function __construct($value)
-    {
+    const HTML = 'text/html';
 
-        $this->value = $value;
+    const JSON =  'application/json';
 
-    }
 
-    public function __toString()
-    {
 
-        return $this->value;
+  public function __construct($value)
+  {
 
-    }
+      parent::__construct("Content-type: $value");
+
+  }
 
 }
