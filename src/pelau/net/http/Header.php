@@ -26,7 +26,7 @@
 namespace pelau\net\http;
 
 
-abstract class Header extends \pelau\php\Object
+class Header extends \pelau\php\Object
 {
 
     /**
