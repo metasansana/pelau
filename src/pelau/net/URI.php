@@ -25,8 +25,6 @@
  */
 namespace pelau\net;
 
-use pelau\util\String;
-
 class URI
 {
 
@@ -40,13 +38,13 @@ class URI
     public function __construct($value)
     {
 
-        $this->value = (value);
+        $this->value = ($value);
 
     }
 
-    public function toPath()
+    public function __toString()
     {
-        return new String(parse_url($this->value, PHP_URL_PATH));
+        return $this->value;
     }
 
 

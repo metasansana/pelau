@@ -87,6 +87,7 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
 
     }
 
+
     /**
      * Turns this Collection into a String
      * @param mixed $glue    A character that the members will be bonded by.
@@ -94,7 +95,15 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
      */
     public function stringify($glue=",")
     {
-        return new \pelau\php\String(implode($glue, $this->items));
+        return implode($glue, $this->items);
+    }
+
+
+    public function __toString()
+    {
+
+        return $this->stringify();
+
     }
 
 }
