@@ -28,6 +28,8 @@
 
 namespace pelau\php;
 
+use pelau\util\ArrayList;
+
 
 final class String extends Type
 {
@@ -140,7 +142,7 @@ final class String extends Type
     public function split($marker)
     {
 
-        return explode((string) $marker, $this->value);
+        return new ArrayList(explode((string) $marker, $this->value));
 
     }
 
