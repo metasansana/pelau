@@ -18,7 +18,11 @@ interface Statement
 
     /**
      * Treats the Statement as a query.     
+<<<<<<< HEAD:proof/sql/Statement.php
+     * @param \proof\util\Sequence $s
+=======
      * @param \pelau\util\Sequence $s
+>>>>>>> unstable:src/pelau/sql/Statement.php
      */
     public function query(Sequence $s);
 

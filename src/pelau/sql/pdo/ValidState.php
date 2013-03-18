@@ -11,7 +11,11 @@ namespace pelau\sql\pdo;
  * Class representing a PDO conneciton in auto commit mode.
  *
  */
+<<<<<<< HEAD:proof/sql/pdo/ValidState.php
+use proof\php\UnsupportedOperationException;
+=======
 use pelau\php\UnsupportedOperationException;
+>>>>>>> unstable:src/pelau/sql/pdo/ValidState.php
 class ValidState implements  PDOState
 {
 

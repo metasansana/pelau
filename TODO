@@ -1,11 +1,51 @@
 TODO
 ====
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 Expect the current release to be very buggy. More unit testing is necessary.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+
+Migration
+-----
+We are moving the pelau repo to QuenkTechnologies and the library is to be called 'pelau' now.
+
+>>>>>>> experimental
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
+>>>>>>> unstable
+Bugs
+-----
+
+*Track down any bugs and errors.
+
+Legal
+-----
+
+*Choose a suitable license (most likely Apache or BSD).
+<<<<<<< HEAD
+=======
+=======
+Legal
+-------
+
+Insert the Apache license in the  LICENSE file.
+>>>>>>> experimental
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
+>>>>>>> unstable
 
 Unit Tests
 ----------
 
+<<<<<<< HEAD
+*Review exisiting unit tests.
+*Identify no longer needed tests.
+*Add tests that are missing (where feasible).
+=======
 Not all classes will have unit tests. These are the ones not done yet:
 
 
@@ -13,6 +53,7 @@ Broken Tests
 ------------
 
 
+>>>>>>> unstable
 
 Documentation
 -------------
@@ -21,20 +62,37 @@ Documentation
 *Generate class docs.
 *Make class docs available online.
 
+<<<<<<< HEAD
+API
+---
+
+*Website login API
+*Filesystem API
+*Networking API
+*OAuth API
+
+=======
+>>>>>>> unstable
 Packaging
 ---------
 
 *A .deb file would be nice.
 
 
+<<<<<<< HEAD
+=======
 WishList
 -----------
 
 *Number class.
 *Character class.
+<<<<<<< HEAD
 *Platform::import() method.
 *A String->trim() method that removes whatever we want.
 
+=======
+<<<<<<< HEAD
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
 
 Outstanding Fixes
 -------
@@ -44,3 +102,10 @@ Outstanding Fixes
 *Ensure all classes have Object as a root.
 
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9b299d92a85939e1a1dd2fa4a703a2ff9517e6d5
+>>>>>>> experimental
+>>>>>>> f2a22c9b647711c3ca757c261a2155e776a2dc15
+>>>>>>> unstable

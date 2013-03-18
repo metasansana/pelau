@@ -51,7 +51,7 @@ class HttpInvokerFactory implements HttpInvoker
 
         $meth = $_SERVER['REQUEST_METHOD'];
 
-        if($this->members->contains($meth))
+        if($this->members->itemAT($meth))
             $this->members->get($meth)->invoke($l);
 
     }

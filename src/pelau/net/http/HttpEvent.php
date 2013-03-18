@@ -43,9 +43,11 @@ abstract class HttpEvent extends Event
 
     }
 
-    public function getURI()
+    public function getPath()
     {
-        return new \pelau\net\URI($_SERVER['REQUEST_URI']);
+
+     return new \pelau\app\WebPath(new \pelau\php\String($_SERVER['REQUEST_URI']));
+
     }
 
     public function getHeaders()

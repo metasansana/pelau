@@ -24,10 +24,15 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
 
     }
 
-    public function contains($index)
+    public function itemAt($index)
+    {
+        return isset($this->items[$index]);
+    }
+
+    public function contains($value)
     {
 
-        return isset($this->items[$index]);
+        return in_array($value, $this->items);
 
     }
 

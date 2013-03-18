@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
+namespace proof\sql\pdo;
+=======
 namespace pelau\sql\pdo;
+>>>>>>> unstable:src/pelau/sql/pdo/PDOPreparedStatement.php
 
 /**
  * timestamp Aug 4, 2012 1:42:43 PM

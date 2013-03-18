@@ -13,7 +13,11 @@ namespace pelau\sql\pdo;
  *  Class represnting a sql connection via PDO.
  *
  */
+<<<<<<< HEAD:proof/sql/pdo/PDOConnection.php
+use proof\sql\SQLConnection;
+=======
 use pelau\sql\SQLConnection;
+>>>>>>> unstable:src/pelau/sql/pdo/PDOConnection.php
 
 class PDOConnection implements SQLConnection
 {

@@ -29,6 +29,12 @@ interface SQLConnection
      * @return pelau\sql\PreparedStatement    The PreparedStatement.
      */
     public function prepare($sql);
+    
+    /**
+     * Generates a new transaction with the server.
+     * @return proof\sql\Transaction    A Transaction class representing an open transaction with the server.
+     */
+    public function getTransaction();
 
     /**
      * Generates a new transaction with the server.
