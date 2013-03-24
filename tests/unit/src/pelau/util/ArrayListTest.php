@@ -24,7 +24,6 @@ class ArrayListTest extends \PHPUnit_Framework_TestCase
 
     }
 
-
     /**
      * @covers \pelau\util\ArrayList::add
      */
