@@ -2,7 +2,6 @@
 
 namespace pelau\util;
 
-
 /**
  * timestamp Oct 14, 2012 4:44:24 PM
  *
@@ -11,7 +10,7 @@ namespace pelau\util;
  * @copyright 2012 Lasana Murray
  * @package pelau\util
  *
- *  Abstract implementation of the Aggregate interface.
+ *  Abstract  class representing an aggregation of values.
  *
  */
 abstract class Aggregate extends \pelau\php\Object
@@ -25,8 +24,8 @@ abstract class Aggregate extends \pelau\php\Object
     protected $items = array();
 
     /**
-     * Constructs a new Collection with optional members $items.
-     * @param array $items    The optional members.
+     * Constructs a new Aggregate class.
+     * @param array $items    Optional members of this Aggregate.
      */
     public function __construct(array $items = array ())
     {
@@ -41,12 +40,25 @@ abstract class Aggregate extends \pelau\php\Object
      */
     public function size()
     {
+
         return count($this->items);
 
     }
 
     /**
-     * Test this Aggregate for emptiness.
+     * Removes all members of this Aggregate.
+     * @return \pelau\util\Aggregate
+     */
+      public function clear()
+    {
+
+        $this->items = array ();
+        return $this;
+
+    }
+
+    /**
+     * Test for emptiness.
      *  @return boolean    TRUE if empty, FALSE otherwise.
      */
     public function isEmpty()
