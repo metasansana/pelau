@@ -49,7 +49,7 @@ class AggregateTest extends \PHPUnit_Framework_TestCase
     {
 
         $stub = $this->getMockForAbstractClass('\pelau\util\Aggregate', [array(1,2,3)]);
-        
+
         $this->assertInstanceOf('\pelau\util\Aggregate', $stub->clear());
 
 
