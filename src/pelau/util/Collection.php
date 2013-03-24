@@ -14,7 +14,7 @@ namespace pelau\util;
  *  Class representing a data structure for storing key value pairs.
  *
  */
-abstract class Collection extends Aggregate implements \IteratorAggregate, \ArrayAccess
+abstract class Collection extends Aggregate implements \IteratorAggregate
 {
 
     /**
@@ -74,26 +74,6 @@ abstract class Collection extends Aggregate implements \IteratorAggregate, \Arra
         $return = $this->items; //Copy the array
 
         return $return;
-
-    }
-
-    public function offsetExists($offset)
-    {
-
-        return $this->hasKey($offset);
-
-    }
-
-    public function offsetGet($offset)
-    {
-        return $this->get($offset);
-
-    }
-
-    public function offsetUnset($offset)
-    {
-
-        $this->remove($offset);
 
     }
 

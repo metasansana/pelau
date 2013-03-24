@@ -24,30 +24,20 @@ class ArrayList extends Collection implements Sequence
     {
 
         $this->items[] = $item;
+
         return $this;
 
     }
 
-    /**
-     * Removes the item specified by $index. Note that the numeric keys are recalculated.
-     * @param mixed $index    The index to remove.
-     * @return pelau\util\ArrayList
-     */
-    public function remove($index)
+    public function remove($key)
     {
 
-        $flag = parent::remove($index);
+        parent::remove($key);
 
         $this->items = array_values($this->items);
 
         return $this;
 
     }
-
-    public function offsetSet($offset, $value)
-    {
-        throw \pelau\php\UnsupprotedOperationException;
-    }
-
 
 }

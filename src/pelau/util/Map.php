@@ -11,19 +11,19 @@ namespace pelau\util;
  * Collection that allows keys to be assigned when adding to it.
  *
  */
-class Map extends Collection
+class Map extends Collection implements \ArrayAccess
 {
+
     /**
-     * Adds an item to this Collection
-     * @param string $index
+     * Sets a value to a key.
+     * @param string $key
      * @param mixed $item
-     * @return \pelau\util\Collection
-     *
+     * @return \pelau\util\Map
      */
-    public function add($index, $item)
+    public function set($key, $item)
     {
 
-        $this->items["$index"] = $item;
+        $this->items["$key"] = $item;
 
         return $this;
 
@@ -31,6 +31,29 @@ class Map extends Collection
 
     public function offsetSet($offset, $value)
     {
-        $this->add($offset, $value);
+
+        $this->set($offset, $value);
+
+    }
+
+    public function offsetExists($offset)
+    {
+
+        return $this->hasKey($offset);
+
+    }
+
+    public function offsetGet($offset)
+    {
+
+        return $this->get($offset);
+
+    }
+
+    public function offsetUnset($offset)
+    {
+
+        $this->remove($offset);
+
     }
 }
