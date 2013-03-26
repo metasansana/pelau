@@ -71,7 +71,7 @@ class SQLDataSelector
 
         $high = (int)$high;
 
-        $this->map->add("offset", "$low, $high");
+        $this->map->set("offset", "$low, $high");
 
         return $this;
 
@@ -87,7 +87,7 @@ class SQLDataSelector
                 $cols = "$prev, $cols";
             }
 
-        $this->map->add('select', $cols);
+        $this->map->set('select', $cols);
         }
 
 
@@ -98,17 +98,17 @@ class SQLDataSelector
     public function orderBy($clause)
     {
 
-        $this->map->add('orderby', "$clause");
+        $this->map->set('orderby', "$clause");
 
         return $this;
 
     }
 
 
-    public function toStatement(\pelau\sql\SQLConnection $con)
+    public function toStatement(\pelau\sql\SQLClient $client)
     {
 
-        return $con->prepare((string)$this->tmpl->toSQL(new SQLClauseAdapter($this->map)));
+        return $client->prepare((string)$this->tmpl->toSQL(new SQLClauseAdapter($this->map)));
 
     }
 }
