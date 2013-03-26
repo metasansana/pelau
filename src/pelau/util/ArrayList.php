@@ -11,7 +11,7 @@ namespace pelau\util;
  * Container for  storing items in sequence
  *
  */
-class ArrayList extends Collection implements Sequence
+class ArrayList extends Collection
 {
 
 
