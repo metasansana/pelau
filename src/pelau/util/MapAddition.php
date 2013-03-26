@@ -34,7 +34,7 @@ trait MapAddition
 
         ($this->members || ($this->members = new Map));
 
-        $this->members->add($key, $member);
+        $this->members->set($key, $member);
 
         return $this;
 

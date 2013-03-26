@@ -38,7 +38,7 @@ trait ListAddition
 
         ($this->members || ($this->members = new ArrayList));
 
-        $this->members->add($member);
+        $this->members->set($member);
 
         return $this;
 
