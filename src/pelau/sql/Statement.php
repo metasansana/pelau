@@ -11,23 +11,19 @@ namespace pelau\sql;
  *  Interface representing an SQL Statement
  *
  */
-use pelau\util\Sequence;
 
 interface Statement
 {
 
     /**
-     * Treats the Statement as a query.     
-<<<<<<< HEAD:proof/sql/Statement.php
-     * @param \proof\util\Sequence $s
-=======
-     * @param \pelau\util\Sequence $s
->>>>>>> unstable:src/pelau/sql/Statement.php
+     * Preforms a query on the database.
+     * @return \pelau\util\ArrayList
      */
-    public function query(Sequence $s);
+    public function query();
 
     /**
-     * Treats the statement as an update.
+     * Attempts an update on the database.
+     * @return int
      */
     public function update();
 

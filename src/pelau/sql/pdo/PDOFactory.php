@@ -29,7 +29,7 @@ use pelau\app\Configuration;
 use pelau\util\AbstractObservable;
 use pelau\app\Logger;
 
-class PDOFactory extends AbstractObservable
+class PDOConnector extends AbstractObservable
 {
 
     /**
@@ -69,7 +69,7 @@ class PDOFactory extends AbstractObservable
      * @param mixed $name
      * @return \PDO
      */
-    public function create($name)
+    public function getClient($name)
     {
 
         if ($this->pool->contains($name))
@@ -89,7 +89,7 @@ class PDOFactory extends AbstractObservable
 
             $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
 
-            $this->pool->add($name, $pdo);
+            $this->pool->set($name, $pdo);
 
             return $pdo;
 

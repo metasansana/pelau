@@ -1,11 +1,5 @@
 <?php
-
-<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
-namespace proof\sql\pdo;
-=======
 namespace pelau\sql\pdo;
->>>>>>> unstable:src/pelau/sql/pdo/PDOPreparedStatement.php
-
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
  *
@@ -17,7 +11,6 @@ namespace pelau\sql\pdo;
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
 use pelau\sql\PreparedStatement;
-use pelau\util\Sequence;
 
 class PDOPreparedStatement implements PreparedStatement
 {
@@ -65,17 +58,15 @@ class PDOPreparedStatement implements PreparedStatement
 
     }
 
-    public function query(Sequence $s)
+    public function query()
     {
 
-        $w = new PDOWorker;
+        $model = new PDOStatementModel;
 
         if (!$this->pstmt->execute($this->params))
-        {
-            return $w->error($this->pstmt->errorInfo());
-        }
+            return $model->error($this->pstmt->errorInfo());
 
-        return $w->fetch($this->pstmt, $s);
+        return $model->fetch($this->pstmt);
 
     }
 
@@ -85,9 +76,9 @@ class PDOPreparedStatement implements PreparedStatement
         if (!$this->pstmt->execute($this->params))
         {
 
-            $w = new PDOWorker;
+            $model = new PDOStatementModel;
 
-            return $w->error($this->pstmt->errorInfo());
+            return $model->error($this->pstmt->errorInfo());
         }
         else
         {

@@ -11,7 +11,7 @@ namespace pelau\sql;
  *  Class representing a handle to an sql transaction session.
  *
  */
-interface Transaction extends SQLConnection
+interface Transaction extends SQLClient
 {
 
     /**

@@ -11,11 +11,8 @@ namespace pelau\sql\pdo;
  *  SQL statement class that uses PDO.
  *
  */
-use pelau\php\String;
-use pelau\sql\Statement;
-use pelau\util\Sequence;
 
-class PDOStatement implements Statement
+class PDOStatement implements \pelau\sql\Statement
 {
 
     /**
@@ -26,38 +23,38 @@ class PDOStatement implements Statement
     private $pdo;
 
     /**
-     * String representing the statement.
+     * A string representing an sql command.
      * @var string $sql
-     * @access private
      */
     private $sql;
 
+
     /**
      * Constructs a new pelau\sql\PDOStatement
-     * @param string $sql    The sql statement.
      * @param \PDO $con   The PDOConnection object that will be used.
      */
-    public function __construct(String $sql, \PDO $pdo)
+    public function __construct(\PDO $pdo, $sql)
     {
 
-        $this->sql = $sql;
         $this->pdo = $pdo;
+
+        $this->sql = $sql;
 
     }
 
-    public function query(Sequence $s)
+    public function query()
     {
 
-        $w = new PDOWorker();
+        $model = new PDOStatementModel();
 
         $stmt = $this->pdo->query($this->sql);
 
         if(!$stmt)
         {
-            return $w->error ($this->pdo->errorInfo ());
+            return $model->error ($this->pdo->errorInfo ());
         }
 
-        return $w->fetch($stmt, $s);
+        return $model->fetch($stmt);
 
     }
 
@@ -68,13 +65,14 @@ class PDOStatement implements Statement
 
         if($result  === false)
         {
-            $w = new PDOWorker();
+            $w = new PDOStatementModel();
             $w->error($this->pdo->errorInfo());
         }
 
         return $result;
 
     }
+
 
 
 }
