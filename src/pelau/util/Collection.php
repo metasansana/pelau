@@ -57,11 +57,6 @@ abstract class Collection extends Aggregate implements \IteratorAggregate
 
     }
 
-    public function size()
-    {
-        return count($this->items);
-    }
-
     public function getIterator()
     {
 
