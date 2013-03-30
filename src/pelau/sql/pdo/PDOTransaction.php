@@ -12,7 +12,7 @@ namespace pelau\sql\pdo;
  *
  */
 
-class PDOTransaction implements \pelau\sql\Transaction
+class PDOTransaction extends \pelau\php\Object implements \pelau\sql\Transaction
 {
 
     /**

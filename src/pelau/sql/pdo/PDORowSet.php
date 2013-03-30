@@ -23,7 +23,7 @@
  */
 namespace pelau\sql\pdo;
 
-class PDORowSet implements \pelau\sql\RowSet
+class PDORowSet extends \pelau\php\Object implements \pelau\sql\RowSet
 {
 
     /**

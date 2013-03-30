@@ -11,7 +11,7 @@ namespace pelau\sql\pdo;
  *  SQLClient class for using \PDO.
  *
  */
-class PDOClient
+class PDOClient extends \pelau\php\Object
 {
 
     /**

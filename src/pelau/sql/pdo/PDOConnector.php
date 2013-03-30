@@ -25,7 +25,7 @@
  */
 namespace pelau\sql\pdo;
 
-abstract class PDOConnector
+abstract class PDOConnector extends \pelau\php\Object
 {
 
     /**

@@ -12,7 +12,7 @@ namespace pelau\sql\pdo;
  *
  */
 
-class PDOStatement implements \pelau\sql\Statement
+class PDOStatement extends \pelau\php\Object implements \pelau\sql\Statement
 {
 
     /**

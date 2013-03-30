@@ -14,7 +14,7 @@ namespace pelau\sql\pdo;
  *
  */
 
-class PDOConnection implements \pelau\sql\SQLConnection
+class PDOConnection extends \pelau\php\Object implements \pelau\sql\SQLConnection
 {
 
     /**
