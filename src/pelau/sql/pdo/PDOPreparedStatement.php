@@ -12,79 +12,27 @@ namespace pelau\sql\pdo;
  */
 use pelau\sql\PreparedStatement;
 
-class PDOPreparedStatement implements PreparedStatement
+class PDOPreparedStatement extends PDOStatement implements PreparedStatement
 {
 
-    /**
-     *
-     * Arguments that will replace the placeholders of the prepared statement
-     * @var array $params
-     * @access private
-     */
-    private $params = array ();
 
-    /**
-     * The wrapped PDOStatement
-     * @var \PDOStatement $pstmt
-     * @access private
-     */
-    private $pstmt;
-
-    public function __construct(\PDOStatement $pstmt)
+    public function bindInteger($index, $int)
     {
 
-        $this->pstmt = $pstmt;
-
-    }
-
-    public function bind($value)
-    {
-
-
-        $this->params[] = $value;
+        $this->pstmt->bindParam($index, (int)$int, \PDO::PARAM_INT);
 
         return $this;
 
     }
 
-    public function bindName($name, $value)
+    public function bindString($index, $string)
     {
 
-        $name = ":$name";
-
-        $this->params[$name] = $value;
+        $this->pstmt->bindParam($index, (string)$string, \PDO::PARAM_STR);
 
         return $this;
 
     }
 
-    public function query()
-    {
-
-        $model = new PDOStatementModel;
-
-        if (!$this->pstmt->execute($this->params))
-            return $model->error($this->pstmt->errorInfo());
-
-        return $model->fetch($this->pstmt);
-
-    }
-
-    public function update()
-    {
-
-        if (!$this->pstmt->execute($this->params))
-        {
-
-            $model = new PDOStatementModel;
-
-            return $model->error($this->pstmt->errorInfo());
-        }
-        else
-        {
-            return $this->pstmt->rowCount();
-        }
-
-    }
 
 }
