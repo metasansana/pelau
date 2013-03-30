@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:44:12 AM
+ * timestamp: Mar 28, 2013 5:23:36 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -21,23 +21,15 @@
  *
  * @package pelau\util
  *
- * Trait for providing Composite functionality for Maps.
+ * Interface for the 'Subject' in an observer pattern.
  *
  */
 namespace pelau\util;
 
-trait MapAddition
+
+interface Observable
 {
 
-      private function _add($key, $member)
-    {
-
-        ($this->members || ($this->members = new Map));
-
-        $this->members->set($key, $member);
-
-        return $this;
-
-    }
+    public function attach(Observer $o);
 
 }

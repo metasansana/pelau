@@ -13,47 +13,40 @@ namespace pelau\sql\pdo;
  *  Class represnting a sql connection via PDO.
  *
  */
-<<<<<<< HEAD:proof/sql/pdo/PDOConnection.php
-use proof\sql\SQLConnection;
-=======
-use pelau\sql\SQLConnection;
->>>>>>> unstable:src/pelau/sql/pdo/PDOConnection.php
 
-class PDOConnection implements SQLConnection
+class PDOConnection extends \pelau\php\Object implements \pelau\sql\SQLConnection
 {
 
     /**
-     * Mode of the connection.
-     * @var pelau\sql\PDOState $state
+     *
+     * @var \PDO $pdo
      * @access private
      */
-    private $state;
+    private $pdo;
 
     public function __construct(\PDO $pdo)
     {
 
-        $this->state = new ActiveState($pdo);
+        $this->pdo = $pdo;
 
     }
 
-    public function create($sql)
+    public function getClient()
     {
 
-        return $this->state->create($sql);
-
-    }
-
-    public function prepare($sql)
-    {
-
-        return $this->state->prepare($sql);
+        return new PDOClient($this->pdo);
 
     }
 
 
     public function getTransaction()
     {
-        return $this->state->getTransaction();
+
+        if(!$this->pdo->beginTransaction())
+            throw new \pelau\php\UnsupportedOperationException;
+
+        return new PDOTransaction($this->pdo, new PDOClient($this->pdo));
+
     }
 
 }

@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:44:12 AM
+ * timestamp: Mar 25, 2013 4:46:43 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\util
+ * @package pelau\sql
  *
- * Trait for providing Composite functionality for Maps.
- *
+ * Interface for executing sql code.
  */
-namespace pelau\util;
+namespace pelau\sql;
 
-trait MapAddition
+
+interface SQLClient
 {
 
-      private function _add($key, $member)
-    {
+    /**
+     * Performs a query on the database.
+     * @param \pelau\sql\Statement $sql
+     */
+    public function create($sql);
 
-        ($this->members || ($this->members = new Map));
+    /**
+     * Creates a PreparedStatement class from an String.
+     * @param string $sql    SQL statement in string form.
+     * @return pelau\sql\PreparedStatement    The PreparedStatement.
+     */
+    public function prepare($sql);
 
-        $this->members->set($key, $member);
 
-        return $this;
-
-    }
 
 }

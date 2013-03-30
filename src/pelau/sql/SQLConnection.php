@@ -17,31 +17,15 @@ interface SQLConnection
 {
 
     /**
-     *  Creates a Statement class from an String.
-     * @param string $sql    SQL statement in string form.
-     * @return pelau\sql\Statement    The Statement.
+     * Creates an SQLClient for the database.
+     * @return \pelau\sql\SQLClient
      */
-    public function create($sql);
+    public function getClient();
 
     /**
-     * Creates a PreparedStatement class from an String.
-     * @param string $sql    SQL statement in string form.
-     * @return pelau\sql\PreparedStatement    The PreparedStatement.
-     */
-    public function prepare($sql);
-    
-    /**
-     * Generates a new transaction with the server.
-     * @return proof\sql\Transaction    A Transaction class representing an open transaction with the server.
+     * Starts an SQL transaction with the database.
+     * @return \pelau\sql\Transaction
      */
     public function getTransaction();
-
-    /**
-     * Generates a new transaction with the server.
-     * @return pelau\sql\Transaction    A Transaction class representing an open transaction with the server.
-     */
-    public function getTransaction();
-
-
 
 }

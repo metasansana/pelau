@@ -1,0 +1,7 @@
+<phpunit colors="true" bootstrap="../../src/pelau/pelau.php">
+    <testsuites>
+        <testsuite name="Pelau Tests">
+	<directory>src/pelau</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

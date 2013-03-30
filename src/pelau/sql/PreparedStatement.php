@@ -15,16 +15,17 @@ interface PreparedStatement extends Statement
 {
 
     /**
-     * Binds a value when using unamed placeholders.
-     * @param mixed $value    The value to be bound to the prepared statement.
+     * Binds a string value to the statement.
+     * @param mixed $index
+     * @param string $string
      */
-    public function bind($value);
+    public function bindString($index, $string);
 
     /**
-     * Binds a named value when using named placeholders.
-     * @param mixed $name     The name of the value to be bound.
-     * @param mixed $value    The value to be bound to the prepared statement.
+     * Binds an integer value to the statement.
+     * @param mixed $index
+     * @param int $int
      */
-    public function bindName($name, $value);
+    public function bindInteger($index, $int);
 
 }

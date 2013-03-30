@@ -11,70 +11,42 @@ namespace pelau\sql\pdo;
  *  SQL statement class that uses PDO.
  *
  */
-use pelau\php\String;
-use pelau\sql\Statement;
-use pelau\util\Sequence;
 
-class PDOStatement implements Statement
+class PDOStatement extends \pelau\php\Object implements \pelau\sql\Statement
 {
 
     /**
      * The PDOConnection object that will be used.
-     * @var \PDO $pdo
+     * @var \sql\pdo\stmt $stmt
      * @access private
      */
-    private $pdo;
-
-    /**
-     * String representing the statement.
-     * @var string $sql
-     * @access private
-     */
-    private $sql;
+    protected $stmt;
 
     /**
      * Constructs a new pelau\sql\PDOStatement
-     * @param string $sql    The sql statement.
      * @param \PDO $con   The PDOConnection object that will be used.
      */
-    public function __construct(String $sql, \PDO $pdo)
+    public function __construct(\PDOStatement $stmt)
     {
 
-        $this->sql = $sql;
-        $this->pdo = $pdo;
+        $this->stmt = $stmt;
 
-    }
+   }
 
-    public function query(Sequence $s)
+    public function query()
     {
 
-        $w = new PDOWorker();
-
-        $stmt = $this->pdo->query($this->sql);
-
-        if(!$stmt)
-        {
-            return $w->error ($this->pdo->errorInfo ());
-        }
-
-        return $w->fetch($stmt, $s);
+        return new PDORowSet($this->stmt);
 
     }
 
     public function update()
     {
 
-        $result = $this->pdo->exec($this->sql);
-
-        if($result  === false)
-        {
-            $w = new PDOWorker();
-            $w->error($this->pdo->errorInfo());
-        }
-
-        return $result;
+        return $this->stmt->rowCount();
 
     }
+
 
 
 }

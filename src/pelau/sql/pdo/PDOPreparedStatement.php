@@ -1,11 +1,5 @@
 <?php
-
-<<<<<<< HEAD:proof/sql/pdo/PDOPreparedStatement.php
-namespace proof\sql\pdo;
-=======
 namespace pelau\sql\pdo;
->>>>>>> unstable:src/pelau/sql/pdo/PDOPreparedStatement.php
-
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
  *
@@ -17,82 +11,44 @@ namespace pelau\sql\pdo;
  * Wrapper class representing a PreparedStatement. This class is independent of implementation details.
  */
 use pelau\sql\PreparedStatement;
-use pelau\util\Sequence;
 
-class PDOPreparedStatement implements PreparedStatement
+class PDOPreparedStatement extends PDOStatement implements PreparedStatement
 {
 
-    /**
-     *
-     * Arguments that will replace the placeholders of the prepared statement
-     * @var array $params
-     * @access private
-     */
-    private $params = array ();
 
-    /**
-     * The wrapped PDOStatement
-     * @var \PDOStatement $pstmt
-     * @access private
-     */
-    private $pstmt;
-
-    public function __construct(\PDOStatement $pstmt)
+    public function bindInteger($index, $int)
     {
 
-        $this->pstmt = $pstmt;
-
-    }
-
-    public function bind($value)
-    {
-
-
-        $this->params[] = $value;
+        $this->stmt->bindValue($index, (int)$int, \PDO::PARAM_INT);
 
         return $this;
 
     }
 
-    public function bindName($name, $value)
+    public function bindString($index, $string)
     {
 
-        $name = ":$name";
-
-        $this->params[$name] = $value;
+        $this->stmt->bindValue($index, (string)$string, \PDO::PARAM_STR);
 
         return $this;
 
     }
 
-    public function query(Sequence $s)
+    public function query()
     {
 
-        $w = new PDOWorker;
+        $this->stmt->execute();
 
-        if (!$this->pstmt->execute($this->params))
-        {
-            return $w->error($this->pstmt->errorInfo());
-        }
-
-        return $w->fetch($this->pstmt, $s);
+        return parent::query();
 
     }
 
-    public function update()
+    public  function update()
     {
 
-        if (!$this->pstmt->execute($this->params))
-        {
+        $this->stmt->execute();
 
-            $w = new PDOWorker;
-
-            return $w->error($this->pstmt->errorInfo());
-        }
-        else
-        {
-            return $this->pstmt->rowCount();
-        }
+        return parent::query();
 
     }
 

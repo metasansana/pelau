@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:44:12 AM
+ * timestamp: Mar 30, 2013 10:33:33 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\util
+ * @package pelau\sql
  *
- * Trait for providing Composite functionality for Maps.
- *
+ * Interface representing rows returned from a query.
  */
-namespace pelau\util;
+namespace pelau\sql;
 
-trait MapAddition
+
+interface RowSet
 {
 
-      private function _add($key, $member)
-    {
+    /**
+     * Fetches all the rows from a query's result.
+     * @return pelau\util\ArrayList
+     */
+    public function getRows();
 
-        ($this->members || ($this->members = new Map));
+    /**
+     * Reads all the rows from a query's result, making them available one by one.
+     * @param \pelau\sql\RowListener $rdr
+     */
+    public function fetchRows(RowListener $rdr);
 
-        $this->members->set($key, $member);
-
-        return $this;
-
-    }
 
 }

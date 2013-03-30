@@ -11,103 +11,69 @@ namespace pelau\util;
  * @copyright 2012 Lasana Murray
  * @package pelau\util
  *
- *  Abstract implementor of the Collection interface. The method for adding new items is left up to child classes.
+ *  Class representing a data structure for storing key value pairs.
  *
  */
-abstract class Collection extends Aggregate implements \IteratorAggregate, \ArrayAccess
+abstract class Collection extends Aggregate implements \IteratorAggregate
 {
 
-    public function indexAt($index)
+    /**
+     *  Checks the Collection for the specified key.
+     * @param mixed $key
+     * @return boolean
+     */
+    public function hasKey($key)
     {
 
-        return array_key_exists($index, $this->items);
+        return array_key_exists($key, $this->items);
 
     }
 
-    public function itemAt($index)
+    /**
+     * Returns the value of a key if it exists.
+     * @param mixed $key
+     * @return mixed|null
+     */
+    public function get($key)
     {
-        return isset($this->items[$index]);
-    }
 
-    public function contains($value)
-    {
-
-        return in_array($value, $this->items);
-
-    }
-
-    public function get($index)
-    {
-        return @$this->items[$index];
+        if ($this->hasKey($key))
+            return $this->items[$key];
 
     }
 
-    public function remove($index)
+    /**
+     * Deletes a key and its value from the Collection.
+     * @param mixed $key
+     * @return \pelau\util\Collection
+     */
+    public function remove($key)
     {
 
-        if ($this->indexAt($index))
-            unset($this->items[$index]);
+        if ($this->hasKey($key))
+            unset($this->items[$key]);
 
-        return $this;
-
-
-    }
-
-    public function clear()
-    {
-
-        $this->items = array ();
         return $this;
 
     }
 
     public function getIterator()
     {
+
         return new IteratorAdapter(new PHPIterator($this->items), $this->size());
 
     }
 
+    /**
+     * Returns the members of this collection as an array.
+     * @return array
+     */
     public function toArray()
     {
-        return $this->items;
 
-    }
+        $return = $this->items; //Copy the array
 
-    public function offsetExists($offset)
-    {
-        return $this->indexAt($offset);
-
-    }
-
-    public function offsetGet($offset)
-    {
-        return $this->get($offset);
-
-    }
-
-    public function offsetUnset($offset)
-    {
-
-        $this->remove($offset);
-
-    }
-
-
-    /**
-     * Turns this Collection into a String
-     * @param mixed $glue    A character that the members will be bonded by.
-     * @return pelau\php\String;
-     */
-    public function stringify($glue=",")
-    {
-        return implode($glue, $this->items);
-    }
-
-
-    public function __toString()
-    {
-
-        return $this->stringify();
+        return $return;
 
     }
 
