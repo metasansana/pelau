@@ -42,6 +42,9 @@ class PDOConnection implements \pelau\sql\SQLConnection
     public function getTransaction()
     {
 
+        if(!$this->pdo->beginTransaction())
+            throw new \pelau\php\UnsupportedOperationException;
+
         return new PDOTransaction($this->pdo, new PDOClient($this->pdo));
 
     }
