@@ -28,6 +28,12 @@ namespace pelau\sql\pdo;
 abstract class PDOConnector extends \pelau\php\Object
 {
 
+     /**
+     * Method called when a \PDOException occurs upon connecting.
+     * @var \PDOException $err
+     */
+    abstract protected function onError(\PDOException $err);
+
     /**
      * Attempts to create a PDOConnection.
      * @param string $dsn
@@ -63,16 +69,13 @@ abstract class PDOConnector extends \pelau\php\Object
     }
 
     /**
-     * Method called when a \PDOException occurs upon connecting.
-     * @var \PDOException $err
-     */
-    abstract protected function onError(\PDOException $err);
-
-    /**
-     * Method for configuring a PDO object.
+     * Overide this method to configure the \PDO object before use.
      * @var \PDO
      */
-    abstract protected function configure(\PDO $pdo);
+    protected function configure(\PDO $pdo)
+    {
+
+    }
 
 
 }
