@@ -43,7 +43,11 @@ abstract class PDOConnector
 
             $pdo = new \PDO($dsn, $user, $passwd);
 
+            $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+
             $this->configure($pdo);
+
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
             return new \pelau\sql\pdo\PDOConnection($pdo);
 
