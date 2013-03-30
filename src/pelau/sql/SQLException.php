@@ -7,6 +7,7 @@ namespace pelau\sql;
  * @author Lasana Murray  <dev@trinistorm.org>
  * @copyright 2012 Lasana Murray
  * @package pelau\sql
+ * @deprecated since version .02
  *
  *  Exception class for SQL related errors.
  *
@@ -30,6 +31,8 @@ class SQLException extends \Exception
      */
     public function __construct($state, $code, $message)
     {
+
+        trigger_error('SQLExceptions should not be thrown! Use \PDOException instead.', E_DEPRECATED);
 
         $this->state = $state;
         parent::__construct($message, $code);
