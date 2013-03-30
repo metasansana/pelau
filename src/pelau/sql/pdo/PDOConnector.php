@@ -20,26 +20,21 @@
  * limitations under the License.
  *
  * @package pelau\sql\pdo
+ *
+ *  Abstract class for creating PDO connections.
  */
 namespace pelau\sql\pdo;
 
-class PDOConnector
+abstract class PDOConnector
 {
 
     /**
-     * Handles connection errors.
-     * @var \pelau\sql\pdo\PDOConnectionErrorHandler $errorHandler
-     * @access private
+     * Attempts to create a PDOConnection.
+     * @param string $dsn
+     * @param string $user = ''
+     * @param string $passwd = ''
+     * @return \pelau\sql\pdo\PDOConnection
      */
-    private $errorHandler;
-
-    public function __construct(PDOConnectionErrorHandler $errorHandler)
-    {
-
-        $this->errorHandler = $errorHandler;
-
-    }
-
     public function connect($dsn, $user='', $passwd='')
     {
 
@@ -54,11 +49,17 @@ class PDOConnector
         catch (\PDOException $exc)
         {
 
-            $this->errorHandler->onConnectionError($exc);
+            $this->onPDOException($exc);
 
         }
 
 
     }
+
+    /**
+     * Function called when a \PDOException occurs upon connecting.
+     * @var \PDOException $exc
+     */
+    abstract protected function onPDOException(\PDOException $exc);
 
 }
