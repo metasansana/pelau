@@ -17,59 +17,33 @@ class PDOStatement implements \pelau\sql\Statement
 
     /**
      * The PDOConnection object that will be used.
-     * @var \PDO $pdo
+     * @var \sql\pdo\stmt $stmt
      * @access private
      */
-    private $pdo;
-
-    /**
-     * A string representing an sql command.
-     * @var string $sql
-     */
-    private $sql;
-
+    protected $stmt;
 
     /**
      * Constructs a new pelau\sql\PDOStatement
      * @param \PDO $con   The PDOConnection object that will be used.
      */
-    public function __construct(\PDO $pdo, $sql)
+    public function __construct(\PDOStatement $stmt)
     {
 
-        $this->pdo = $pdo;
+        $this->stmt = $stmt;
 
-        $this->sql = $sql;
-
-    }
+   }
 
     public function query()
     {
 
-        $model = new PDOStatementModel();
-
-        $stmt = $this->pdo->query($this->sql);
-
-        if(!$stmt)
-        {
-            return $model->error ($this->pdo->errorInfo ());
-        }
-
-        return $model->fetch($stmt);
+        return new PDORowSet($this->stmt);
 
     }
 
     public function update()
     {
 
-        $result = $this->pdo->exec($this->sql);
-
-        if($result  === false)
-        {
-            $w = new PDOStatementModel();
-            $w->error($this->pdo->errorInfo());
-        }
-
-        return $result;
+        return $this->stmt->rowCount();
 
     }
 
