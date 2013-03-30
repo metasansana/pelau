@@ -19,7 +19,7 @@ class PDOPreparedStatement extends PDOStatement implements PreparedStatement
     public function bindInteger($index, $int)
     {
 
-        $this->pstmt->bindParam($index, (int)$int, \PDO::PARAM_INT);
+        $this->stmt->bindValue($index, (int)$int, \PDO::PARAM_INT);
 
         return $this;
 
@@ -28,11 +28,28 @@ class PDOPreparedStatement extends PDOStatement implements PreparedStatement
     public function bindString($index, $string)
     {
 
-        $this->pstmt->bindParam($index, (string)$string, \PDO::PARAM_STR);
+        $this->stmt->bindValue($index, (string)$string, \PDO::PARAM_STR);
 
         return $this;
 
     }
 
+    public function query()
+    {
+
+        $this->stmt->execute();
+
+        return parent::query();
+
+    }
+
+    public  function update()
+    {
+
+        $this->stmt->execute();
+
+        return parent::query();
+
+    }
 
 }

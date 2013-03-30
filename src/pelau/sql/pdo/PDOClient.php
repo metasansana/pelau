@@ -35,7 +35,7 @@ class PDOClient
     public function create($sql)
     {
 
-        return new PDOStatement($this->pdo, $sql);
+        return new PDOStatement($this->pdo->query($sql));
 
     }
 
