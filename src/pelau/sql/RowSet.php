@@ -33,13 +33,13 @@ interface RowSet
      * Fetches all the rows from a query's result.
      * @return pelau\util\ArrayList
      */
-    public function fetchRows();
+    public function getRows();
 
     /**
      * Reads all the rows from a query's result, making them available one by one.
      * @param \pelau\sql\RowListener $rdr
      */
-    public function readRows(RowListener $rdr);
+    public function fetchRows(RowListener $rdr);
 
 
 }

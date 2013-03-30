@@ -44,14 +44,14 @@ class PDORowSet implements \pelau\sql\RowSet
 
     }
 
-    public function fetchRows()
+    public function getRows()
     {
 
         return new \pelau\util\ArrayList($this->stmt->fetchAll());
 
     }
 
-    public function readRows(RowListener $rdr)
+    public function fetchRows(RowListener $rdr)
     {
 
         foreach($this->stmt as $row)
