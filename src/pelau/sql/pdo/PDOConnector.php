@@ -21,7 +21,7 @@
  *
  * @package pelau\sql\pdo
  *
- *  Abstract class for creating PDO connections.
+ *  Class class for creating PDO connections.
  */
 namespace pelau\sql\pdo;
 
@@ -41,15 +41,17 @@ abstract class PDOConnector
         try
         {
 
-            $con =  new \pelau\sql\pdo\PDOConnection(new \PDO($dsn, $user, $passwd));
+            $pdo = new \PDO($dsn, $user, $passwd);
 
-            return $con;
+            $this->configure($pdo);
+
+            return new \pelau\sql\pdo\PDOConnection($pdo);
 
         }
-        catch (\PDOException $exc)
+        catch (\PDOException $err)
         {
 
-            $this->onPDOException($exc);
+            $this->onError($err);
 
         }
 
@@ -57,9 +59,16 @@ abstract class PDOConnector
     }
 
     /**
-     * Function called when a \PDOException occurs upon connecting.
-     * @var \PDOException $exc
+     * Method called when a \PDOException occurs upon connecting.
+     * @var \PDOException $err
      */
-    abstract protected function onPDOException(\PDOException $exc);
+    abstract protected function onError(\PDOException $err);
+
+    /**
+     * Method for configuring a PDO object.
+     * @var \PDO
+     */
+    abstract protected function configure(\PDO $pdo);
+
 
 }
