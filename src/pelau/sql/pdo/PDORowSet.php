@@ -51,7 +51,7 @@ class PDORowSet implements \pelau\sql\RowSet
 
     }
 
-    public function fetchRows(RowListener $rdr)
+    public function fetchRows(\pelau\sql\RowListener $rdr)
     {
 
         foreach($this->stmt as $row)
