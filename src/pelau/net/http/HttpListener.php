@@ -13,7 +13,7 @@ namespace pelau\net\http;
  *  Abstract class for listening for HTTP events.
  *
  */
-abstract class HttpListener
+interface HttpListener
 {
 
 
@@ -22,19 +22,15 @@ abstract class HttpListener
      * @param \pelau\net\http\Browser $client
      * @param \pelau\net\http\GetEvent $evt
      */
-    public function onGet(Browser $client, GetEvent $evt)
-    {
+    public function onGet(Browser $client, GetEvent $evt);
 
-    }
 
     /**
      * Method called when a POST event occurs.
      * @param \pelau\net\http\Browser $client
      * @param \pelau\net\http\PostEvent $evt
      */
-    public function onPost(Browser $client, PostEvent $evt)
-    {
+    public function onPost(Browser $client, PostEvent $evt);
 
-    }
 
 }
