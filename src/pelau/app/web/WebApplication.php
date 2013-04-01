@@ -27,15 +27,10 @@
  */
 namespace pelau\app\web;
 
-class WebApplication extends Application implements \pelau\net\http\HttpListener
+abstract class WebApplication extends Application implements \pelau\net\http\HttpListener
 {
 
     protected function init()
-    {
-
-    }
-
-    protected function onMethod(AppLauncher $launcher)
     {
 
     }
