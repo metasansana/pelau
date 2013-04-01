@@ -30,35 +30,12 @@ namespace pelau\net\http;
 class Browser extends \pelau\php\Object
 {
 
-    use \pelau\util\Composition;
-    use \pelau\util\ListAddition;
-
-
     public function send(Header $h, $status)
     {
 
         header("$h", true, $status);
 
         return $this;
-
-    }
-
-    public function addListener(HttpListener $l)
-    {
-
-        $this->_add($l);
-        return $this;
-
-    }
-
-    public function request(HttpInvoker $invoker)
-    {
-
-        $this->_each(function (HttpListener $l) use ($invoker) {
-
-                    $invoker->invoke($l);
-                }
-        );
 
     }
 
