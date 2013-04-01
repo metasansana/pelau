@@ -35,15 +35,20 @@ abstract class Application
     final public function __construct()
     {
 
-         $this->main();
+         $this->run();
 
     }
+
+    /**
+     * This method is implemented to initialize an appliaciton.
+     */
+    abstract protected function init();
 
     /**
      * Child classes implement this method to indicate what classes will be created by the application.
      * @var \pelau\app\web\AppLauncher $launcher
      */
-    abstract protected function init(\pelau\app\web\AppLauncher $launcher);
+    abstract protected function onMethod(\pelau\app\web\AppLauncher $launcher);
 
 
     /**
@@ -54,7 +59,7 @@ abstract class Application
 
         $launcher = new \pelau\app\web\AppLauncher(new \pelau\net\http\Browser);
 
-        $this->init($launcher);
+        $this->onMethod($launcher);
 
         $launcher->launch($_SERVER['REQUEST_METHOD']);
 
