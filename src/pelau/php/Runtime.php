@@ -31,16 +31,6 @@ class Runtime extends Object
 {
 
     /**
-     * Returns the command line arguments this program was started with (if any).
-     * @return pelau\util\ArrayList
-     */
-    static public function getArguments()
-    {
-        global $argv; //ewwww
-        return (new ArrayList($argv))->remove(0);
-    }
-
-    /**
      * End execution of this program.
      * @param int $status
      * @param string $message
@@ -52,6 +42,27 @@ class Runtime extends Object
             echo $message.PHP_EOL;
 
         exit((int)$status);
+
+    }
+
+    static public function import($file)
+    {
+
+        if(file_exists($file))
+        include_once "$file";
+
+    }
+
+
+    static public function parseINI($filename, $map=true)
+    {
+
+        //the prototype is to be changed in future.
+
+        if($map)
+            return new \pelau\util\Map(parse_ini_file($filename, true));
+
+        return parse_ini_file($filename, true);
 
     }
 
