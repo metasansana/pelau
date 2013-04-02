@@ -67,7 +67,7 @@ class AppLauncher
 
         $this->listeners['POST'][] = function() use ($l) {
 
-                    $l->onGet($this->brw, new \pelau\net\http\PostEvent($this->brw));
+                    $l->onPost($this->brw, new \pelau\net\http\PostEvent($this->brw));
                 };
 
         return $this;
