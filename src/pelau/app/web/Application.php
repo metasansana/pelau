@@ -30,16 +30,6 @@ abstract class Application
 {
 
     /**
-     * Constructs a new Application class. This method is final.
-     */
-    final public function __construct()
-    {
-
-         $this->run();
-
-    }
-
-    /**
      * This method is implemented to initialize an appliaciton.
      */
     abstract protected function init();
@@ -54,7 +44,7 @@ abstract class Application
     /**
      * Runs the Application
      */
-    final private function run()
+    final public function run()
     {
 
         $launcher = new \pelau\app\web\AppLauncher(new \pelau\net\http\Browser);
