@@ -28,4 +28,11 @@ interface PreparedStatement extends Statement
      */
     public function bindInteger($index, $int);
 
+    /**
+     *  Binds a boolean value to the statment.
+     * @param mixed $index
+     * @param boolean $bool
+     */
+    public function bindBoolean($index, $bool);
+
 }

@@ -34,6 +34,17 @@ class PDOPreparedStatement extends PDOStatement implements PreparedStatement
 
     }
 
+
+    public function bindBoolean($index, $bool)
+    {
+
+        $this->stmt->bindValue($index, (boolean)$string, \PDO::PARAM_BOOL);
+
+        return $this;
+
+    }
+
+
     public function query()
     {
 
