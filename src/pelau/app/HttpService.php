@@ -39,12 +39,12 @@ class HttpService
     private $list = ['GET'=>array(), 'POST'=>array()];
 
 
-    public function addGet(\pelau\net\http\HttpListener $l)
+    public function addGet(WebService $w)
     {
 
-        $this->list['GET'][] = function () use ($l) {
+        $this->list['GET'][] = function () use ($w) {
 
-                    $l->onGet(new Response, new Request($_GET));
+                    $w->onGet(new Request($_GET), new Response);
                 };
 
     }
@@ -54,7 +54,7 @@ class HttpService
 
         $this->list['POST'][] = function() use ($w){
 
-                    $w->onPost(new Response, new Request($_POST));
+                    $w->onPost(new Request(array_merge($_POST, $_GET)), new Response);
                 };
 
     }
@@ -64,7 +64,7 @@ class HttpService
 
         $this->list['PUT'][] = function() use ($w){
 
-                    $w->onPut(new Response, new Request([]));
+                    $w->onPut(new Request([]), new Response);
                 };
 
     }
@@ -74,7 +74,7 @@ class HttpService
 
         $this->list['DELETE'][] = function() use ($w){
 
-                    $w->onDelete(new Response, new Request([]));
+                    $w->onDelete(new Request([]), new Response);
                 };
 
     }
