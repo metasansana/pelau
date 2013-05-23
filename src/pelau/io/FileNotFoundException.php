@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 31, 2013 10:59:59 PM
+ * timestamp: Apr 1, 2013 9:05:34 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,22 +19,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package pelau\io
  *
- * Convienece class for implementing the HttpListener interface.
+ * Thrown when a filename could not be found on the filesystem.
+ *
  */
-namespace pelau\net\http;
+namespace pelau\io;
 
-class AbstractHttpListener implements HttpListener
+class FileNotFoundException extends \Exception
 {
 
-    public function onGet(Browser $client, GetEvent $evt)
+    /**
+     *
+     * @var mixed $file
+     * @access private
+     */
+    private $filename;
+
+    public function __construct($filename)
     {
+
+        $this->filename = $filename;
 
     }
 
-    public function onPost(Browser $client, PostEvent $evt)
+
+
+    public function getFileName()
     {
+
+        return $this->filename;
 
     }
 }

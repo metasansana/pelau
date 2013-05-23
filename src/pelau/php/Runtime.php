@@ -45,13 +45,29 @@ class Runtime extends Object
 
     }
 
-    static public function import($file)
+    static public function import($file, array $vars=array())
     {
 
-        if(file_exists($file))
-        include_once "$file";
+        if($vars)
+            extract ($vars);
+
+            if(!(include_once "$file"))
+            throw new \pelau\io\FileNotFoundException($file);
 
     }
+
+    static public  function parseFile($file, array $vars=array())
+    {
+
+        if($vars)
+            extract ($vars);
+
+        $data = include_once "$file";
+        return $data;
+
+    }
+
+
 
 
     static public function parseINI($filename, $map=true)

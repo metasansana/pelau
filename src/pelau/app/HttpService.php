@@ -23,10 +23,12 @@
  *
  * Class  for launching Applications.
  */
+
 namespace pelau\app;
 
 use pelau\net\http\Response;
 use pelau\net\http\Request;
+use pelau\util\DataObject;
 
 class HttpService
 {
@@ -36,45 +38,49 @@ class HttpService
      * @var \pelau\util\Map $list
      * @access private
      */
-    private $list = ['GET'=>array(), 'POST'=>array()];
+    private $list = ['GET' => array (), 'POST' => array (), 'PUT'=>array(), 'DELETE'=>array()];
 
-
-    public function addGet(WebService $w)
+    public function addGet(Resource $w)
     {
 
         $this->list['GET'][] = function () use ($w) {
 
-                    $w->onGet(new Request($_GET), new Response);
+                    $w->onGet(new Request, new Response, new DataObject($_GET));
                 };
 
     }
 
-    public function addPost(WebService $w)
+    public function addPost(Resource $w)
     {
 
-        $this->list['POST'][] = function() use ($w){
+        $this->list['POST'][] = function() use ($w) {
 
-                    $w->onPost(new Request(array_merge($_POST, $_GET)), new Response);
+                    $w->onPost(new Request, new Response, new DataObject($_POST));
                 };
 
     }
 
-      public function addPut(WebService $w)
+    public function addPut(Resource $w)
     {
 
-        $this->list['PUT'][] = function() use ($w){
+        $_PUT = array ();
 
-                    $w->onPut(new Request([]), new Response);
+
+       parse_str(file_get_contents('php://input'), $_PUT);
+
+        $this->list['PUT'][] = function() use ($w, $_PUT) {
+
+                    $w->onPut(new Request, new Response, new DataObject($_PUT));
                 };
 
     }
 
-    public function addDelete(WebService $w)
+    public function addDelete(Resource $w)
     {
 
-        $this->list['DELETE'][] = function() use ($w){
+        $this->list['DELETE'][] = function() use ($w) {
 
-                    $w->onDelete(new Request([]), new Response);
+                    $w->onDelete(new Request, new Response);
                 };
 
     }
@@ -84,14 +90,10 @@ class HttpService
 
         $runners = $this->list[$_SERVER['REQUEST_METHOD']];
 
-        foreach($runners as $f)
+        foreach ($runners as $f)
         {
             $f();
         }
-
-
-
-
 
     }
 

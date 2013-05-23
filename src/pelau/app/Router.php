@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:01:11 AM
+ * timestamp:
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package pelau\app
  *
- *  Parent class of HttpInvokers that actually invoke methods on listeners.
+ * Class for setting up custom application routes.
+ *
+ *
  */
-namespace pelau\net\http;
 
-abstract class HttpMethodInvoker extends \pelau\php\Object implements HttpInvoker
+namespace pelau\app;
+
+class Router
 {
 
     /**
-     * The Browser class that will be passed to listeners.
-     * @var \pelau\net\http\Response $client
-     * @access private
+     *
+     * @var
+     * @access
      */
-    protected $client;
+  private $routes;
 
-    public function __construct(Response $client)
-    {
-        $this->client = $client;
-    }
+
+  public function __construct()
+  {
+
+    $this->routes = new \pelau\util\Map;
+
+
+  }
+
+
 
 }

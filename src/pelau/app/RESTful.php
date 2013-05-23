@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:01:11 AM
+ * timestamp: May 3, 2013 10:30:10 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
- *
- *  Parent class of HttpInvokers that actually invoke methods on listeners.
+ * @package pelau\app
  */
-namespace pelau\net\http;
+namespace pelau\app;
 
-abstract class HttpMethodInvoker extends \pelau\php\Object implements HttpInvoker
+use pelau\net\http\Request;
+use pelau\net\http\Response;
+use pelau\util\DataObject;
+
+
+interface RESTful
 {
 
-    /**
-     * The Browser class that will be passed to listeners.
-     * @var \pelau\net\http\Response $client
-     * @access private
-     */
-    protected $client;
+    public function onPost(Request $req, Response $res, DataObject $post);
 
-    public function __construct(Response $client)
-    {
-        $this->client = $client;
-    }
+    public function onPut(Request $req, Response $res, DataObject $put);
+
+    public function onGet(Request $req, Response $res, DataObject $get);
+
+    public function onDelete(Request $req, Response $res, DataObject $delete);
 
 }

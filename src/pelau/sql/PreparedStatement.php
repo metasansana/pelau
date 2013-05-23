@@ -29,10 +29,17 @@ interface PreparedStatement extends Statement
     public function bindInteger($index, $int);
 
     /**
-     *  Binds a boolean value to the statment.
+     *  Binds a boolean value to the statement.
      * @param mixed $index
      * @param boolean $bool
      */
     public function bindBoolean($index, $bool);
+
+    /**
+     * Binds a floating point value to the statement
+     * @param mixed $index
+     * @param float $float
+     */
+    public function bindFloat($index, $float);
 
 }

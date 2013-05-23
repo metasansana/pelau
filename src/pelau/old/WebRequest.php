@@ -26,12 +26,12 @@ namespace pelau\app\web;
 
 use pelau\net\http\HttpListener;
 
-class AppLauncher
+Request
 {
 
     /**
      *
-     * @var \pelau\net\http\Browser
+     * @var \pelau\net\http\Response
      * @access private
      */
     private $brw;
@@ -43,7 +43,7 @@ class AppLauncher
      */
     private $listeners = array ();
 
-    public function __construct(\pelau\net\http\Browser $brw)
+    public function __construct(\pelau\net\http\Response $brw)
     {
 
         $this->brw = $brw;
@@ -55,7 +55,7 @@ class AppLauncher
 
         $this->listeners['GET'][] = function() use ($l) {
 
-                    $l->onGet($this->brw, new \pelau\net\http\GetEvent($this->brw));
+                    $l->onGet($this->brw, new \pelau\net\http\Request($this->brw));
                 };
 
         return $this;
@@ -67,14 +67,14 @@ class AppLauncher
 
         $this->listeners['POST'][] = function() use ($l) {
 
-                    $l->onPost($this->brw, new \pelau\net\http\PostEvent($this->brw));
+                    $l->onPost($this->brw, new \pelau\net\http\Request($this->brw));
                 };
 
         return $this;
 
     }
 
-    public function launch($method)
+    public function request($method)
     {
 
         $map = new \pelau\util\Map($this->listeners);

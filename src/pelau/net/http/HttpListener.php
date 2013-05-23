@@ -19,18 +19,18 @@ interface HttpListener
 
     /**
      * Method called when a GET event occurs.
-     * @param \pelau\net\http\Browser $client
-     * @param \pelau\net\http\GetEvent $evt
+     * @param \pelau\net\http\Response $res
+     * @param \pelau\net\http\Request $req
      */
-    public function onGet(Browser $client, GetEvent $evt);
+    public function onGet(Response $res, Request $req);
 
 
     /**
      * Method called when a POST event occurs.
-     * @param \pelau\net\http\Browser $client
-     * @param \pelau\net\http\PostEvent $evt
+     * @param \pelau\net\http\Response $client
+     * @param \pelau\net\http\Request $evt
      */
-    public function onPost(Browser $client, PostEvent $evt);
+    public function onPost(Response $res, Request $req);
 
 
 }

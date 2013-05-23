@@ -67,9 +67,8 @@ class Response extends \pelau\php\Object
         $this->respond("Location: $location", 302);
 
     }
-
-
-    /**
+    
+        /**
      * Writes output to the client.
      * @param mixed $txt
      */

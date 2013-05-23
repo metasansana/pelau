@@ -36,9 +36,9 @@ abstract class Application
 
     /**
      * Child classes implement this method to indicate what classes will be created by the application.
-     * @var \pelau\app\web\AppLauncher $launcher
+Request $launcher
      */
-    abstract protected function onMethod(\pelau\app\web\AppLauncher $launcher);
+Request $launcher);
 
 
     /**
@@ -47,11 +47,11 @@ abstract class Application
     final public function run()
     {
 
-        $launcher = new \pelau\app\web\AppLauncher(new \pelau\net\http\Browser);
+Request(new \pelau\net\http\Response);
 
         $this->onMethod($launcher);
 
-        $launcher->launch($_SERVER['REQUEST_METHOD']);
+        $launcher->request($_SERVER['REQUEST_METHOD']);
 
     }
 

@@ -2,10 +2,10 @@
 
 /**
  *
- * timestamp: Dec 22, 2012 5:43:57 PM
+ * timestamp: Mar 31, 2013 11:02:16 PM
  * encoding: UTF-8
  *
- * Copyright 2012  Lasana Murray <dev@trinistorm.org>
+ * Copyright 2013  Lasana Murray <dev@trinistorm.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,24 +19,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\web
+ * @package pelau\app\web
  *
- *  Class representing a client browser.
+ * This class implements Application and HttpListener methods.
+ *
+ * Use this class to quickly write small Applications.
  */
+namespace pelau\app\web;
 
-namespace pelau\net\http;
-
-
-class Browser extends \pelau\php\Object
+abstract class WebApplication extends Application implements \pelau\net\http\HttpListener
 {
 
-    public function send(Header $h, $status)
+    protected function init()
     {
-
-        header("$h", true, $status);
-
-        return $this;
 
     }
 
+    public function onGet(\pelau\net\http\Response $client, \pelau\net\http\Request $evt)
+    {
+
+    }
+
+    public function onPost(\pelau\net\http\Response $client, \pelau\net\http\Request $evt)
+    {
+
+    }
 }

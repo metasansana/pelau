@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:01:11 AM
+ * timestamp: May 11, 2013 11:03:26 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
- *
- *  Parent class of HttpInvokers that actually invoke methods on listeners.
+ * @package
  */
-namespace pelau\net\http;
+namespace pelau\app;
 
-abstract class HttpMethodInvoker extends \pelau\php\Object implements HttpInvoker
+class StateWriter
 {
 
     /**
-     * The Browser class that will be passed to listeners.
-     * @var \pelau\net\http\Response $client
-     * @access private
+     *
+     * @var
+     * @access
      */
-    protected $client;
 
-    public function __construct(Response $client)
+    static public function getCookieWriter()
     {
-        $this->client = $client;
+        return new CookieWriter;
     }
+
+    static  public function getSessionWriter($start=true)
+    {
+        return new SessionWriter($start);
+    }
+
+
+
 
 }

@@ -43,12 +43,12 @@ class GetAdapter implements HttpListener
         $this->l = $l;
 
     }
-    public function onGet(GetEvent $e)
+    public function onGet(Request $e)
     {
         $this->l->onGet($e);
     }
 
-    public function onPost(PostEvent $e)
+    public function onPost(Request $e)
     {
 
     }

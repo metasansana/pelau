@@ -1,5 +1,7 @@
 <?php
+
 namespace pelau\sql\pdo;
+
 /**
  * timestamp Aug 4, 2012 1:42:43 PM
  *
@@ -15,11 +17,19 @@ use pelau\sql\PreparedStatement;
 class PDOPreparedStatement extends PDOStatement implements PreparedStatement
 {
 
-
     public function bindInteger($index, $int)
     {
 
-        $this->stmt->bindValue($index, (int)$int, \PDO::PARAM_INT);
+        $this->stmt->bindValue($index, (int) $int, \PDO::PARAM_INT);
+
+        return $this;
+
+    }
+
+    public function bindFloat($index, $float)
+    {
+
+        $this->stmt->bindValue($index, (string)(float) $float, \PDO::PARAM_STR);
 
         return $this;
 
@@ -28,22 +38,20 @@ class PDOPreparedStatement extends PDOStatement implements PreparedStatement
     public function bindString($index, $string)
     {
 
-        $this->stmt->bindValue($index, (string)$string, \PDO::PARAM_STR);
+        $this->stmt->bindValue($index, (string) $string, \PDO::PARAM_STR);
 
         return $this;
 
     }
-
 
     public function bindBoolean($index, $bool)
     {
 
-        $this->stmt->bindValue($index, (boolean)$string, \PDO::PARAM_BOOL);
+        $this->stmt->bindValue($index, (boolean) $bool, \PDO::PARAM_BOOL);
 
         return $this;
 
     }
-
 
     public function query()
     {
@@ -54,12 +62,12 @@ class PDOPreparedStatement extends PDOStatement implements PreparedStatement
 
     }
 
-    public  function update()
+    public function update()
     {
 
         $this->stmt->execute();
 
-        return parent::query();
+        return parent::update();
 
     }
 

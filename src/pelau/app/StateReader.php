@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:01:11 AM
+ * timestamp: May 11, 2013 9:25:04 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package pelau\app
  *
- *  Parent class of HttpInvokers that actually invoke methods on listeners.
+ * Class for reading state.
  */
-namespace pelau\net\http;
 
-abstract class HttpMethodInvoker extends \pelau\php\Object implements HttpInvoker
+namespace pelau\app;
+
+use pelau\util\Map;
+
+class StateReader
 {
 
-    /**
-     * The Browser class that will be passed to listeners.
-     * @var \pelau\net\http\Response $client
-     * @access private
-     */
-    protected $client;
-
-    public function __construct(Response $client)
+    static public function getCookies()
     {
-        $this->client = $client;
+
+        $cok = $_COOKIE;
+
+        return new Map($cok);
+
+    }
+
+    static public function getSession($start = true)
+    {
+
+        if (session_status() != PHP_SESSION_ACTIVE)
+                session_start();
+
+        $ses = $_SESSION;
+
+
+        return new Map($ses);
+
     }
 
 }

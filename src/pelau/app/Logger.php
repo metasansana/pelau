@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Jan 12, 2013 5:19:32 PM
+ * timestamp:
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,26 +19,63 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\php;
+ * @package \pelau\app
  *
- * Convience class that contains static methods for useful PHP features.
+ * Simple class for logging application errors.
  */
-namespace pelau\php;
 
-class Platform
+namespace pelau\app;
+
+class Logger
 {
 
+    /**
+     *
+     * @var
+     * @access
+     */
 
-    static public function parseINI($filename, $map=true)
-    {
+  private function _log($id, $msg)
+  {
 
-        //the prototype is to be changed in future.
+    return syslog((int)$id, $msg);
 
-        if($map)
-            return new \pelau\util\Map(parse_ini_file($filename, true));
+  }
 
-        return parse_ini_file($filename, true);
+  public function warn ($msg)
+  {
 
-    }
+    return $this->_log(LOG_WARNING, $msg);
+
+  }
+
+  public function err($msg)
+  {
+
+    return $this->_log(LOG_ERR, $msg);
+
+
+  }
+
+  public function notice($msg)
+  {
+
+    return $this->_log(LOG_NOTICE, $msg);
+
+  }
+
+  static public function getLogger()
+  {
+
+    return new Logger;
+
+
+  }
+
+
+
+
+
+
 
 }

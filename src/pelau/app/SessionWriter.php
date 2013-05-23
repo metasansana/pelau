@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: May 3, 2013 10:27:09 PM
+ * timestamp: Apr 1, 2013 11:54:56 AM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,42 +19,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\app;
+ * @package pelau\http
+ *
+ * Class representing client side session storage.
+ *
  */
-namespace pelau\app;
+namespace  pelau\app;
 
-class WebService implements RESTful
+class SessionWriter
 {
 
-    final public function launch()
+    public  function __construct($new=true)
     {
 
-        $http = new HttpService;
-        $http->addGet($this);
-        $http->addPost($this);
-        $http->addPut($this);
-        $http->addDelete($this);
-        $http->service();
+        if($new)
+            session_start ();
 
     }
 
-    public function onDelete(\pelau\net\http\Request $req, \pelau\net\http\Response $res)
+    public function write($key, $value)
     {
+
+        $_SESSION[$key] = $value;
+
+        return $this;
 
     }
 
-    public function onGet(\pelau\net\http\Response $res, \pelau\net\http\Request $req)
+    public function delete($key)
     {
+
+        unset($_SESSION[$key]);
+
 
     }
 
-    public function onPost(\pelau\net\http\Request $req, \pelau\net\http\Response $res)
+    public function destroy()
     {
+
+        session_unset();
+
+        session_destroy();
+
 
     }
 
-    public function onPut(\pelau\net\http\Request $req, \pelau\net\http\Response $res)
-    {
 
-    }
+
+
+
+
 }

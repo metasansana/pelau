@@ -27,13 +27,24 @@ class Request
 
     private $headers;
 
-    public function __construct(array $params)
+    private $query = [];
+
+    public function __construct()
     {
 
-        $this->params = new Map($params);
+        parse_str($_SERVER['QUERY_STRING'], $this->query);
 
-        $this->headers = new Map($_SERVER);
+        //$this->params = new Map($params);
 
+//        $this->headers = new Map($_SERVER);
+
+    }
+
+    public function getParameters()
+    {
+        return new \pelau\util\DataObject($this->params->toArray());
+
+        //XXX in future, remove getParameter(), DataObject should be a Collection
     }
 
     public function getParameter($name)
@@ -41,11 +52,6 @@ class Request
         if($this->params[$name])
         return $this->params[$name];
 
-    }
-
-    public function getParameters()
-    {
-        return new Map($this->params->toArray());
     }
 
     public function getHeader($key)
@@ -56,7 +62,10 @@ class Request
 
     public function getSession($start=true)
     {
-        return new Session($start);
+        if($start)
+	session_start();
+
+	return new \pelau\util\Map($_SESSION);
     }
 
 }

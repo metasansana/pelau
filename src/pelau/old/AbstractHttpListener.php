@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 31, 2013 11:02:16 PM
+ * timestamp: Mar 31, 2013 10:59:59 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,28 +19,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\app\web
+ * @package pelau\net\http
  *
- * This class implements Application and HttpListener methods.
- *
- * Use this class to quickly write small Applications.
+ * Convienece class for implementing the HttpListener interface.
  */
-namespace pelau\app\web;
+namespace pelau\net\http;
 
-abstract class WebApplication extends Application implements \pelau\net\http\HttpListener
+class AbstractHttpListener implements HttpListener
 {
 
-    protected function init()
+    public function onGet(Response $client, Request $evt)
     {
 
     }
 
-    public function onGet(\pelau\net\http\Browser $client, \pelau\net\http\GetEvent $evt)
-    {
-
-    }
-
-    public function onPost(\pelau\net\http\Browser $client, \pelau\net\http\PostEvent $evt)
+    public function onPost(Response $client, Request $evt)
     {
 
     }

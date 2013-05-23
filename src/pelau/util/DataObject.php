@@ -2,7 +2,7 @@
 
 /**
  *
- * timestamp: Mar 3, 2013 3:01:11 AM
+ * timestamp: May 11, 2013 12:45:31 PM
  * encoding: UTF-8
  *
  * Copyright 2013  Lasana Murray <dev@trinistorm.org>
@@ -19,25 +19,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package pelau\net\http
+ * @package pelau\php
  *
- *  Parent class of HttpInvokers that actually invoke methods on listeners.
+ * Object for storing and retrieving data values.
  */
-namespace pelau\net\http;
+namespace pelau\util;
 
-abstract class HttpMethodInvoker extends \pelau\php\Object implements HttpInvoker
+class DataObject extends \pelau\php\Object implements \IteratorAggregate
 {
 
-    /**
-     * The Browser class that will be passed to listeners.
-     * @var \pelau\net\http\Response $client
-     * @access private
-     */
-    protected $client;
+private $data;
 
-    public function __construct(Response $client)
+    public function __construct(array $data = array())
     {
-        $this->client = $client;
+
+        $this->data = new Map($data);
+
+
+    }
+
+    public function __get($name)
+    {
+
+        if($this->data->hasKey($name))
+            return $this->data->get ($name);
+
+    }
+
+    public function __set($name, $value)
+    {
+        $this->data->set($name, $value);
+        return $this;
+
+    }
+
+    public function getIterator()
+    {
+        return $this->data->getIterator();
     }
 
 }
