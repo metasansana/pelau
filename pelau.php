@@ -1,4 +1,5 @@
 <?php
+get_include_path(get_include_path() . PATH_SEPARATOR . getcwd()."pelau");
 
 define('PELAU_VERSION', '0.1');
 spl_autoload_register(
